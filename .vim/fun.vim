@@ -63,7 +63,6 @@ function! My_indent_style()
 	endif
 endfunction
 
-
 fu! SeeTab()
 	if !exists("g:SeeTabEnabled")
 		let g:SeeTabEnabled = 1

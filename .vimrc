@@ -78,9 +78,9 @@ set encoding=utf8
 " INDENTATION
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noexpandtab
-set softtabstop=2
+set softtabstop=8
 set tabstop=8 
-set shiftwidth=2
+set shiftwidth=8
 set smarttab
 set autoindent
 
@@ -108,4 +108,5 @@ source ~/.vim/fun.vim
 source ~/.vim/mappings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/langdep.vim
+source ~/.vim/abbrev.vim
 
