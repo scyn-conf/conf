@@ -108,5 +108,5 @@ source ~/.vim/fun.vim
 source ~/.vim/mappings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/langdep.vim
-source ~/.vim/abbrev.vim
+"source ~/.vim/abbrev.vim
 
