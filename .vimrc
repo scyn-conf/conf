@@ -88,7 +88,7 @@ set autoindent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FORMATING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set textwidth=80
+"set textwidth=80
 highlight col79 ctermbg=Red guibg=Red
 
 
@@ -109,4 +109,3 @@ source ~/.vim/mappings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/langdep.vim
 source ~/.vim/abbrev.vim
-
