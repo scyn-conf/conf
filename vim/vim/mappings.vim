@@ -85,4 +85,3 @@ map <F3> :ma<RETURN>
 " opens functions file
 map :fun :e ~/.vim/fun.vim
 map <F4> :fun<RETURN>
-
