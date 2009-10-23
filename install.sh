@@ -1,9 +1,10 @@
 #! /bin/sh
 
-installPath=`pwd`/`dirname $0`
+installPath=`pwd`/`dirname $0 | sed 's/^.\///g'`
 while echo $installPath | grep '\.\.' > /dev/null; do
 	installPath=`echo $installPath | sed 's_/\./_/_g ; s_/[^/]\+/\.\./_/_g ; s_/[^/]\+/..$__'`
 done
+
 
 install ()
 {
@@ -12,15 +13,15 @@ install ()
 }
 
 # Vim configuration files
-install ./vim/vimrc ~/.vimrc
-install ./vim/vim ~/.vim
+install vim/vimrc ~/.vimrc
+install vim/vim ~/.vim
 
 # git configuration file
-install ./git/gitconfig ~/.gitconfig
+install git/gitconfig ~/.gitconfig
 
 # zsh configuration files
-install ./zsh/zsh ~/.zsh
-install .zsh/zshrc ~/.zshrc
+install zsh/zsh ~/.zsh
+install zsh/zshrc ~/.zshrc
 
 
 

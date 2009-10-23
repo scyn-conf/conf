@@ -65,7 +65,7 @@ HISTFILE=~/.zsh_history
 ##########################################
 
 #souce ~/conf/zsh/env.zsh
-for i in ~/.config/zsh/*.zsh; do
+for i in ~/.zsh/*.zsh; do
   source $i
 done
 
