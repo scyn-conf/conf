@@ -1,0 +1,82 @@
+##########################################
+###  OPTIONS  ############################
+##########################################
+
+setopt BASH_AUTO_LIST
+setopt CDABLE_VARS
+setopt MARK_DIRS
+setopt NULL_GLOB
+setopt NO_MENU_COMPLETE
+setopt NO_AUTO_MENU
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt NO_IGNORE_EOF
+
+setopt NO_CASE_GLOB
+
+eval `dircolors ~/.dircolors`
+##########################################
+	###  COMPLETION  #########################
+	##########################################
+
+	# Comp init
+	autoload -U compinit
+	compinit
+
+	# comp prompt
+	unsetopt list_ambiguous	  # mode
+	setopt auto_remove_slash  # remove slash if it's at then end of the line
+	#setopt glob_dots	  # include '.*' in comp
+	setopt chase_links	  # follow symlinks
+
+	# kill/killall
+	zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+	zstyle ':completion:*:processes' command 'ps -au$USER'
+
+	# Correction
+	setopt correctall
+
+
+	##########################################
+	###  HISTORY  ############################
+	##########################################
+
+	setopt VI
+	bindkey -M viins jj vi-cmd-mode
+	bindkey -M viins '^r' history-incremental-search-backward
+	bindkey -M vicmd '^r' history-incremental-search-backward
+
+	##########################################
+###  HISTORY  ############################
+##########################################
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt APPEND_HISTORY
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+
+##########################################
+###  SUB CONF  ###########################
+##########################################
+
+#souce ~/conf/zsh/env.zsh
+for i in ~/.config/zsh/*.zsh; do
+  source $i
+done
+
+
+##########################################
+###  GREETING  ###########################
+##########################################
+
+echo "[32m`uname -a`"
+echo "[m"
+fortune -a
+echo "[31m"
+date "+%d/%m/%y	  %l:%M"
+echo -n "[m"

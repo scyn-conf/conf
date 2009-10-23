@@ -1,2 +1,0 @@
-au BufRead,BufNewFile *.txt		setfiletype text
-au BufRead,BufNewFile *todo,*TODO	set filetype=wtodo

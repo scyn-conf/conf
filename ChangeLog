@@ -1,3 +1,13 @@
+commit 400488bc9d19f82f4d0b33b0f0caac9052e52a30
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Oct 23 10:11:14 2009 +0200
+
+    GIT
+     * Added git configuration file.
+    
+    MISC
+     * Added Changelog
+
 commit c78f9b5f1cd0002642cf6b6edb54d3de6026ea6a
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Wed Oct 21 15:36:15 2009 +0200
