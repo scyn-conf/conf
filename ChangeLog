@@ -1,0 +1,64 @@
+commit c78f9b5f1cd0002642cf6b6edb54d3de6026ea6a
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Oct 21 15:36:15 2009 +0200
+
+    PLUGIN
+     * Added chcmdmod.vim plugin, allowing improved incsearch
+
+commit 4ecf0c54a0a6a40630e9c4b80dec7ed7635e7874
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Tue Oct 20 11:28:50 2009 +0200
+
+    INSTALL
+     * modification du fichier d'installation (merci arka ;))
+
+commit ed654abf2fa61eaeaa6f0bed501204cf5fa95adf
+Merge: 7b7c416... 432c23d...
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Mon Oct 19 13:50:22 2009 +0200
+
+    Merge branch 'master' of git@github.com:scyn-conf/conf
+    
+    Conflicts:
+    
+    	.vimrc
+
+commit 7b7c416a89d807a2cfe53dd9eea231a2ed0a75da
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Mon Oct 19 13:46:10 2009 +0200
+
+    MAPPINGS
+     * modified mappings in order to use F[1-12] keys
+
+commit 432c23d618ce41924d600f7fe8ecbccff390cc70
+Author: Scyn <scyn@Vagante.local>
+Date:   Sat Oct 17 11:52:38 2009 +0200
+
+    BUG
+     * .vimrc: an inexisting file was sourced, fixed
+
+commit 816623f941888913f346ce65b14483239be48bad
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Oct 16 16:39:54 2009 +0200
+
+    INDENTATION
+     * Changed default indentation value to 8 (non-kernel standard)
+
+commit c99e48815d080b568f86aa197744237f4543f61f
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Thu Oct 15 12:01:59 2009 +0200
+
+    MISC
+     * Modified install.sh script
+
+commit a933051d8d2bee48c21573c91a20817fd735d706
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Thu Oct 15 11:58:03 2009 +0200
+
+    Initial commit
+    
+    VIM
+      * Added vim configuration files
+    
+    MISC
+      * Added README file
