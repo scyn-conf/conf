@@ -18,5 +18,9 @@ install ./vim/vim ~/.vim
 # git configuration file
 install ./git/gitconfig ~/.gitconfig
 
+# zsh configuration files
+install ./zsh/zsh ~/.zsh
+install .zsh/zshrc ~/.zshrc
+
 
 
