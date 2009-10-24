@@ -52,18 +52,18 @@ set autoread		" update file without asking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " APPEARANCE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
 colorscheme ir_black 	" color file (See ~/.vim/colors/)
-if &t_Co > 2 || has("gui_running")
+if has("gui_running")
     "" Comment or Uncomment this line according to your terminal configuration
     "" (256 colors or not)
     "set t_Co=256
-    syntax on
+    set cursorline
     set hlsearch
 endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set number
-set cursorline
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

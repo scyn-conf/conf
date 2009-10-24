@@ -14,37 +14,36 @@ setopt NO_IGNORE_EOF
 
 setopt NO_CASE_GLOB
 
-eval `dircolors ~/.dircolors`
 ##########################################
-	###  COMPLETION  #########################
-	##########################################
+###  COMPLETION  #########################
+##########################################
 
-	# Comp init
-	autoload -U compinit
-	compinit
+# Comp init
+autoload -U compinit
+compinit
 
-	# comp prompt
-	unsetopt list_ambiguous	  # mode
-	setopt auto_remove_slash  # remove slash if it's at then end of the line
-	#setopt glob_dots	  # include '.*' in comp
-	setopt chase_links	  # follow symlinks
+# comp prompt
+unsetopt list_ambiguous	  # mode
+setopt auto_remove_slash  # remove slash if it's at then end of the line
+#setopt glob_dots	  # include '.*' in comp
+setopt chase_links	  # follow symlinks
 
-	# kill/killall
-	zstyle ':completion:*:processes-names' command 'ps -e -o comm='
-	zstyle ':completion:*:processes' command 'ps -au$USER'
+# kill/killall
+zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+zstyle ':completion:*:processes' command 'ps -au$USER'
 
-	# Correction
-	setopt correctall
+# Correction
+setopt correctall
 
 
-	##########################################
-	###  HISTORY  ############################
-	##########################################
+##########################################
+###  HISTORY  ############################
+##########################################
 
-	setopt VI
-	bindkey -M viins jj vi-cmd-mode
-	bindkey -M viins '^r' history-incremental-search-backward
-	bindkey -M vicmd '^r' history-incremental-search-backward
+setopt VI
+bindkey -M viins jj vi-cmd-mode
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
 
 	##########################################
 ###  HISTORY  ############################
@@ -66,7 +65,7 @@ HISTFILE=~/.zsh_history
 
 #souce ~/conf/zsh/env.zsh
 for i in ~/.zsh/*.zsh; do
-  source $i
+	source $i
 done
 
 

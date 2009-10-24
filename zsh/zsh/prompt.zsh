@@ -1,12 +1,12 @@
 # Prompt file
 
 ctime="white"
-cvcs="red"
-cpath="red"
-cuser="yellow"
+cvcs="blue"
+cpath="green"
+cuser="blue"
 chost="green"
 csept="cyan"
-csepb="red"
+csepb="green"
 
 #chost="green"
 ##chost="lightblue"
