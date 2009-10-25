@@ -1,3 +1,59 @@
+commit 5d7cd6a7dee56c8657709bd67f0f58062a34b541
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sat Oct 24 19:28:21 2009 +0200
+
+    INSTALL, ZSH, VIM, X, AWESOME, urxvt
+    
+    VIM
+     * syntax is now activated all the time
+     * cursorline option will be activated only in gui mode.
+    
+    ZSH
+     * Modified prompt
+    
+    AWESOME
+     * Added awesome configuration file
+    
+    X
+     * Added xinitrc script, launching awesome wm
+     * Added Xdefaults file, containing urxvt settings
+    
+    INSTALL
+     * Updated installation script
+
+commit 49949c2bc1d75364771ab327f20e4e3f5d97ccb9
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Oct 23 14:56:24 2009 +0200
+
+    INSTALL, ZSH
+    
+    INSTALL
+     * Modified the way installation path is defined
+    
+    ZSH
+     * Fixed source files path in zsh/zshrc
+
+commit 15cfe82d3ba8c7e4068f4baab32f42b5195cf4b4
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Oct 23 14:04:54 2009 +0200
+
+    INSTALL, ZSH
+     * Modified script to install zsh configuration files
+
+commit 6085892dddd4eb2e6352fb08afef9169bf4abe05
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Oct 23 14:02:03 2009 +0200
+
+    ZSH
+     * Added basic configuration files for later modifications.
+    
+    VIM
+     * Modified Identifier color in ir_black theme
+    
+    MISC
+     * Removed .vim{rc,} files
+     * Updated Changelog
+
 commit 400488bc9d19f82f4d0b33b0f0caac9052e52a30
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Fri Oct 23 10:11:14 2009 +0200
@@ -23,7 +79,7 @@ Date:   Tue Oct 20 11:28:50 2009 +0200
      * modification du fichier d'installation (merci arka ;))
 
 commit ed654abf2fa61eaeaa6f0bed501204cf5fa95adf
-Merge: 7b7c416... 432c23d...
+Merge: 7b7c416 432c23d
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Mon Oct 19 13:50:22 2009 +0200
 

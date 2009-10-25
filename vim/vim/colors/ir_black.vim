@@ -115,7 +115,7 @@ hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=re
 hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
-hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=brown       ctermbg=NONE        cterm=NONE
+hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=yellow ctermbg=NONE        cterm=NONE
 hi Type             guifg=#9AcD32     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
 hi Structure        guifg=#CD853F     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue   ctermbg=NONE        cterm=bold

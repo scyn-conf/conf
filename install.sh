@@ -23,10 +23,16 @@ install git/gitconfig ~/.gitconfig
 install zsh/zsh ~/.zsh
 install zsh/zshrc ~/.zshrc
 
-# awesome configuration file
-install awesome/rc.lua ~/.awesomerc.lua
-
-# X init scripts
-install X/xinitrc ~/.xinitrc
-install X/xinitrc ~/.xsession
-install X/Xdefaults ~/.Xdefaults
+case `uname -s` in
+	Linux)
+		# awesome configuration file
+		install awesome/rc.lua ~/.awesomerc.lua
+		
+		# X init scripts
+		install X/xinitrc ~/.xinitrc
+		install X/xinitrc ~/.xsession
+		install X/Xdefaults ~/.Xdefaults
+	;;
+	*)
+	;;
+esac

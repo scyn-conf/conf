@@ -15,7 +15,7 @@ syntax match txtCurrent  "\[%\]"
 syntax match txtTagDoc "\[doc\]"
 
 
-syntax region txtShell start=+{{{+ end=+}}}+ contains=txtComment
+syntax region txtShell start=+^\$+ end=+$+ contains=txtComment
 
 hi def link txtSection 		Keyword
 hi def link txtOK 		String
