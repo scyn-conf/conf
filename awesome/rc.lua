@@ -74,7 +74,7 @@ use_titlebar = false
 -- {{{ Tags
 -- Define tags table.
 tags = {}
-tagnames= {'web', 'code', 'com', 'misc', 'conf'}
+tagnames= {'nav', 'web', 'code', 'com', 'misc', 'conf'}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = {}
