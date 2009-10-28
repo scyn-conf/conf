@@ -20,10 +20,10 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias g="egrep --color=auto -i"
 alias gr="egrep --color=auto -Rin"
-
-alias ls="ls -l --color=auto"
-alias la="ls -la --color=auto"
-
+#
+#alias ls="ls -l --color=auto"
+#alias la="ls -la --color=auto"
+#
 alias -g L=" | less -R"
 
 alias rm='rm -i'
@@ -103,3 +103,4 @@ nc_recv ()
 	fi
 	nc $my_ip $my_port | pv | tar -xf -
 }
+alias ct=~/conf/colors.pl

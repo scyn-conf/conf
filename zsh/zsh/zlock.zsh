@@ -1,0 +1,1 @@
+alias zlock=xscreensaver
