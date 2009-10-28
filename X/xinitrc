@@ -1,1 +1,2 @@
 exec awesome -c ~/.awesomerc.lua
+xscreensaver -no-splash &
