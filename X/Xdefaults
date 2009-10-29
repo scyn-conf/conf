@@ -3,15 +3,15 @@ URxvt*background:	#000000
 URxvt*foreground:	#ffffff
 URxvt*color0:      	#000000
 URxvt*color1:      	#9e1828
-URxvt*color2:      	#aece92
-URxvt*color3:      	#968a38
+URxvt*color2:      	#228b22
+URxvt*color3:      	#dd8c00
 URxvt*color4:      	#414171
 URxvt*color5:      	#963c59
 URxvt*color6:      	#418179
 URxvt*color7:      	#bebebe
 URxvt*color8:      	#666666
 URxvt*color9:      	#cf6171
-URxvt*color10:     	#c5f779
+URxvt*color10:     	#9acd32
 URxvt*color11:     	#fff796
 URxvt*color12:     	#4186be
 URxvt*color13:     	#cf9ebe
@@ -26,4 +26,4 @@ URxvt*borderLess:	true
 ## Transparency
 URxvt*inheritPixmap:	true
 URxvt*tintColor:	white
-URxvt*shading:		10
+URxvt*shading:		15

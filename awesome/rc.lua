@@ -74,7 +74,13 @@ use_titlebar = false
 -- {{{ Tags
 -- Define tags table.
 tags = {}
-tagnames= {'nav', 'web', 'code', 'com', 'misc', 'conf'}
+tagnames= {'web','code', 'nav', 'misc', 'com', 'conf'}
+taglayouts = {awful.layout.suit.tile.bottom,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.floating,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.bottom}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = {}
@@ -83,6 +89,7 @@ for s = 1, screen.count() do
         tags[s][tagnumber] = tag(tagnames[tagnumber], "tile.bottom")
         -- Add tags to screen one by one
         tags[s][tagnumber].screen = s
+	awful.layout.set(taglayouts[tagnumber], tags[s][tagnumber])
     end
     -- I'm sure you want to see at least one tag.
     tags[s][1].selected = true

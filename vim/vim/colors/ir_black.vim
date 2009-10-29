@@ -103,9 +103,9 @@ if version >= 700 " Vim 7.x specific colors
 endif
 
 " Syntax highlighting
-hi Comment          guifg=#555555     guibg=NONE        gui=italic      ctermfg=darkgray ctermbg=NONE        cterm=NONE
-hi String           guifg=#Adff2f     guibg=NONE        gui=NONE      ctermfg=lightmagenta       ctermbg=NONE        cterm=NONE
-hi Number           guifg=#FF93FD     guibg=NONE        gui=NONE      ctermfg=yellow     ctermbg=NONE        cterm=NONE
+hi Comment          guifg=#555555     guibg=NONE        gui=italic    ctermfg=darkgray	 ctermbg=NONE        cterm=NONE
+hi String           guifg=#Adff2f     guibg=NONE        gui=NONE      ctermfg=lightgreen ctermbg=NONE        cterm=NONE
+hi Number           guifg=#FF93FD     guibg=NONE        gui=NONE      ctermfg=lightmagenta ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold
 hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
@@ -118,9 +118,9 @@ hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=gr
 hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=yellow ctermbg=NONE        cterm=NONE
 hi Type             guifg=#9AcD32     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
 hi Structure        guifg=#CD853F     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
-hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue   ctermbg=NONE        cterm=bold
+hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=blue   ctermbg=NONE        cterm=bold
 
-hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
+hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=darkyellow      ctermbg=NONE        cterm=NONE
 hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
 
