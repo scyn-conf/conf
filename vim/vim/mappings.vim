@@ -41,6 +41,15 @@ map <F10> :call SeeTab ()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 map <F8> :NERDTree `pwd`<RETURN>
+" vcscommand
+let mapleader = ';'
+map <Leader>add :VCSAdd<CR>
+map <Leader>ci :VCSCommit<CR>
+map <Leader>vdiff :VCSVimDiff<CR>
+map <Leader>diff :VCSDiff<CR>
+map <Leader>log :VCSLog<CR>
+map <Leader>st :VCSStatus<CR>
+map <Leader>info :VCSInfo<CR>
 
 
 
