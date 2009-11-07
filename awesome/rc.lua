@@ -77,10 +77,10 @@ tags = {}
 tagnames= {'web','code', 'nav', 'misc', 'com', 'conf'}
 taglayouts = {awful.layout.suit.tile.bottom,
     awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
     awful.layout.suit.floating,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.bottom}
+    awful.layout.suit.floating,
+    awful.layout.suit.floating}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = {}

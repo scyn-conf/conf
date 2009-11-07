@@ -12,6 +12,7 @@ set nocompatible
 if v:progname =~? "evim"
     finish
 endif
+filetype plugin on
 if has("autocmd")
     filetype plugin indent on
     augroup vimrcEx

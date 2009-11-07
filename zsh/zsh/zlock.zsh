@@ -1,1 +1,1 @@
-alias zlock=xscreensaver
+alias zlock=xscreensaver &
