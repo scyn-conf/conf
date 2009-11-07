@@ -15,3 +15,9 @@ let OmniCpp_MayCompleteScope = 1
 let OmniCpp_SelectFirstItem = 2
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VCSCOMMANDS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let VCSCommandGitExec = '/usr/bin/git'
+
