@@ -44,6 +44,7 @@ map <F8> :NERDTree `pwd`<RETURN>
 " vcscommand
 let mapleader = ';'
 map <Leader>add :VCSAdd<CR>
+map <Leader>up :VCSUpdate<CR>
 map <Leader>ci :VCSCommit<CR>
 map <Leader>vdiff :VCSVimDiff<CR>
 map <Leader>diff :VCSDiff<CR>
