@@ -73,6 +73,7 @@ let s:svnFunctions = {}
 function! s:DoCommand(cmd, cmdName, statusText, options)
 	if VCSCommandGetVCSType(expand('%')) == 'SVN'
 		let fullCmd = VCSCommandGetOption('VCSCommandSVNExec', 'svn') . ' ' . a:cmd
+		echo fullCmd
 		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
 		throw 'SVN VCSCommand plugin called on non-SVN item.'
@@ -270,7 +271,8 @@ function! s:svnFunctions.Status(argList)
 	"if len(a:argList) == 0
 	"	let options = a:argList
 	"endif
-	return s:DoCommand(join(['status --non-interactive'] + options, ' ./ '), 'status', join(options, ' '), {})
+	let myarg = ' ' . getcwd () . ' '
+	return s:DoCommand(join(['status --non-interactive'] + options, myarg), 'status', join(options, ' '), {})
 endfunction
 
 " Function: s:svnFunctions.Unlock(argList) {{{2

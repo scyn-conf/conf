@@ -46,7 +46,7 @@ let mapleader = ';'
 map <Leader>add :VCSAdd<CR>
 map <Leader>up :VCSUpdate<CR>
 map <Leader>ci :VCSCommit<CR>
-map <Leader>vdiff :VCSVimDiff<CR>
+map <Leader>vdiff :tabe %<CR>:VCSVimDiff<CR>
 map <Leader>diff :VCSDiff<CR>
 map <Leader>log :VCSLog<CR>
 map <Leader>st :VCSStatus<CR>
@@ -95,3 +95,5 @@ map <F3> :ma<RETURN>
 " opens functions file
 map :fun :e ~/.vim/fun.vim
 map <F4> :fun<RETURN>
+" Open cwd
+cmap ewd e .
