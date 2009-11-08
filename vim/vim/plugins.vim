@@ -20,4 +20,5 @@ let OmniCpp_SelectFirstItem = 2
 " VCSCOMMANDS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let VCSCommandGitExec = '/usr/bin/git'
+let VCSCommandSVNExec = '/usr/bin/svn'
 

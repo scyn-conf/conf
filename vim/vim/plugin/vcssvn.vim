@@ -266,11 +266,11 @@ endfunction
 
 " Function: s:svnFunctions.Status(argList) {{{2
 function! s:svnFunctions.Status(argList)
-	let options = ['-u', '-v']
-	if len(a:argList) == 0
-		let options = a:argList
-	endif
-	return s:DoCommand(join(['status --non-interactive'] + options, ' '), 'status', join(options, ' '), {})
+	let options = ['-u']
+	"if len(a:argList) == 0
+	"	let options = a:argList
+	"endif
+	return s:DoCommand(join(['status --non-interactive'] + options, ' ./ '), 'status', join(options, ' '), {})
 endfunction
 
 " Function: s:svnFunctions.Unlock(argList) {{{2
