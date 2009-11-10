@@ -21,7 +21,7 @@ map <SPACE>= :tabn<RETURN>
 map <C-right> <C-W>< 
 map <C-left> <C-W>> 
 " BufExplorer
-nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
+nmap <silent> <unique> <SPACE><SPACE> :BufExplorer<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -51,6 +51,11 @@ map <Leader>diff :VCSDiff<CR>
 map <Leader>log :VCSLog<CR>
 map <Leader>st :VCSStatus<CR>
 map <Leader>info :VCSInfo<CR>
+" FuzzyFinder
+nmap <silent> <unique> <SPACE>o :FufBuffer<CR> 
+nmap <silent> <unique> <Leader>f :FufFile<CR>
+nmap <silent> <unique> <Leader>d :FufDir<CR>
+
 
 
 
