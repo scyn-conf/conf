@@ -13,6 +13,12 @@ setopt AUTO_PUSHD
 setopt NO_IGNORE_EOF
 
 setopt NO_CASE_GLOB
+##########################################
+###  X  ##################################
+##########################################
+xset r rate 200 100
+xset b off
+
 
 ##########################################
 ###  COMPLETION  #########################
@@ -45,7 +51,7 @@ bindkey -M viins jj vi-cmd-mode
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-	##########################################
+##########################################
 ###  HISTORY  ############################
 ##########################################
 
