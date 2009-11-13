@@ -149,8 +149,9 @@ syn region pythonString		start=+"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+
 syn region pythonString		start=+"""+ end=+"""+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,@Spell
 syn region pythonString		start=+'''+ end=+'''+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,@Spell
 " Doc strings
-syn region pythonDocString		start=+^[\t ]*"""+ end=+"""$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,@Spell
-syn region pythonDocString		start=+^'''[\t ]*+ end=+'''$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,@Spell
+syn region pythonDocString		start=+^[\t ]*"""+ end=+"""$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,pythonDocStringAnnotation,@Spell
+syn region pythonDocString		start=+^'''[\t ]*+ end=+'''$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,pythonDocStringAnnotation,@Spell
+syn match  pythonDocStringAnnotation +^[^:]*:+ display contained
 
 syn match  pythonEscape		    +\\[abfnrtv'"\\]+ display contained
 syn match  pythonEscape		    "\\\o\o\=\o\=" display contained
@@ -350,7 +351,8 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonExClass	Structure
   HiLink pythonSelf 	Special
-	HiLink pythonDocString Comment
+  HiLink pythonDocString Comment
+  HiLink pythonDocStringAnnotation Constant
   delcommand HiLink
 endif
 
