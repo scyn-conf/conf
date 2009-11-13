@@ -48,7 +48,7 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*~
 set lz			" do not redraw while running macros (much faster) (LazyRedraw)
 set hid			" you can change buffer without saving
 set autoread		" update file without asking
-
+set textwidth=200	" by default, but see ToogleTextWidth function (fun.vim) for more advanced usage
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " APPEARANCE

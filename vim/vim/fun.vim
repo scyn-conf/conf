@@ -86,3 +86,17 @@ fu! SeeTab()
 endfunc
 
 
+let g:defaultTextWidth = 1
+function! ToogleTextWidth ()
+	if g:defaultTextWidth == 1
+		silent! exe "set textwidth=80" 
+		let g:defaultTextWidth = 0
+		echo "Textwidth value is now set to 80"
+	else
+		silent! exe "set textwidth=200"
+		let g:defaultTextWidth = 1
+		echo "Textwidth value is now set to 200"
+	endif
+endfunction
+
+

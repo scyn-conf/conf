@@ -70,6 +70,8 @@ map <F6> -tw:w<RETURN>
 imap {<tab> {<CR>}<C-O>O
 " Opening and closing parenthesis
 imap ( ()<ESC>i
+" Change textwidth values (200 or 80)
+map <F9> :call ToogleTextWidth ()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
