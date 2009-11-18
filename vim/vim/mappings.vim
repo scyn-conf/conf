@@ -65,7 +65,7 @@ nmap <silent> <unique> <SPACE>m :FufBookmark<CR>
 " EDITING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delete white trails
-map -tw <ESC>:%s/\s\+$//<RETURN>``:noh<RETURN>
+map <silent> <unique>-tw <ESC>:%s/\s\+$//<RETURN>``:noh<RETURN>
 " Delete trailing whitespaces when saving
 map <F6> -tw:w<RETURN>
 " Opening and closing braces

@@ -151,7 +151,7 @@ syn region pythonString		start=+'''+ end=+'''+ keepend contains=pythonEscape,pyt
 " Doc strings
 syn region pythonDocString		start=+^[\t ]*"""+ end=+"""$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,pythonDocStringAnnotation,@Spell
 syn region pythonDocString		start=+^'''[\t ]*+ end=+'''$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,pythonDocStringAnnotation,@Spell
-syn match  pythonDocStringAnnotation +^[^:]*:+ display contained
+syn match  pythonDocStringAnnotation +^[\t]*[^:]*:+ display contained
 
 syn match  pythonEscape		    +\\[abfnrtv'"\\]+ display contained
 syn match  pythonEscape		    "\\\o\o\=\o\=" display contained
