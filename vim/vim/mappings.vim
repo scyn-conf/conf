@@ -22,6 +22,12 @@ map <C-right> <C-W><
 map <C-left> <C-W>> 
 " BufExplorer
 nmap <silent> <unique> <SPACE><SPACE> :BufExplorer<CR>
+" Vertical gf
+nmap vgf :vsplit <cfile><CR>
+" Horizontal gf
+nmap hgf :split <cfile><CR>
+" Tab gf
+nmap tgf :tabedit <cfile><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -46,7 +52,8 @@ let mapleader = ';'
 map <Leader>add :VCSAdd<CR>
 map <Leader>up :VCSUpdate<CR>
 map <Leader>ci :VCSCommit<CR>
-map <Leader>vdiff :tabe %<CR>:VCSVimDiff<CR>
+"map <Leader>vdiff :tabe %<CR>:VCSVimDiff<CR>
+map <Leader>vdiff :VCSVimDiff<CR>
 map <Leader>diff :VCSDiff<CR>
 map <Leader>log :VCSLog<CR>
 map <Leader>st :VCSStatus<CR>
