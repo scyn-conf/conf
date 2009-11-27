@@ -1,8 +1,8 @@
 #alias gvim="~/src/mvim --remote-tab-silent"
 #
 export VIM_SERVER=`openssl rand -base64 20`
-alias vs="gvim --servername $VIM_SERVER --remote "
-alias v="gvim --servername 1 --remote "
+alias v="gvim --servername $VIM_SERVER --remote "
+alias vs="gvim --servername 1 --remote "
 alias vall=f_vall 
 function f_vall ()
 {

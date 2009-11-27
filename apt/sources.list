@@ -1,0 +1,27 @@
+# 
+# deb cdrom:[Debian GNU/Linux 5.0.0 _Lenny_ - Official i386 NETINST Binary-1 20090214-16:03]/ lenny main
+
+#deb cdrom:[Debian GNU/Linux 5.0.0 _Lenny_ - Official i386 NETINST Binary-1 20090214-16:03]/ lenny main
+
+deb http://ftp.fr.debian.org/debian/ lenny main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ lenny main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ sid main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ experimental main contrib non-free
+
+deb http://security.debian.org/ lenny/updates main contrib non-free
+deb-src http://security.debian.org/ lenny/updates main contrib non-free
+
+deb http://volatile.debian.org/debian-volatile lenny/volatile main contrib non-free
+deb-src http://volatile.debian.org/debian-volatile lenny/volatile main contrib non-free
+
+deb http://internal-debs/lenny lenny main
+deb file:///home/scyn/mydebs lenny main
+
+deb http://ftp.us.debian.org/debian lenny main contrib non-free
+deb-src http://ftp.us.debian.org/debian lenny main contrib non-free
+# Testing
+deb http://ftp.fr.debian.org/debian testing main non-free contrib
+
+#Unstable
+deb http://ftp.fr.debian.org/debian unstable main non-free contrib
+
