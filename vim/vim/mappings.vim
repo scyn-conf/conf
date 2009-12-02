@@ -76,9 +76,9 @@ map <silent> <unique>-tw <ESC>:%s/\s\+$//<RETURN>``:noh<RETURN>
 " Delete trailing whitespaces when saving
 map <F6> -tw:w<RETURN>
 " Opening and closing braces
-imap {<tab> {<CR>}<C-O>O
-" Opening and closing parenthesis
-imap ( ()<ESC>i
+"imap {<tab> {<CR>}<C-O>O
+"" Opening and closing parenthesis
+"imap ( ()<ESC>i
 " Change textwidth values (200 or 80)
 map <F9> :call ToogleTextWidth ()<CR>
 
