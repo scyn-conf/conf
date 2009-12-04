@@ -1,3 +1,293 @@
+commit b734fdbe0ba597110e1dc6f3e9d6260f51ea12b3
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Dec 4 17:42:35 2009 +0100
+
+    VIM
+    
+    VIM
+     * disabled menu, toolbar and scrollbars features from guioptions
+
+commit c7f5f901a47a7f96cb57c17d0b2568912b1c1da9
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Dec 4 17:38:56 2009 +0100
+
+    VIM
+    
+    VIM
+     * added \'e abbreviation for é
+     * Added plugin endwise for vimscript (mainly)
+     * Added simple_pairs plugins for () "" '' etc..
+     * Added scyn_pale colorscheme
+
+commit 34a98ec67defa25d3c64229ee1532e6cfc55fba6
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Dec 2 17:25:51 2009 +0100
+
+    VIM
+    
+    VIM
+     * mappings:
+       - Deleted mappings for () and {} (see autoclose)
+    
+     * colors:
+       - Added moria, mustang, twilight, wombat and zenburn colorschemes, some of
+         them containing interesting parts to add to ir_black
+       - Changed string colors in ir_black colorscheme
+    
+     * plugins:
+       - Added autoclose plugin, autoclosing brackets, parenthesis etcetera during
+         editing
+       - Added vimExplorer plugin, an improved file explorer
+       - Although it's still in development, svn.vim plugin is now functionnal
+         enough to be integrated.
+    
+     * syntax:
+       - Suppression of PythonDocStringAnnotation syntax element in python syntax
+         file.
+
+commit 3679a117efc85378c4ff0c8fc65b98afe79ef93c
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Nov 27 18:02:46 2009 +0100
+
+    APT, ZSH
+    
+    APT
+     * Added apt configuration files to repository
+    
+    ZSH
+     * alias.sh: inverted gvim servers aliases
+       - v now aliases local shell vim server
+       - vs now aliases global vim server
+
+commit fa5ff20c0cd45afbe2090dea7feb022144008f94
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Nov 25 14:46:36 2009 +0100
+
+    VIM
+    
+    VIM
+     * mapping of 'gf' (go to file) command to:
+       - tgf for new tab
+       - vgf for new vsplit
+       - hgf for new split
+
+commit 8e89dff9bcc4c4d2d40b8c650f2b6b42fd1284fe
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Nov 18 17:47:03 2009 +0100
+
+    VIM
+    
+    VIM
+     * Correction of comment color in ir_black colorscheme
+
+commit bec14d4c8b28edfc116f937337794ca5b2ecbc8f
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Nov 18 11:57:31 2009 +0100
+
+    VIM
+    VIM
+     * modified trailing whitespace deletion mapping (silent & unique)
+     * Added pythonDocStringAnnotation syntaxic region
+
+commit 83f994e29cc5867f4d519062c53a3c21bd774214
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Nov 13 10:27:52 2009 +0100
+
+    VIM
+    
+    VIM
+     * Added PythonDocStringAnnotation syntax element
+
+commit bf04b380d18e9d96ff4264c713a14005ecca37b4
+Merge: 623b4a0... b557a9c...
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Nov 13 10:27:36 2009 +0100
+
+    Merge commit 'origin/master'
+
+commit 623b4a0acc7c569eff220f4a706770a6c4699969
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Nov 13 10:24:20 2009 +0100
+
+    VIM
+    
+    VIM
+     * Added function ToogleTextWidth, allowing to switch between 80 and 200 columns
+       textwidth.
+     * Mapped call to ToogleTextWidth on <F9>
+     * textwidth is now set to 200 by default
+
+commit b557a9c132583b15f8054c1ff84e7f0a6a887271
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Nov 11 13:45:47 2009 +0100
+
+    VIM, ZSH
+    
+    VIM
+     * Modified command history (from 50 to 500)
+     * Added mappings for FuzzyFinder (Bookmarks and ChangeList)
+    
+    ZSH
+     * Modified repetition rate
+     * Set ring off
+
+commit 8901de28c01e554b94448136de1c015fc6fdb736
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Tue Nov 10 14:21:50 2009 +0100
+
+    VIM
+    
+    VIM
+     * Added FuzzyFinder plugin for buffer/file/directories/tags/whatever
+       navigation, absolutely awesome. (YOU WANT THIS!!)
+     * Modified mappings for basic FuzzyFinder use:
+       - BufExplorer mapping moved from <SPACE>o to <SPACE><SPACE> in normal mode
+       - FufBuffer is now nmapped to <SPACE>o
+       - FufFile is now nmapped to <Leader>f
+       - FufDir is now nmapped to <Leader>d
+       (<Leader> is set as ';')
+
+commit 23a82d4f10bc15d1b51c531691a55476a0f64926
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sun Nov 8 06:51:36 2009 +0100
+
+    VIM
+    
+    VIM
+     * Modified mappings for vimdiff: it will now open in a new tab.
+     * Improved svnstatus
+     * Few modifications of vcscommand configuration
+       - vertical splits
+       - status line
+
+commit fc257685e9b2f9b2a7eac8e971f451584849a506
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sun Nov 8 02:37:43 2009 +0100
+
+    VIM
+    
+    VIM
+     * Patched s:svnFunctions.Status function (vcscommand plugin), in order
+       to display complete informations about status (not only the current
+       file)
+     * Defined VCSCommandSVNExec variable to /usr/bin/svn
+
+commit 549ba62e7eab7e4e0a8dfe2a1408e342840d0c6e
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sun Nov 8 02:04:38 2009 +0100
+
+    VIM
+    
+    VIM
+     * Few mappings modifications for vcscommand
+
+commit ee5bcba6b3b6ea9cea1690d2900350175bf0c93a
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sat Nov 7 05:26:05 2009 +0100
+
+    VIM
+    
+    VIM
+     * Added mappings for vcscommand (see mappings.vim, 'PLUGINS')
+
+commit b4f433985b18ba4e2a65ed8b48ccb032dd436ab4
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sat Nov 7 02:38:06 2009 +0100
+
+    VIM
+    
+    VIM
+     * Defined VCSCommandGitExec option to /usr/bin/git, in order for git to
+       be embedded into vim.
+
+commit 2ee2ba9fe33885c3f51bfa62d2a23eab68cf8e92
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sat Nov 7 02:11:23 2009 +0100
+
+    X, VIM, AWESOME, ZSH
+    
+    X
+     * Labelled colors for easier modifications.
+    
+    AWESOME
+     * Improved layouts handling in awesome/rc.lua
+    
+    VIM
+     * Added vcscommand plugin, providing support for cvs/svn/git (you want this)
+     * Minor modification of python.snippets, '. -> self.' mapping is now 's. -> self.'
+     * Minor modification of vimrc (filetype plugin on by default)
+    
+    ZSH
+     * Correction in zlock.zsh file
+
+commit 2e12c3e69faf0e4b37195ab8ca0b606412a562dc
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Thu Oct 29 17:49:26 2009 +0100
+
+    X, VIM, AWESOME
+    
+    X
+     * Modified Xdefaults colors
+     * Added xscreensaver daemon start to xinitrc
+    
+    VIM
+     * Changed colors in ir_black for terms
+    
+    AWESOME
+     * Modified tags and layouts
+
+commit 6edf3f57c29f36a60df21b87e4d443e331090294
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Oct 28 22:36:09 2009 +0100
+
+    X
+    
+    X
+     * Added xscreensaver deamon starting to xinitrc
+
+commit da11c1f9dec3d31faacc3770e29b5b7f5633a2a5
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Oct 28 22:34:33 2009 +0100
+
+    ZSH
+    
+    ZSH
+     * Added zlock.zsh
+     * Moved ls-related aliases and functions to ls.zsh
+
+commit fed867e33aaa6823c486e483663ebafd2e606a5f
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Tue Oct 27 23:24:47 2009 +0100
+
+    MISC
+    
+    MISC
+     * Added colors.pl file displaying useful informations about system
+       colors
+
+commit c068e9fb1e845cc4f9b00a34dc6f0987f7090791
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Tue Oct 27 00:23:09 2009 +0100
+
+    AWESOME
+    
+    AWESOME
+     * modified tags
+
+commit 2519f29f48dd5e969f77d05fe644e82c183afad9
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Sun Oct 25 19:55:43 2009 +0100
+
+    INSTALL, VIM
+    
+    INSTALL
+     * Some parts of the installation process won't be performed on
+       non-Linux systems
+    
+    VIM
+     * Modified ir_black color theme (better colors in urxvt)
+     * Modified txt syntax file
+
 commit 5d7cd6a7dee56c8657709bd67f0f58062a34b541
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Sat Oct 24 19:28:21 2009 +0200
@@ -79,7 +369,7 @@ Date:   Tue Oct 20 11:28:50 2009 +0200
      * modification du fichier d'installation (merci arka ;))
 
 commit ed654abf2fa61eaeaa6f0bed501204cf5fa95adf
-Merge: 7b7c416 432c23d
+Merge: 7b7c416... 432c23d...
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Mon Oct 19 13:50:22 2009 +0200
 
