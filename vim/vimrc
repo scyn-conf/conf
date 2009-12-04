@@ -59,6 +59,10 @@ if has("gui_running")
     "" Comment or Uncomment this line according to your terminal configuration
     "" (256 colors or not)
     "set t_Co=256
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=R
+    set guioptions-=L
     set cursorline
     set hlsearch
 endif
