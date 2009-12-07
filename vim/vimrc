@@ -54,7 +54,7 @@ set textwidth=200	" by default, but see ToogleTextWidth function (fun.vim) for m
 " APPEARANCE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme ir_black 	" color file (See ~/.vim/colors/)
+colorscheme scyn_pale 	" color file (See ~/.vim/colors/)
 if has("gui_running")
     "" Comment or Uncomment this line according to your terminal configuration
     "" (256 colors or not)
