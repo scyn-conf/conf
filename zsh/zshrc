@@ -79,9 +79,17 @@ done
 ###  GREETING  ###########################
 ##########################################
 
-echo "[32m`uname -a`"
-echo "[m"
-fortune -a
-echo "[31m"
-date "+%d/%m/%y	  %l:%M"
-echo -n "[m"
+if [ $HOST != 'gate-ssh' ]; then
+	echo "[32m`uname -a`"
+	echo "[m"
+	fortune -a
+	echo "[31m"
+	date "+%d/%m/%y	  %l:%M"
+	echo -n "[m"
+else
+	echo -e "\033[31mLogged in gate-ssh, forwarding to freebsd\033[0m"
+	ssh freebsd
+	echo -e "\033[31mLogged out freebsd, disconnecting from gate-ssh\033[0m"
+	exit
+fi
+	

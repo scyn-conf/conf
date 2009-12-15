@@ -113,3 +113,4 @@ map :fun :e ~/.vim/fun.vim
 map <F4> :fun<RETURN>
 " Open cwd
 cmap ewd e .
+cmap sudow w !sudo tee %

@@ -42,8 +42,6 @@ alias umsda2="sudo umount /dev/sda2"
 
 alias g="git"
 
-bindkey -s '^[l' '^[pls\n'
-
 #~~~~ Olfeo aliases
 # Reconfigure /etc/resolv.conf
 alias resolv='sudo ~/.bin/resolv.py'
@@ -104,3 +102,6 @@ nc_recv ()
 	nc $my_ip $my_port | pv | tar -xf -
 }
 alias ct=~/conf/colors.pl
+
+
+

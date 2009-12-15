@@ -105,7 +105,7 @@ endif
 " Syntax highlighting
 hi Comment          guifg=#474747     guibg=NONE        gui=italic    ctermfg=darkgray	 ctermbg=NONE        cterm=NONE
 hi String           guifg=#a1d651     guibg=NONE        gui=NONE      ctermfg=lightgreen ctermbg=NONE        cterm=NONE
-hi Number           guifg=#FF93FD     guibg=NONE        gui=NONE      ctermfg=lightmagenta ctermbg=NONE        cterm=NONE
+hi Number           guifg=#FFA3FD     guibg=NONE        gui=NONE      ctermfg=lightmagenta ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold
 hi PreProc          guifg=#7e8aa2     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
@@ -150,6 +150,9 @@ hi link SpecialComment  Special
 hi link Debug           Special
 
 "hi link shVariable	Special
+
+" Python
+hi def link pythonOperator Conditional
 
 " Special for Ruby
 hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE

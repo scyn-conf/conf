@@ -1,113 +1,84 @@
-# Prompt file
-
+## Prompt file
+#
 ctime="white"
 cvcs="blue"
 cpath="green"
-cuser="blue"
-chost="green"
+cuser="red"
+chost="red"
 csept="cyan"
 csepb="green"
 
-#chost="green"
-##chost="lightblue"
-#cpath="blue"
-#ctime="yellow"
-#cvcs="green"
-#crev="yellow"
-g_branch=""
+setopt prompt_subst
 
-sub_dir() {
-  local sub_dir
-  sub_dir=$(readlink -f "${PWD}")
-  sub_dir=${sub_dir#$1}
-  echo ${sub_dir#/}
-}
+if ((EUID == 0)); then
+    PROMPT_COLOR=red
+fi
 
-git_dir() {
-	#base_dir=$(git rev-parse --show-cdup 2>/dev/null) || return 1
-	base_dir="."
-	while [ ! -d "$base_dir/.git" ]; do 
-		base_dir="$base_dir/..";
-		[ $(readlink -f "${base_dir}" || echo "/") = "/" ] && return 1; 
-	done
-	base_dir=$(readlink -f "$base_dir/")
-	sub_dir=$(git rev-parse --show-prefix)
-	sub_dir=${sub_dir%/}
-	# FIXED: -q = wtf ??
-	#ref=$(git symbolic-ref HEAD || git name-rev --name-only HEAD 2>/dev/null)
-	ref=$(git symbolic-ref HEAD || git name-rev --name-only HEAD 2>/dev/null)
-	ref=${ref#refs/heads/}
-	vcs="git"
-	export b=$ref
-}
+function precmd()
+{
+	time="%H:%M"
+	timestamp="%(?..%B%{$fg[$ctime]%}Err %?%b$clr )%{$fg[$cpath]%}| $clr%{$fg[$ctime]%}%B%D{$time}"
 
-svn_dir() {
-  [ -d ".svn" ] || return 1
-  base_dir="."
-  while [ -d "$base_dir/../.svn" ]; do base_dir="$base_dir/.."; done
-  base_dir=$(readlink -f "$base_dir")
-  sub_dir=$(sub_dir "${base_dir}")
-  ref=$(svn info "$base_dir" | awk '/^URL/ { sub(".*/","",$0); r=$0 } /^Revision/ { sub("[^0-9]*","",$0); print r":"$0 }')
-  vcs="svn"
-}
+    local base_dir branch
 
-hg_dir() {
-  base_dir="."
-  while [ ! -d "$base_dir/.hg" ]; do base_dir="$base_dir/.."; [ $(readlink -f "${base_dir}") = "/" ] && return 1; done
-  base_dir=$(readlink -f "$base_dir")
-  sub_dir=$(sub_dir "${base_dir}")
-  ref=$(< "${base_dir}/.hg/branch")
-  vcs="hg"
-}
+    vcs=''
+    if [[ -d .svn ]] ; then
+        vcs="[svn:`svn info | grep Revision | sed 's/.* \(.*\)/\1/g'`]"
+    fi
+    base_dir='.'
+    while [[ ! -d $base_dir/.hg && ! -d $base_dir/.git && `readlink -f $base_dir` != / ]]; do
+	base_dir=$base_dir/..
+    done
+    if [[ -d $base_dir/.hg/ ]]; then
+	if [[ -f $base_dir/.hg/branch ]]; then
+            vcs="${vcs}[hg:`< $base_dir/.hg/branch`:`hg id -n`]"
+	else
+            vcs="${vcs}[hg:default:`hg id -n`]"
+	fi
+    elif [[ -d $base_dir/.git/ ]]; then
+	branch=`git branch`
+	if git describe --always >& /dev/null; then
+            vcs="${vcs}[git:$branch[3,-1]:`git describe --always`]"
+	else
+            vcs="${vcs}[git:uncommited]"
+	fi
+    fi
 
-__vcs_dir() {
-  local vcs base_dir sub_dir ref
+    case $TERM in
+ 	*xterm*|*rxvt*|Eterm)
+	    echo -ne "\e]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007"
+ 	;;
+ 	screen*)
+	    echo -ne "\033]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007\033k`basename $PWD`\033\\"
+ 	;;
+    esac
+
+reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
+white="%{`print "\e[37;1m"`%}"
+gray="%{`print "\e[37m"`%}"
+orange="%{`print "\e[33m"`%}"
+yellow="%{`print "\e[33;1m"`%}"
+red="%{`print "\e[31m"`%}"
+lred="%{`print "\e[31;1m"`%}"
+green="%{`print "\e[32m"`%}"
+lgreen="%{`print "\e[32;1m"`%}"
+blue="%{`print "\e[34m"`%}"
+lblue="%{`print "\e[34;1m"`%}"
+purple="%{`print "\e[35m"`%}"
+lpurple="%{`print "\e[35;1m"`%}"
+cyan="%{`print "\e[36m"`%}"
+lcyan="%{`print "\e[36;1m"`%}"
+clr="%{$reset_color%}"
 
 
-  git_dir ||
-  svn_dir ||
-  hg_dir ||
-  base_dir="$PWD"
-  _path="%B%{$fg[$cpath]%}"
-  _vcs="%b%{$fg[$cvcs]%}"
-  _sep="%b%{$fg[$csept]%}"
-  export b=$ref
-  pwd="${_path}${base_dir/$HOME/~}${vcs:+${_sep}[${_vcs}$ref${_sep}]${_path}${sub_dir}}"
+PROMPT="%B${lgreen}%~${lcyan}$vcs${clr}
+${green}(%!)${lgreen}42sh$ ${clr}${white}"
+RPROMPT="%(?..${red}Err %?%b$clr )| ${lgreen}%D{%H:%M}${clr}"
 }
 
 autoload -U colors
 colors
 
-precmd() {
-
-prompt=">%{$fg[$ctime]%}"
-time="%H:%M"
-timestamp="%(?..%B%{$fg[$ctime]%}Err %?%b$clr )%{$fg[$cpath]%}| $clr%{$fg[$ctime]%}%B%D{$time}"
-
-user="%B%{$fg[$cuser]%}%n"
-host="%B%{$fg[$chost]%}%m"
-__vcs_dir
-pwd=$pwd
-backn="\\n"
-clr="%{$reset_color%}"
-
-PS1="%{$pwd%}
-42sh$ "
-#$user$clr%{$fg[$csepb]%}@$host$clr%{$fg[$csepb]%}$prompt "
-RPS1="$timestamp$clr"
-
-# Term title
-case $TERM in
-  *xterm*|*rxvt*|(dt|k|E)term)
-    print -Pn "\e]0;%n@%m:%~\a"
-    #preexec () { print -Pn "\e]0;%n@%m:%~\a $1" }
-  ;;
-esac
-}
-
-# Term title
-case $TERM in
-  *xterm*|*rxvt*|(dt|k|E)term)
-    preexec () { print -Pn "\e]0;%n@%m:%~ > $1\a" }
-  ;;
-esac
+# Affiche le texte, meme s'il n'y a pas de retour a la ligne
+setopt nopromptcr
+#

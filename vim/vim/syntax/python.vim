@@ -302,7 +302,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
   HiLink pythonException	Exception
-  HiLink pythonOperator		Statement
+  HiLink pythonOperator		Conditionnal
 
   HiLink pythonDecorator	Define
   HiLink pythonDottedName	Function

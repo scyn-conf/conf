@@ -17,7 +17,6 @@ theme_path = "/usr/share/awesome/themes/default/theme.lua"
 
 -- Actually load theme
 beautiful.init(theme_path)
-
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
@@ -74,13 +73,35 @@ use_titlebar = false
 -- {{{ Tags
 -- Define tags table.
 tags = {}
-tagnames= {'web','code', 'nav', 'misc', 'com', 'conf'}
-taglayouts = {awful.layout.suit.tile.bottom,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.floating,
-    awful.layout.suit.floating,
-    awful.layout.suit.floating}
+if not os.getenv ("HOSTNAME") == "Religieuse" then
+	tagnames= {	'web  ',
+			'code ',
+			'nav  ',
+			'misc ',
+			'com  ',
+			'conf '}
+	taglayouts = {awful.layout.suit.tile.bottom,
+	    awful.layout.suit.max,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.magnifier}
+else
+	tagnames= {	'web   ',
+			'code  ',
+			'vz    ',
+			'local ',
+			'com   ',
+			'misc1 ',
+			'misc2 '}
+	taglayouts = {awful.layout.suit.tile.bottom,
+	    awful.layout.suit.max,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair,
+	    awful.layout.suit.fair}
+end
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = {}
