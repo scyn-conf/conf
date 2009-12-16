@@ -222,7 +222,11 @@ perform_action $ZSH zsh/zshrc ~/.zshrc
 case `uname -s` in
 	Linux)
 		# awesome configuration file
-		perform_action $AWESOME awesome/rc.lua ~/.awesomerc.lua
+		perform_action $AWESOME awesome/awesomerc ~/.awesomerc.lua
+		if ! [ -e ~/.config ]; then
+			mkdir ~/.config
+		fi
+		perform_action $AWESOME awesome/awesome ~/.config/awesome
 		
 		# X init scripts
 		perform_action $X X/xinitrc ~/.xinitrc
