@@ -1,3 +1,58 @@
+commit b786f4210ad59ad79ca3d49df552f41480bd3281
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Dec 16 17:56:42 2009 +0100
+
+    AWESOME
+    
+     * Re-Added awesomerc (previously rc.lua) to conf
+
+commit 2a44ef11fe94ed78f043108a304ec5ed664c7706
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Wed Dec 16 17:40:03 2009 +0100
+
+    QUICK COMMIT
+
+commit 89d0be36764ee98c96401038d1b342b1c65e1dbb
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Tue Dec 15 17:51:26 2009 +0100
+
+    AWESOME, VIM, ZSH
+    
+    AWESOME
+     * Added specialized tags creation for Religieuse hostname.
+    
+    VIM
+     * Numbers color is now clearer in scyn_pale colorsheme
+     * Added command mapping sudow (force writing)
+     * Changed syntax definition link for python operators
+    
+    ZSH
+     * Changed a few aliases
+     * Modified prompt
+
+commit ffb83955e13f9f074d9c99b5f65aa7efd2828b51
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Mon Dec 7 15:09:13 2009 +0100
+
+    MISC, VIM
+    
+    MISC
+     * Improved install.sh script. it now handles backups creation, backup
+       restoration, as well as uninstallation. (see --help)
+     * All configuration files can now be installed separately.
+    
+    VIM
+     * Changed colorscheme from ir_black to scyn_pale
+
+commit 1862291a843e52ba8d4c47603fdcd7dd6b8b06b8
+Author: Remi Chaintron <remi.chaintron@gmail.com>
+Date:   Fri Dec 4 17:46:56 2009 +0100
+
+    MISC
+    
+    MISC
+     * updated ChangeLog
+
 commit b734fdbe0ba597110e1dc6f3e9d6260f51ea12b3
 Author: Remi Chaintron <remi.chaintron@gmail.com>
 Date:   Fri Dec 4 17:42:35 2009 +0100
