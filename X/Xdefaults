@@ -27,7 +27,7 @@ URxvt*color7:      	#bebebe
 URxvt*color15:     	#ffffff
 
 ## Misc
-URxvt.font:		xft:Monospace-9
+URxvt.font:		xft:Monospace-10
 URxvt*scrollBar:	false
 URxvt*borderLess:	true
 
