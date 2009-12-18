@@ -6,19 +6,19 @@ theme = {}
 
 theme.font          = "DejaVu Sans 8"
 
-theme.bg_normal     = "#171717"
-theme.bg_focus      = "#111111"
-theme.bg_urgent     = "#ff0000"
+theme.bg_normal     = "#000000d0"
+theme.bg_focus      = "#111111e0"
+theme.bg_urgent     = "#ff0000aa"
 theme.bg_minimize   = "#444444"
 
 theme.fg_normal     = "#505050"
-theme.fg_focus      = "#33a38f"
+theme.fg_focus      = "#9acd32"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize  = "#ffffff"
 
 theme.border_width  = "1"
 theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_focus  = "#333333cc"
 theme.border_marked = "#91231c"
 
 -- There are another variables sets

@@ -55,10 +55,13 @@ layouts =
 -- {{{ Tags
 
 shifty.config.tags = {
-    ["[1]"] = { position = 1, init = true, },
-    ["[2]"] = { position = 2, init = true, },
-    ["[3]"] = { position = 3, init = true, },
-    ["[4]"] = { position = 4, init = true, }
+    ["[1. www]"] = { position = 1, exclusive = true, spawn = browser},
+    ["[2. code]"] = { position = 2, exclusive=true, nopopup=true, spawn="gvim --servername 1"},
+    ["[3. vz]"] = { position = 3, init = true, },
+    ["[4. local]"] = { position = 4, init = true, },
+    ["[5. com]"] = { position = 5, exclusive=true, nopopup=true},
+    ["[6. mail]"] = { position = 6, exclusive=true, nopopup=true},
+    ["[misc]"] = { position = 10, init = true, }
 --    ["[urxvt]"] = { position = 1, init = true, },
 --    ["[www]"]  = { position = 2,  spawn = browser,},
 --    ["[gimp]"] = { position = 6, exclusive = true, nopopup = true, spawn = gimp, },
@@ -78,21 +81,10 @@ shifty.taglist = mytaglist
 
 shifty.config.apps = {
 
-         { match = {"Transmission","Tucan.py"                    }, tag = "[dl]" },
-         { match = {"^Download$", "Preferences", "VideoDownloadHelper" }, float = true, intrusive = true },
-         { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "[www]", opacity = 1.0       } ,
-         { match = { "WeeChat 0.2.6.2","weechat-curses","weechat"     }, tag = "[irc]" ,                 },
-         { match = {"Gimp"                           }, tag = "[gimp]",  float = true , opacity = 1.0    },
-         { match = {"gimp-image-window"              }, slave = true,  opacity = 1.0                     },
-         { match = {"MPlayer","ffplay"                       }, float = true,  opacity = 1.0             },
-         { match = {"alpine"                    }, tag = "[mail]",                                       },
-         { match = {"med"                          }, tag = "[med]"                                      },
-         { match = {"ncmpcpp","ncmpc++ ver.0.3.4","med"                }, tag = "[med]",                 },
-         { match = {"Pidgin"                         }, tag = "[msg]", float = true                      },
-         { match = {"htop"                           }, tag = "[sys]",                                   },
-         { match = {"VirtualBox"                     }, tag = "[vbox]", float = true,  opacity = 1.0     },
-         { match = {"lxappearence"                   }, float = true, opacity = 1.0                      },
-         { match = {"gpicview","Epdfview"                       }, float = true, tag = "[view]",                    },
+         { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "[1. www]", opacity = 0.95       } ,
+         { match = {"Evolution"} , tag = "[6. mail]", opacity = 0.95       } ,
+         { match = {"Pidgin"                         }, tag = "[5. com]", float = true                      },
+	 { match = {"Gvim", "gvim"}, tag = "[2. code]", opacity = 0.85},
          { match = { "" },
                    buttons = awful.util.table.join(
                        awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
@@ -198,31 +190,7 @@ for s = 1, screen.count() do
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
 
---fswidget = widget({
---  type = 'textbox',
---  name = 'fswidget',
---  align = 'right'
---})
---wicked.register(fswidget, wicked.widgets.fs,
---'<span color="#fc8200">${/home used}</span>/<span color="#a3d069">${/home size}</span>', 120)
---
 -- Icones
-
-mycpuicon        = widget({ type = "imagebox", name = "mycpuicon" })
-mycpuicon.image  = image(beautiful.widget_cpu)
-
-
-myneticon         = widget({ type = "imagebox", name = "myneticon" })
-myneticonup       = widget({ type = "imagebox", name = "myneticonup" })
-
-myneticonup.image = image(beautiful.widget_netup)
-myneticon.image   = image(beautiful.widget_net)
-
-myvolicon       = widget({ type = "imagebox", name = "myvolicon" })
-myvolicon.image = image(beautiful.widget_vol)
-
-mymusicicon     = widget({ type = "imagebox", name = "mymusicicon"})
-mymusicicon.image = image(beautiful.widget_music)
 
 myspacer         = widget({ type = "textbox", name = "myspacer" })
 myseparator      = widget({ type = "textbox", name = "myseparator" })
@@ -230,76 +198,14 @@ myseparator      = widget({ type = "textbox", name = "myseparator" })
 myspacer.text    = " "
 myseparator.text = "|"
 
-mydiskicon         = widget({ type = "imagebox", name = "mydiskicon" })
 mytimeicon       = widget({ type = "imagebox", name = "mytimeicon" })
 mytimeicon.image = image(beautiful.widget_date)
-mydiskicon.image   = image(beautiful.widget_fs)
-
--- Widget CPU
-
---cpugraphwidget = widget({
---  type = 'graph',
---  name = 'cpugraphwidget',
---  align = 'right'
---})
---cpugraphwidget.height = 0.85
---cpugraphwidget.width = 35
---cpugraphwidget.bg = '#333333'
---cpugraphwidget.border_color = 'white'
---cpugraphwidget.grow = 'left'
---cpugraphwidget:plot_properties_set('cpu', {
---  fg = '#a3d069',
---  fg_center = '#cfa935',
---  fg_end ='#fc8200',
---  vertical_gradient = false
---})
---wicked.register(cpugraphwidget, wicked.widgets.cpu, '$1', 3, 'cpu')
---
--- Net Widget
---
---netwidget = widget({
---  type = 'textbox',
---  name = 'netwidget',
---  align = 'right'
---})
---
---wicked.register(netwidget, wicked.widgets.net, ' <span color="#fc8200">${eth0 down}</span>/<span color="#a3d069">${eth0 up}</span> ', nil, nil, 3)
---
--- Icones mémoire & widget mémoire 
-
-mymemicon       = widget({ type = "imagebox", name = "mymemicon" })
-mymemicon.image = image(beautiful.widget_mem)
 
 
---membarwidget = widget({
---	b
---  type = 'progressbar',
---  name = 'membarwidget',
---  align = 'right'
---})
---membarwidget.width = 40
---membarwidget.height = 0.65
---membarwidget.gap = 0
---membarwidget.border_padding = 1
---membarwidget.border_width = 1
---membarwidget.ticks_count = 0
---membarwidget.ticks_gap = 0
---membarwidget.vertical = false
---membarwidget:bar_properties_set('mem', {
---  bg = '#222222',
---  fg = '#a3d069',
---  fg_center = '#cfa935',
---  fg_end = '#fc8200',
---  fg_off = '#222222',
---  reverse = false,
---  min_value = 0,
---  max_value = 100
---})
---wicked.register(membarwidget, wicked.widgets.mem, '$1', 5, 'mem')
 
     -- Create the wibox
 
-    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
     mywibox[s].widgets =
     { 
 	    { mylauncher, mytaglist[s], mypromptbox[s], layout = awful.widget.layout.horizontal.leftright} ,
@@ -314,35 +220,10 @@ mymemicon.image = image(beautiful.widget_mem)
 	    },
 	layout = awful.widget.layout.horizontal.leftright
     }
-    mytaskbar[s] = awful.wibox({position = "top", screen = s})
+    mytaskbar[s] = awful.wibox({position = "bottom", screen = s})
     mytaskbar[s].widgets = { mytasklist[s], layout = awful.widget.layout.horizontal.rightleft}
     mywibox[s].screen = s
     mytaskbar[s].screen = s
-    -- Add widgets to the wibox - order matters
---    mywibox[s].widgets = {
---        {
---            mylauncher,
---            mytaglist[s],
---            mypromptbox[s],
---	    myseparator,
---	    mytasklist[s],
---	    myseparator
--- --           layout = awful.widget.layout.horizontal.leftright
---        },
---        mylayoutbox[s],
---  --      memwidget,       
---        mytextclock, mytimeicon,
---        s == 1 and mysystray or nil,
---        myspacer,
-----        fswidget, mydiskicon,
-----        myspacer,
-----        myneticonup, netwidget, myneticon,
-----        myspacer,
-----        cpugraphwidget, mycpuicon,
-----        myspacer,
-----        membarwidget, mymemicon,     
---        layout = awful.widget.layout.horizontal.rightleft
---    }
 end
 -- }}}
 
@@ -390,8 +271,9 @@ globalkeys = awful.util.table.join(
         end),
 -- Shifty
     
-    awful.key({ modkey, "Shift"   }, "t",             shifty.add),
-   -- awful.key({ modkey            }, "w",           shifty.del),
+    awful.key({ modkey, }, "t",             shifty.add),
+    awful.key({ modkey, "Shift"   }, "d",           shifty.del),
+    awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
 
     awful.key({ modkey, "Shift"   }, "Left",   shifty.shift_prev        ),
     awful.key({ modkey, "Shift"   }, "Right",  shifty.shift_next        ),
@@ -439,7 +321,7 @@ clientkeys = awful.util.table.join(
 -- Compute the maximum number of digit we need, limited to 9
 --keynumber = 0
 --for s = 1, screen.count() do
-  -- keynumber = math.min(9, math.max(#tags[s], keynumber));
+--	keynumber = math.min(9, math.max(#tags[s], keynumber));
 --end
 
 -- Bind all key numbers to tags.
@@ -450,6 +332,28 @@ clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
+
+-- Key loop
+
+for i=1, ( shifty.config.maxtags or 9 ) do
+  table.foreach(awful.key({ modkey, }, i, function () local t = awful.tag.viewonly(shifty.getpos(i)) end), function(_, k) table.insert(globalkeys, k) end)
+  table.foreach(awful.key({ modkey, "Control" }, i, function () local t = shifty.getpos(i); t.selected = not t.selected end), function(_, k) table.insert(globalkeys, k) end)
+  table.foreach(awful.key({ modkey, "Control", "Shift" }, i, function () if client.focus then awful.client.toggletag(shifty.getpos(i)) end end), function(_, k) table.insert(globalkeys, k) end)
+  -- move clients to other tags
+  table.foreach(awful.key({ modkey, "Shift" }, i,
+    function ()
+      if client.focus then
+        local c = client.focus
+        slave = not ( client.focus == awful.client.getmaster(mouse.screen))
+        t = shifty.getpos(i)
+        awful.client.movetotag(t)
+        awful.tag.viewonly(t)
+        if slave then awful.client.setslave(c) end
+      end
+    end), function(_, k) table.insert(globalkeys, k) end)
+end
+
+
 
 -- Set keys
 root.keys(globalkeys)
