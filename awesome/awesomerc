@@ -1,3 +1,4 @@
+-- vim600: set foldmethod=marker:
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
@@ -6,7 +7,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
---require("vicious")
+require("vicious")
 -- Load Debian menu entries
 require("debian.menu")
 -- Custom libraries
@@ -202,6 +203,45 @@ mytimeicon       = widget({ type = "imagebox", name = "mytimeicon" })
 mytimeicon.image = image(beautiful.widget_date)
 
 
+mycpuicon       = widget({ type = "imagebox", name = "mycpuicon" })
+mycpuicon.image	= image (beautiful.widget_cpu)
+
+mydiskicon         = widget({ type = "imagebox", name = "mydiskicon" })
+mydiskicon.image   = image(beautiful.widget_fs)
+
+mymemicon       = widget({ type = "imagebox", name = "mymemicon" })
+mymemicon.image = image(beautiful.widget_mem)
+
+
+-- Initialize widget
+cpuwidget = widget({ type = "textbox" })
+-- Register widget
+wicked.register(cpuwidget, wicked.widgets.cpu, "$1%")
+
+-- Initialize widget
+memwidget = widget({ type = "textbox" })
+-- Register widget
+vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
+
+-- Widget CPU
+
+cpugraphwidget = widget({
+  type = 'graph',
+  name = 'cpugraphwidget',
+  align = 'right'
+})
+cpugraphwidget.height = 0.85
+cpugraphwidget.width = 35
+cpugraphwidget.bg = '#000000'
+cpugraphwidget.border_color = '#606060'
+cpugraphwidget.grow = 'left'
+cpugraphwidget:plot_properties_set('cpu', {
+  fg = '#a3d069',
+  fg_center = '#cfa935',
+  fg_end ='#fc8200',
+  vertical_gradient = false
+})
+wicked.register(cpugraphwidget, wicked.widgets.cpu, '$1', 3, 'cpu')
 
     -- Create the wibox
 
@@ -215,6 +255,11 @@ mytimeicon.image = image(beautiful.widget_date)
 		    myseparator,
 		    mytextclock, mytimeicon,
 		    myseparator,
+		    cpugraphwidget,
+		    cpuwidget,
+		    mycpuicon,
+		    memwidget,
+		    mymemicon,
 		    s == 1 and mysystray or nil,
 		    layout = awful.widget.layout.horizontal.rightleft
 	    },
