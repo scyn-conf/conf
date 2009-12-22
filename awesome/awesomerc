@@ -7,7 +7,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
-require("vicious")
+--require("vicious")
 -- Load Debian menu entries
 require("debian.menu")
 -- Custom libraries
@@ -216,32 +216,22 @@ mymemicon.image = image(beautiful.widget_mem)
 -- Initialize widget
 cpuwidget = widget({ type = "textbox" })
 -- Register widget
-wicked.register(cpuwidget, wicked.widgets.cpu, "$1%")
+cpu_usage_file = io.open ('/proc/stat')
+cpu_args = ''
+cpu_total = 0
+for line in cpu_usage_file:lines () do
+	if string.sub (line, 1, 3) == 'cpu' then
+		cpu_total = cpu_total + 1
+		cpu_args = cpu_args .. "$" .. cpu_total .. "% "
+	end
+end
+wicked.register(cpuwidget, wicked.widgets.cpu, cpu_args)
 
 -- Initialize widget
 memwidget = widget({ type = "textbox" })
 -- Register widget
-vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
+wicked.register(memwidget, wicked.widgets.mem, "$1% ($2MB/$3MB)", 13)
 
--- Widget CPU
-
-cpugraphwidget = widget({
-  type = 'graph',
-  name = 'cpugraphwidget',
-  align = 'right'
-})
-cpugraphwidget.height = 0.85
-cpugraphwidget.width = 35
-cpugraphwidget.bg = '#000000'
-cpugraphwidget.border_color = '#606060'
-cpugraphwidget.grow = 'left'
-cpugraphwidget:plot_properties_set('cpu', {
-  fg = '#a3d069',
-  fg_center = '#cfa935',
-  fg_end ='#fc8200',
-  vertical_gradient = false
-})
-wicked.register(cpugraphwidget, wicked.widgets.cpu, '$1', 3, 'cpu')
 
     -- Create the wibox
 
@@ -255,7 +245,6 @@ wicked.register(cpugraphwidget, wicked.widgets.cpu, '$1', 3, 'cpu')
 		    myseparator,
 		    mytextclock, mytimeicon,
 		    myseparator,
-		    cpugraphwidget,
 		    cpuwidget,
 		    mycpuicon,
 		    memwidget,
