@@ -2,7 +2,9 @@
 " Brief: Functions used in vim configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
-"
+" vim600: set foldmethod=marker:
+
+" {{{ MayComplete ()
 " Use tab to insert tab or completion.
 function MayComplete()
 	let col = col('.')-1
@@ -14,6 +16,8 @@ function MayComplete()
 endfunction
 
 
+" }}}
+" {{{ My_indent_style ()
 let g:my_set_style = 2
 function! My_indent_style()
 	echo "Styles: "
@@ -63,6 +67,9 @@ function! My_indent_style()
 	endif
 endfunction
 
+
+" }}}
+" {{{ SeeTab ()
 fu! SeeTab()
 	if !exists("g:SeeTabEnabled")
 		let g:SeeTabEnabled = 1
@@ -86,6 +93,8 @@ fu! SeeTab()
 endfunc
 
 
+" }}}
+" {{{ ToogleTextWidth ()
 let g:defaultTextWidth = 1
 function! ToogleTextWidth ()
 	if g:defaultTextWidth == 1
@@ -100,3 +109,4 @@ function! ToogleTextWidth ()
 endfunction
 
 
+" }}}

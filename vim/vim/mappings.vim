@@ -3,8 +3,7 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 " 
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" BUFFERS
+" {{{ BUFFERS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer changing / cycling files through buffer
 map <S-LEFT> <ESC>:bp<RETURN>
@@ -30,8 +29,8 @@ nmap hgf :split <cfile><CR>
 nmap tgf :tabedit <cfile><CR>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" INDENT
+"}}}
+" {{{ INDENT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " reindent file
 map <F12> ggvG=``
@@ -41,9 +40,8 @@ map <F11> :call My_indent_style ()<CR>
 map <F10> :call SeeTab ()<CR>
 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGINS
+"}}}
+" {{{ PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 map <F8> :NERDTree `pwd`<RETURN>
@@ -66,10 +64,8 @@ nmap <silent> <unique> <SPACE>c :FufChangeList<CR>
 nmap <silent> <unique> <SPACE>m :FufBookmark<CR>
 
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EDITING
+"}}}
+" {{{ EDITING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delete white trails
 map <silent> <unique>-tw <ESC>:%s/\s\+$//<RETURN>``:noh<RETURN>
@@ -83,8 +79,8 @@ map <F6> -tw:w<RETURN>
 map <F9> :call ToogleTextWidth ()<CR>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC
+"}}}
+" {{{ MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Esc shortcut
 imap jj <Esc>

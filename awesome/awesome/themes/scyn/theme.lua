@@ -12,7 +12,7 @@ theme.bg_urgent     = "#ff0000aa"
 theme.bg_minimize   = "#444444"
 
 theme.fg_normal     = "#606060"
-theme.fg_focus      = "#d1e231"
+theme.fg_focus      = "#a6e9da"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize  = "#ffffff"
 
