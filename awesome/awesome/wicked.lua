@@ -111,6 +111,29 @@ function helper.padd(number, padding)
         return s
     end
 
+	-- FIXME<scyn> this is actually a hack but should be implemented using a
+	-- more elegant way
+	if padding > 0 and padding < 1 then
+		color='<span color="'
+		if number > 0 and number <= 20 then
+			color = color .. '#a6e9da'
+		elseif number > 20 and number <= 40 then
+			color = color .. '#4fa83d'
+		elseif number > 40 and number <= 60 then
+			color = color .. '#fed33c'
+		elseif number > 60 and number <= 80 then
+			color = color .. '#ff7034'
+		elseif number > 80 then
+			color = color .. '#900020'
+		end
+		color = '">'
+		if number == 0 then
+			return "0.00"
+		else
+			return tostring (number/100)
+		end
+	end
+
     for i=1,padding do
         if math.floor(number/math.pow(10,(i-1))) == 0 then
             s = "0"..s

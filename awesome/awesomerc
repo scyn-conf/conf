@@ -76,7 +76,7 @@ shifty.config.tags = {
 --   -- ["[mplayer]"] = { position = 11, nopopup = true, spawn = "rxvt-unicode -T mplay"},
 --    ["[dl]"] = { position = 12, nopopup = true, spawn = "Transmission"},
 }
-shifty.taglist = mytaglist 
+shifty.taglist = mytaglist
 -- }}}
 -- {{{2 Applications
 shifty.config.apps = {
@@ -118,8 +118,8 @@ myawesomemenu =
 
 mymainmenu = awful.menu(
 {
-	items = 
-	{ 
+	items =
+	{
 		{ "awesome", myawesomemenu, beautiful.awesome_icon },
                 { "Debian", debian.menu.Debian_menu.Debian },
 		{ "open terminal", terminal }
@@ -172,25 +172,38 @@ wicked.register(datewidget, wicked.widgets.date, 'date: <span color="' .. beauti
 --		{{{3 Cpu
 cpuwidget = widget({ type = "textbox" })
 cpu_usage_file = io.open ('/proc/stat')
-cpu_args = '('
+cpu_args = ''
 cpu_total = 0
 for line in cpu_usage_file:lines () do
 	if string.sub (line, 1, 3) == 'cpu' then
 		cpu_total = cpu_total + 1
 		if cpu_total == 1 then
-			-- do nothing	
+			-- do nothing
 		else
-			cpu_args = cpu_args .. "$" .. cpu_total .. "% "
+			cpu_args = cpu_args .. " / $" .. cpu_total
 		end
 	end
 end
-cpu_args = cpu_args .. ') <span color="' .. beautiful.fg_focus .. '">cpu :~$1%</span>'
-wicked.register(cpuwidget, wicked.widgets.cpu, cpu_args, 1)
+cpu_args = ' <span color="' .. beautiful.fg_focus .. '">cpu: ~$1</span>' .. cpu_args .. ' '
+wicked.register(cpuwidget, wicked.widgets.cpu, cpu_args, 1, nil, 0.1)
 
 --		}}}
 --		{{{3 Memory
 memwidget = widget({ type = "textbox" })
 wicked.register(memwidget, wicked.widgets.mem, '<span color="' .. beautiful.fg_focus .. '">ram: $1%</span> ($2MB/$3MB)', 13)
+
+--		}}}
+--		{{{3 Network
+netwidget = widget(
+{
+	type = 'textbox',
+	name = 'netwidget',
+	align = 'right'
+})
+wicked.register(netwidget, wicked.widgets.net,
+' <span color="' .. beautiful.fg_focus .. '">eth0: ${eth0 down}/${eth0 up}</span> ',
+nil, nil, 3)
+
 --		}}}
 
 --	}}}
@@ -262,7 +275,7 @@ for s = 1, screen.count() do
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     mywibox[s].widgets =
-    { 
+    {
 	    { mylauncher, mytaglist[s], mypromptbox[s], layout = awful.widget.layout.horizontal.leftright} ,
 	    {
 		    s == 1 and mysystray or nil,
@@ -275,6 +288,8 @@ for s = 1, screen.count() do
 		    myseparator,
 		    mycpuicon,
 		    cpuwidget,
+		    myseparator,
+		    netwidget,
 		    layout = awful.widget.layout.horizontal.rightleft
 	    },
 	layout = awful.widget.layout.horizontal.leftright
@@ -335,7 +350,7 @@ globalkeys = awful.util.table.join(
             end
         end),
 -- Shifty
-    
+
     awful.key({ modkey, }, "t",             shifty.add),
     awful.key({ modkey, "Shift"   }, "d",           shifty.del),
     awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
@@ -344,7 +359,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Right",  shifty.shift_next        ),
  --   awful.key({ modkey            }, "Escape", function() awful.tag.history.restore() end), -- move to prev tag by history
     awful.key({ modkey, "Shift"   }, "n", shifty.send_prev), -- move client to prev tag
-    awful.key({ modkey            }, "n", shifty.send_next), 
+    awful.key({ modkey            }, "n", shifty.send_next),
 
 --    shifty.config.clientkeys = clientkeys
     -- Standard program
