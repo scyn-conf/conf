@@ -114,21 +114,12 @@ function helper.padd(number, padding)
 	-- FIXME<scyn> this is actually a hack but should be implemented using a
 	-- more elegant way
 	if padding > 0 and padding < 1 then
-		color='<span color="'
-		if number > 0 and number <= 20 then
-			color = color .. '#a6e9da'
-		elseif number > 20 and number <= 40 then
-			color = color .. '#4fa83d'
-		elseif number > 40 and number <= 60 then
-			color = color .. '#fed33c'
-		elseif number > 60 and number <= 80 then
-			color = color .. '#ff7034'
-		elseif number > 80 then
-			color = color .. '#900020'
-		end
-		color = '">'
 		if number == 0 then
 			return "0.00"
+		elseif  number == 100 then
+			return "1.00"
+		elseif number % 10 == 0 then
+			return tostring (number/100) .. "0"
 		else
 			return tostring (number/100)
 		end
@@ -367,8 +358,23 @@ function widgets.cpu(format, padding)
             else
                 p = padding
             end
-
-            cpu_usage[k] = helper.padd(cpu_usage[k], p)
+			number = cpu_usage[k]
+			color='<span color="'
+			if number == 0 then
+				color = color .. '#606060'
+			elseif number > 0 and number <= 20 then
+				color = color .. '#ADBED1'
+			elseif number > 20 and number <= 40 then
+				color = color .. '#ACE1AF'
+			elseif number > 40 and number <= 60 then
+				color = color .. '#FCDA98'
+			elseif number > 60 and number <= 80 then
+				color = color .. '#F3BA5E'
+			elseif number > 80 then
+				color = color .. '#F3785E'
+			end
+			color = color .. '">'
+            cpu_usage[k] = color .. helper.padd(cpu_usage[k], p) .. "</span>"
         end
     end
 

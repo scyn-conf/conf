@@ -295,7 +295,7 @@ for s = 1, screen.count() do
 	layout = awful.widget.layout.horizontal.leftright
     }
     mytaskbar[s] = awful.wibox({position = "bottom", screen = s})
-    mytaskbar[s].widgets = {mylayoutbox[s], mytasklist[s], layout = awful.widget.layout.horizontal.rightleft, }
+    mytaskbar[s].widgets = {mylayoutbox[s], mytasklist[s], layout = awful.widget.layout.horizontal.rightleft}
     mywibox[s].screen = s
     mytaskbar[s].screen = s
 end
