@@ -32,6 +32,6 @@ URxvt*scrollBar:	false
 URxvt*borderLess:	true
 
 ## Transparency
-URxvt*inheritPixmap:	true
-URxvt*tintColor:	white
-URxvt*shading:		15
+#URxvt*inheritPixmap:	true
+#URxvt*tintColor:	white
+#URxvt*shading:		15

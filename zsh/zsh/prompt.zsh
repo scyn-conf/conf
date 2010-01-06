@@ -71,9 +71,10 @@ lcyan="%{`print "\e[36;1m"`%}"
 clr="%{$reset_color%}"
 
 
-PROMPT="%B${lgreen}%~${lcyan}$vcs${clr}
-${green}(%!)${lgreen}42sh$ ${clr}${white}"
-RPROMPT="%(?..${red}Err %?%b$clr )| ${lgreen}%D{%H:%M}${clr}"
+PROMPT="${blue}%~$vcs${clr}
+${lgreen}($clr$blue%!${lgreen})$clr${blue}42sh${lgreen}$ $clr"
+RPROMPT="%(?..${red}Err %?%b$clr )| ${blue}%D{%H:%M}${clr}"
+
 }
 
 autoload -U colors

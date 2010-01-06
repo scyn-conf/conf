@@ -62,7 +62,7 @@ shifty.config.tags = {
     ["[4. sh2]"] = { layout=tile, position = 4, spawn=terminal},
     ["[5. com]"] = { layout=floating, position = 5, exclusive=true, nopopup=true, spawn="pidgin"},
     ["[6. mail]"] = { layout=tile, position = 6, exclusive=true, nopopup=true, spawn="evolution"},
-    ["[default]"] = { layout=tile, position = 10, init = true, spawn=urxvt}
+    ["[default]"] = { layout=floating, position = 10, init = true, spawn=terminal}
 --    ["[urxvt]"] = { position = 1, init = true, },
 --    ["[www]"]  = { position = 2,  spawn = browser,},
 --    ["[gimp]"] = { position = 6, exclusive = true, nopopup = true, spawn = gimp, },
@@ -84,7 +84,8 @@ shifty.config.apps = {
          { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "[1. www]", opacity = 0.95       } ,
          { match = {"Evolution"} , tag = "[6. mail]", opacity = 0.95       } ,
          { match = {"Pidgin"                         }, tag = "[5. com]", float = true                      },
-	 { match = {"Gvim", "gvim"}, tag = "[2. code]", opacity = 0.85},
+	 { match = {"Gvim", "gvim"}, tag = "[2. code]", opacity = 0.90},
+	 { match = {terminal}, opacity = 0.85},
          { match = { "" },
 			buttons = awful.util.table.join(
 			awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
@@ -166,7 +167,7 @@ datewidget = widget({
     type = 'textbox',
     name = 'datewidget'
 })
-wicked.register(datewidget, wicked.widgets.date, 'date: <span color="' .. beautiful.fg_focus .. '">%c</span>')
+wicked.register(datewidget, wicked.widgets.date, ' date: <span color="' .. beautiful.fg_focus .. '">%c</span>')
 
 --		}}}
 --		{{{3 Cpu
@@ -190,7 +191,7 @@ wicked.register(cpuwidget, wicked.widgets.cpu, cpu_args, 1, nil, 0.1)
 --		}}}
 --		{{{3 Memory
 memwidget = widget({ type = "textbox" })
-wicked.register(memwidget, wicked.widgets.mem, '<span color="' .. beautiful.fg_focus .. '">ram: $1%</span> ($2MB/$3MB)', 13)
+wicked.register(memwidget, wicked.widgets.mem, ' <span color="' .. beautiful.fg_focus .. '">ram: $1%</span> ($2MB/$3MB)', 13)
 
 --		}}}
 --		{{{3 Network
@@ -281,12 +282,10 @@ for s = 1, screen.count() do
 		    s == 1 and mysystray or nil,
 		    mytextbox,
 		    myseparator,
-		    datewidget, mytimeicon,
+		    datewidget,
 		    myseparator,
 		    memwidget,
-		    mymemicon,
 		    myseparator,
-		    mycpuicon,
 		    cpuwidget,
 		    myseparator,
 		    netwidget,
@@ -358,8 +357,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Left",   shifty.shift_prev        ),
     awful.key({ modkey, "Shift"   }, "Right",  shifty.shift_next        ),
  --   awful.key({ modkey            }, "Escape", function() awful.tag.history.restore() end), -- move to prev tag by history
-    awful.key({ modkey, "Shift"   }, "n", shifty.send_prev), -- move client to prev tag
-    awful.key({ modkey            }, "n", shifty.send_next),
+--    awful.key({ modkey, "Shift"   }, "n", shifty.send_prev), -- move client to prev tag
+--    awful.key({ modkey            }, "n", shifty.send_next),
 
 --    shifty.config.clientkeys = clientkeys
     -- Standard program
@@ -390,7 +389,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
 --    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
 --    awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
-  --  awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
+	awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
@@ -471,17 +470,17 @@ shifty.init()
 --client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 --client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-client.add_signal("focus", function(c)
-  c.border_color = beautiful.border_focus
-  if c.opacity < 1.0 then
-    c.opacity = beautiful.opacity_focus
-  end
-end)
-
-client.add_signal("unfocus", function(c)
-  c.border_color = beautiful.border_normal
-  if c.opacity < 1.0 then
-    c.opacity = beautiful.opacity_normal
-  end
-end)
+--client.add_signal("focus", function(c)
+--  c.border_color = beautiful.border_focus
+--  if c.opacity < 1.0 then
+--    c.opacity = beautiful.opacity_focus
+--  end
+--end)
+--
+--client.add_signal("unfocus", function(c)
+--  c.border_color = beautiful.border_normal
+--  if c.opacity < 1.0 then
+--    c.opacity = beautiful.opacity_normal
+--  end
+--end)
 -- }}}
