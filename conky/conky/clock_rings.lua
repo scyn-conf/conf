@@ -10,7 +10,7 @@ To call this script in Conky, use the following (assuming that you save this scr
 	lua_draw_hook_pre ring_stats
 	
 Changelog:
-+ v1.2 -- Added option for the ending angle of the rings (07.10.2009)
++ v1.2 -- Added option for the ending angle of the rings (07.10.9009)
 + v1.1 -- Added options for the starting angle of the rings, and added the "max" variable, to allow for variables that output a numerical value rather than a percentage (29.09.2009)
 + v1.0 -- Original release (28.09.2009)
 ]]
@@ -43,7 +43,7 @@ function draw_ring(cr,t,pt)
 	
 	-- Draw indicator ring
 
-	cairo_arc(cr,conky_window.width / 2,conky_window.height / 2,ring_r,angle_0,angle_0+t_arc)
+	cairo_arc(cr,conky_window.width / 2, conky_window.height / 2 - conky_window.height / 20, ring_r,angle_0,angle_0+t_arc)
 	cairo_set_source_rgba(cr,rgb_to_r_g_b(fgc,fga))
 	cairo_stroke(cr)		
 end
@@ -57,131 +57,276 @@ function init_vars ()
 	hours_cx = conky_window.width / 2
 	hours_cy = conky_window.height / 2
 
-
-	seconds_radius=100
-	minutes_radius=75
-	hours_radius=60
-	center_radius=40
+	seconds_radius=140
+	minutes_radius=90
+	hours_radius=50
+	center_radius=20
 	return {
-		{ -- seconds hand
+--		{ -- center
+--			name='time',
+--			arg='%S',
+--			max=1,
+--			bg_colour=0xffffff,
+--			bg_alpha=0.0,
+--			fg_colour=0xffffff,
+--			fg_alpha=1.0,
+--			x=seconds_cx,
+--			y=seconds_cy,
+--			radius=center_radius - 3,
+--			thickness=2,
+--			start_angle=0,
+--			end_angle=360,
+--			transformation = function (self, value)
+--				return self, 1
+--			end
+--
+--		},
+		{ -- seconds hand 1
 			name='time',
 			arg='%S',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
+			fg_alpha=1.0,
 			x=seconds_cx,
 			y=seconds_cy,
-			radius=seconds_radius - (seconds_radius - minutes_radius) / 2,
-			thickness=seconds_radius-minutes_radius + 7,
+			radius=seconds_radius - (seconds_radius - minutes_radius) / 2 + 2,
+			thickness=seconds_radius-minutes_radius,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
 				v = value * 6
-				self["start_angle"] = v - 1
-				self["end_angle"] = v + 1
+				self["start_angle"] = v + 2
+				self["end_angle"] = v + 4
 				return self, 1
 			end
 		},
-		{ -- seconds circle
+		{ -- seconds hand 2
 			name='time',
 			arg='%S',
-			max=360,
+			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=1.0,
+			x=seconds_cx,
+			y=seconds_cy,
+			radius=seconds_radius - (seconds_radius - minutes_radius) / 2 + 2,
+			thickness=seconds_radius-minutes_radius,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				v = value * 6
+				self["start_angle"] = v - 3
+				self["end_angle"] = v -1
+				return self, 1
+			end
+		},
+		{ -- seconds circle 1
+			name='time',
+			arg='%S',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
 			fg_alpha=0.9,
 			x=seconds_cx,
 			y=seconds_cy,
 			radius=seconds_radius,
-			thickness=7,
+			thickness=4,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				if value == 0 then
-					value = 60
-				end
 				value = value * 6
-				return self, value/self["max"]
+				self["start_angle"] = value + 3
+				self["end_angle"] = value + 120
+				return self, 1
 			end
 		},
-		{ -- minutes hand
+		{ -- seconds circle 2
+			name='time',
+			arg='%S',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=0.9,
+			x=seconds_cx,
+			y=seconds_cy,
+			radius=seconds_radius,
+			thickness=4,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 6
+				self["start_angle"] = value - 120
+				self["end_angle"] = value - 3
+				return self, 1
+			end
+		},
+		{ -- minutes hand 1
 			name='time',
 			arg='%M',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
+			fg_alpha=1.0,
 			x=minutes_cx,
 			y=minutes_cy,
-			radius=minutes_radius - (minutes_radius - hours_radius) / 2,
-			thickness=minutes_radius - hours_radius + 7,
+			radius=minutes_radius - (minutes_radius - hours_radius) / 2 + 2,
+			thickness=minutes_radius - hours_radius,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
 				value = value * 6
-				self["start_angle"] = value -2
-				self["end_angle"] = value + 1
+				self["start_angle"] = value + 2
+				self["end_angle"] = value + 4
 				return self, 1
 			end
 		},
-		{ -- minutes circle
+		{ -- minutes hand 2
 			name='time',
 			arg='%M',
-			max=360,
+			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=1.0,
+			x=minutes_cx,
+			y=minutes_cy,
+			radius=minutes_radius - (minutes_radius - hours_radius) / 2 + 2,
+			thickness=minutes_radius - hours_radius,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 6
+				self["start_angle"] = value -3
+				self["end_angle"] = value - 1
+				return self, 1
+			end
+		},
+		{ -- minutes circle 1
+			name='time',
+			arg='%M',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
 			fg_alpha=0.9,
 			x=minutes_cx,
 			y=minutes_cy,
 			radius=minutes_radius,
-			thickness=7,
+			thickness=4,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
 				value = value * 6
-				return self, value/self["max"]
+				self["start_angle"] = value + 3
+				self["end_angle"] = value + 120
+				return self, 1
 			end
 		},
-		{ -- hours hand
+		{ -- minutes circle 2
+			name='time',
+			arg='%M',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=0.9,
+			x=minutes_cx,
+			y=minutes_cy,
+			radius=minutes_radius,
+			thickness=4,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 6
+				self["start_angle"] = value - 120
+				self["end_angle"] = value - 3
+				return self, 1
+			end
+		},
+		{ -- hours hand 1
 			name='time',
 			arg='%I',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
+			fg_alpha=1.0,
 			x=hours_cx,
 			y=hours_cy,
-			radius=hours_radius - (hours_radius - center_radius) / 2,
-			thickness=hours_radius - center_radius + 7,
+			radius=hours_radius - (hours_radius - center_radius) / 2 + 2,
+			thickness=hours_radius - center_radius,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				self["start_angle"] = value * 30 - 3
-				self["end_angle"] = value * 30 + 1
+				self["start_angle"] = value * 30 + 3
+				self["end_angle"] = value * 30 + 6
 				return self, 1
 			end
 		},
-		{ -- hours circle
+		{ -- hours hand 2
 			name='time',
 			arg='%I',
-			max=12,
+			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.1,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=1.0,
+			x=hours_cx,
+			y=hours_cy,
+			radius=hours_radius - (hours_radius - center_radius) / 2 + 2,
+			thickness=hours_radius - center_radius,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				self["start_angle"] = value * 30 - 5
+				self["end_angle"] = value * 30 - 2
+				return self, 1
+			end
+		},
+		{ -- hours circle 1
+			name='time',
+			arg='%I',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
 			fg_colour=0xffffff,
 			fg_alpha=0.9,
 			x=hours_cx,
 			y=hours_cy,
 			radius=hours_radius,
-			thickness=7,
+			thickness=4,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				return self, value/self["max"]
+				self["start_angle"] = value * 30 + 6
+				self["end_angle"] = value * 30 + 120
+				return self, 1
+			end
+		},
+		{ -- hours circle 2
+			name='time',
+			arg='%I',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.0,
+			fg_colour=0xffffff,
+			fg_alpha=0.9,
+			x=hours_cx,
+			y=hours_cy,
+			radius=hours_radius,
+			thickness=4,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				self["start_angle"] = value * 30 - 120
+				self["end_angle"] = value * 30 - 3
+				return self, 1
 			end
 		}
 	}
