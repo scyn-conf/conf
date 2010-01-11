@@ -1,10 +1,9 @@
-" vim600: set foldmethod=marker:
-"
 " File: svn.vim
 " Brief: svn integration plugin for vim
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 " Url: http:/github.com/scyn-conf/svn-vim
 "
+" vim600: set foldmethod=marker:
 
 
 " Section: Variable initialization {{{1
@@ -454,7 +453,7 @@ command! -nargs=* -complete=file	SvnDiff		call s:SvnDiff (<q-args>, {})
 command! -nargs=*			SvnDiffFile	call s:SvnDiff (<q-args>, {'_localFile' : 1})
 command! -nargs=*			SvnDiffDir	call s:SvnDiff (<q-args>, {'_localDir' : 1})
 "command! -nargs=* -complete=file	SvnvimDiff	call s:SvnDiff (<q-args>, {})
-command! -nargs=0			SvnVimDiffFile	call s:SvnVimDiff (<q-args>, {'_localFile' : 1})
+command! -nargs=*			SvnVimDiffFile	call s:SvnVimDiff (<q-args>, {'_localFile' : 1})
 "command! -nargs=*			SvnVimDiffDir	call s:SvnDiff (<q-args>, {'_localDir' : 1})
 
 " Section: SvnCommit {{{2
