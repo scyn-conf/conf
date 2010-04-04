@@ -56,8 +56,8 @@ function precmd()
 reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
 white="%{`print "\e[37;1m"`%}"
 gray="%{`print "\e[37m"`%}"
-orange="%{`print "\e[33m"`%}"
-yellow="%{`print "\e[33;1m"`%}"
+yellow="%{`print "\e[33m"`%}"
+lyellow="%{`print "\e[33;1m"`%}"
 red="%{`print "\e[31m"`%}"
 lred="%{`print "\e[31;1m"`%}"
 green="%{`print "\e[32m"`%}"
@@ -71,9 +71,9 @@ lcyan="%{`print "\e[36;1m"`%}"
 clr="%{$reset_color%}"
 
 
-PROMPT="${blue}%~$vcs${clr}
-${lgreen}($clr$blue%!${lgreen})$clr${blue}42sh${lgreen}$ $clr"
-RPROMPT="%(?..${red}Err %?%b$clr )| ${blue}%D{%H:%M}${clr}"
+PROMPT="${yellow}%~${blue}$vcs${clr}
+${lyellow}($clryellow%!${lyellow})$clr${yellow}42sh${lyellow}$ $clr"
+RPROMPT="%(?..${red}Err %?%b$clr )| ${lyellow}%D{%H:%M}${clr}"
 
 }
 
