@@ -61,7 +61,7 @@ shifty.config.tags = {
     ["[3. sh1]"] = { layout=tile, position = 3, spawn=terminal},
     ["[4. sh2]"] = { layout=tile, position = 4, spawn=terminal},
     ["[5. com]"] = { layout=floating, position = 5, exclusive=true, nopopup=true, spawn="pidgin"},
-    ["[6. mail]"] = { layout=tile, position = 6, exclusive=true, nopopup=true, spawn="evolution"},
+    ["[6. mail]"] = { layout=tile, position = 6, exclusive=true, nopopup=true, spawn="icedove"},
     ["[default]"] = { layout=floating, position = 10, init = true, spawn=terminal}
 --    ["[urxvt]"] = { position = 1, init = true, },
 --    ["[www]"]  = { position = 2,  spawn = browser,},
@@ -76,13 +76,12 @@ shifty.config.tags = {
 --   -- ["[mplayer]"] = { position = 11, nopopup = true, spawn = "rxvt-unicode -T mplay"},
 --    ["[dl]"] = { position = 12, nopopup = true, spawn = "Transmission"},
 }
-shifty.taglist = mytaglist
 -- }}}
 -- {{{2 Applications
 shifty.config.apps = {
 
          { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "[1. www]", opacity = 0.95       } ,
-         { match = {"Evolution"} , tag = "[6. mail]", opacity = 0.95       } ,
+         { match = {"Evolution", "Icedove"} , tag = "[6. mail]", opacity = 0.95       } ,
          { match = {"Pidgin"                         }, tag = "[5. com]", float = true                      },
 	 { match = {"Gvim", "gvim"}, tag = "[2. code]", opacity = 0.90},
 	 { match = {terminal}, opacity = 0.85},
@@ -440,6 +439,8 @@ end
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
+shifty.taglist = mytaglist
+shifty.init()
 
 
 
@@ -470,7 +471,7 @@ client.add_signal("manage", function (c, startup)
         end
     end
 end)
-shifty.init()
+
 --client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 --client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 

@@ -24,7 +24,6 @@ local wibox = wibox
 local root = root
 local dbg= dbg
 local timer = timer
-local print = print
 
 module("shifty")
 -- }}}
@@ -37,7 +36,6 @@ config.defaults = {}
 config.guess_name = true
 config.guess_position = true
 config.remember_index = true
-config.sloppy = true
 config.default_name = "new"
 config.clientkeys = {}
 config.globalkeys = nil
@@ -89,7 +87,7 @@ end
 --@param prefix: if any prefix is to be added
 --@param no_selectall:
 function rename(tag, prefix, no_selectall)
-  local theme = beautiful.get() 
+  local theme = beautiful.get()
   local t = tag or awful.tag.selected(mouse.screen)
   local scr = t.screen
   local bg = nil
@@ -108,7 +106,7 @@ function rename(tag, prefix, no_selectall)
   awful.prompt.run( { 
     fg_cursor = fg, bg_cursor = bg, ul_cursor = "single",
     text = text, selectall = not no_selectall },
-    taglist[scr][tag2index(scr,t)],
+    taglist[scr][tag2index(scr,t)*2],
     function (name) if name:len() > 0 then t.name = name; end end, 
     completion,
     awful.util.getdir("cache") .. "/history_tags", nil,
@@ -120,7 +118,6 @@ function rename(tag, prefix, no_selectall)
         set(t)
       end
       tagkeys(screen[scr])
-      -- screen[scr]:emit_signal("tag::detach")
       t:emit_signal("property::name")
     end
     )
@@ -215,7 +212,6 @@ function set(t, args)
 
   -- pick screen and get its tag table
   local scr = args.screen or (not t.screen and preset.screen) or t.screen or mouse.screen
-  local clientstomove = nil
   if scr > screen.count() then scr = screen.count() end
   if t.screen and scr ~= t.screen then
     tagtoscr(scr, t)
@@ -305,7 +301,6 @@ function set(t, args)
     if run then run(t) end
     awful.tag.setproperty(t, "initial", nil)
   end
-
 
   return t
 end
@@ -467,8 +462,7 @@ function match(c, startup)
   c:keys(keys)
 
   -- set properties of floating clients
-  if float ~= nil then
-    awful.client.floating.set(c, float) 
+  if awful.client.floating.get(c) then
     awful.placement.centered(c, c.transient_for)
     awful.placement.no_offscreen(c) -- this always seems to stick the client at 0,0 (incl titlebar)
   end
@@ -521,6 +515,7 @@ function match(c, startup)
   if slave then awful.client.setslave(c) end
   c:tags( target_tags )
   if wfact then awful.client.setwfact(wfact, c) end
+  if float ~= nil then awful.client.floating.set(c, float) end
   if geom then c:geometry(geom) end
   if struts then c:struts(struts) end
 
@@ -558,18 +553,8 @@ function match(c, startup)
     c:lower()
   end
 
-  if config.sloppy then
-    -- Enable sloppy focus
-    c:add_signal("mouse::enter", function(c)
-
-      if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier and awful.client.focus.filter(c) then
-        client.focus = c
-      end
-    end)
-  end
   -- execute run function if specified
   if run then run(c, target) end
-
 end
 --}}}
 
