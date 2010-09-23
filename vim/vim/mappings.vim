@@ -89,7 +89,7 @@ map ZO ggvGzO
 " disable highlighting : Useful after performing a search
 map -- <ESC>:noh<RETURN>
 " cpp ctags generation
-map :tags :! /Users/scyn/Code/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map :tags :! ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F7> :tags
 " Doxygen plugin fixes
 map dox <ESC>:Dox<RETURN><ESC>-tw
