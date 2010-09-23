@@ -11,19 +11,19 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 if v:progname =~? "evim"
-    finish
+	finish
 endif
 filetype plugin on
 if has("autocmd")
-    filetype plugin indent on
-    augroup vimrcEx
-	au!
-	autocmd FileType text setlocal textwidth=78
-	autocmd BufReadPost *
-		    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-		    \   exe "normal g`\"" |
-		    \ endif
-    augroup END
+	filetype plugin indent on
+	augroup vimrcEx
+		au!
+		autocmd FileType text setlocal textwidth=78
+		autocmd BufReadPost *
+					\ if line("'\"") > 0 && line("'\"") <= line("$") |
+					\   exe "normal g`\"" |
+					\ endif
+	augroup END
 endif
 
 
@@ -34,9 +34,9 @@ endif
 set backspace=indent,eol,start
 
 if has("vms")
-    set nobackup	" do not keep a backup file, use versions instead
+	set nobackup	" do not keep a backup file, use versions instead
 else
-    set backup		" keep a backup file
+	set backup		" keep a backup file
 endif
 
 set showcmd		" display incomplete commands
@@ -56,17 +56,19 @@ set textwidth=200	" by default, but see ToogleTextWidth function (fun.vim) for m
 " {{{	APPEARANCE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme mustang" color file (See ~/.vim/colors/)
+colorscheme mustang " color file (See ~/.vim/colors/)
 if has("gui_running")
-    "" Comment or Uncomment this line according to your terminal configuration
-    "" (256 colors or not)
-    "set t_Co=256
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    set cursorline
-    set hlsearch
+	"" Comment or Uncomment this line according to your terminal configuration
+	"" (256 colors or not)
+	"set t_Co=256
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=L
+	set cursorline
+	set hlsearch
+else
+	colorscheme scyn_pale
 endif
 set history=500		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
