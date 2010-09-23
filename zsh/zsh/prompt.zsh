@@ -65,15 +65,15 @@ lgreen="%{`print "\e[32;1m"`%}"
 blue="%{`print "\e[34m"`%}"
 lblue="%{`print "\e[34;1m"`%}"
 purple="%{`print "\e[35m"`%}"
-lpurple="%{`print "\e[35;1m"`%}"
+lgreen="%{`print "\e[35;1m"`%}"
 cyan="%{`print "\e[36m"`%}"
 lcyan="%{`print "\e[36;1m"`%}"
 clr="%{$reset_color%}"
 
 
-PROMPT="${yellow}%~${blue}$vcs${clr}
-${lyellow}($clryellow%!${lyellow})$clr${yellow}42sh${lyellow}$ $clr"
-RPROMPT="%(?..${red}Err %?%b$clr )| ${lyellow}%D{%H:%M}${clr}"
+PROMPT="${yellow}$HOST${clr}${yellow}:%~${yellow}$vcs${clr}
+${yellow}($clr$lyellow%!$clr${yellow})$clr${yellow}42sh${yellow}$ $clr"
+RPROMPT="%(?..${red}Err %?%b$clr )| ${yellow}%D{%H:%M}${clr}"
 
 }
 

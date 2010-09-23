@@ -10,7 +10,6 @@ function f_vall ()
 		v `find . -name "$arg"`
 	done;
 }
-alias zlock='xscreensaver-command -activate'
 alias p="popd"
 alias c="dirs -c"
 
@@ -26,8 +25,8 @@ alias gr="egrep --color=auto -Rin"
 #
 alias -g L=" | less -R"
 
-alias rm='rm -i'
-alias clean='rm -f *~ *\#* *.o *.so *.a 2> /dev/null'
+#alias rm='rm -i'
+alias clean='rm -f *~ *\#* *.o *.so *.a .*~ 2> /dev/null'
 alias clean-tex='rm -f *log *out *snm *toc *nav *aux'
 alias gccc='gcc -W -Wall -Werror -ansi -pedantic -g -L/usr/pkg/lib -lefence'
 
@@ -104,4 +103,19 @@ nc_recv ()
 alias ct=~/conf/colors.pl
 
 
+#alias spark='tsocks ssh scyn@$IPSPARK'
+alias ssh_epita='ssh chaint_r@ssh.epita.fr'
+
+
+alias ack-grep='~/bin/ack-standalone'
+alias netsoul='~/bin/netsoul-connect.py&'
+
+## My rm
+rm ()
+{
+	if [ ! -e ~/.trash ]; then
+		mkdir ~/.trash
+	fi
+	mv $* $HOME/.trash/
+}
 
