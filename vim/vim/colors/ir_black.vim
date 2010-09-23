@@ -104,7 +104,7 @@ endif
 
 " Syntax highlighting
 hi Comment          guifg=#333333     guibg=NONE        gui=italic    ctermfg=darkgray	 ctermbg=NONE        cterm=NONE
-hi String           guifg=#b1d631     guibg=NONE        gui=NONE      ctermfg=lightgreen ctermbg=NONE        cterm=NONE
+hi String           guifg=#b1d631     guibg=NONE        gui=NONE      ctermfg=green ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF93FD     guibg=NONE        gui=NONE      ctermfg=lightmagenta ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold

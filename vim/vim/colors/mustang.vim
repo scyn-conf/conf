@@ -23,13 +23,13 @@ endif
 
 " General colors
 hi Cursor 		guifg=NONE    guibg=#626262 gui=none ctermbg=241
-hi Normal 		guifg=#e2e2e5 guibg=#202020 gui=none ctermfg=253 ctermbg=234
+hi Normal 		guifg=#e2e2e5 guibg=#121212 gui=none ctermfg=253 ctermbg=234
 hi NonText 		guifg=#808080 guibg=#303030 gui=none ctermfg=244 ctermbg=235
 hi LineNr 		guifg=#808080 guibg=#000000 gui=none ctermfg=244 ctermbg=232
 hi StatusLine 	guifg=#d3d3d5 guibg=#444444 gui=italic ctermfg=253 ctermbg=238 cterm=italic
 hi StatusLineNC guifg=#939395 guibg=#444444 gui=none ctermfg=246 ctermbg=238
 hi VertSplit 	guifg=#444444 guibg=#444444 gui=none ctermfg=238 ctermbg=238
-hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none ctermbg=4 ctermfg=248
+hi Folded 		guibg=#222222 guifg=#a0a8b0 gui=none ctermbg=4 ctermfg=248
 hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold ctermfg=254 cterm=bold
 hi Visual		guifg=#faf4c6 guibg=#3c414c gui=none ctermfg=254 ctermbg=4
 hi SpecialKey	guifg=#808080 guibg=#343434 gui=none ctermfg=244 ctermbg=236
@@ -38,7 +38,7 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none ctermfg=244 ctermbg=236
 hi Comment 		guifg=#808080 gui=italic ctermfg=244
 hi Todo 		guifg=#8f8f8f gui=italic ctermfg=245
 hi Boolean      guifg=#b1d631 gui=none ctermfg=148
-hi String 		guifg=#b1d631 gui=italic ctermfg=148
+hi String 		guifg=#b1d631 gui=none ctermfg=148
 hi Identifier 	guifg=#b1d631 gui=none ctermfg=148
 hi Function 	guifg=#ffffff gui=bold ctermfg=255
 hi Type 		guifg=#7e8aa2 gui=none ctermfg=103
