@@ -8,7 +8,8 @@ augroup filetypedetect
     au BufNewFile,BufRead *.c                     	setf c
     au BufNewFile,BufRead *.hcc 			set filetype=cpp
     au BufRead,BufNewFile *.aasm 			set filetype=asm
-    au BufRead,BufNewFile *.s 				set filetype=mips
+""    au BufRead,BufNewFile *.s 				set filetype=mips
+    au BufRead,BufNewFile *.s,*.S 			set filetype=asmx86
     au BufRead,BufNewFile *.tig				set filetype=tiger
     au BufRead,BufNewFile *.tih				set filetype=tiger
     au BufRead,BufNewFile *.ll,*.yy			set filetype=cpp
