@@ -17,8 +17,8 @@
 *color4:      	#369bb7
 *color12:     	#6ec9f4
 ! Purple
-*color5:      	#c94cb9
-*color13:     	#e89dde
+*color5:     	#e89dde
+*color13:     	#c94cb9
 ! Cyan
 *color6:      	#26c1b8
 *color14:     	#6ef4ec
@@ -31,9 +31,9 @@ xterm*faceName:		Bitstream Vera Sans Mono
 xterm*faceSize:		9
 URxvt.font:		xft:Monospace-10
 URxvt*scrollBar:	false
-URxvt*borderLess:	true
+URxvt*borderLess:	false
 
 ## Transparency
 #URxvt*inheritPixmap:	true
-#URxvt*tintColor:	white
+#URxvt*tintColor:	lightblue
 #URxvt*shading:		15
