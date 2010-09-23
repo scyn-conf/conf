@@ -4,21 +4,21 @@
 
 theme = {}
 
-theme.font          = "DejaVu Sans 8"
+theme.font          = "DejaVu Sans 9"
 
-theme.bg_normal     = "#000000ff"
-theme.bg_focus      = "#111111ff"
-theme.bg_urgent     = "#ff0000aa"
+theme.bg_normal     = "#202020dd"
+theme.bg_focus      = "#202020cc"
+theme.bg_urgent     = "#a5cb0caa"
 theme.bg_minimize   = "#444444"
 
-theme.fg_normal     = "#606060"
+theme.fg_normal     = "#555555"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize  = "#ffffff"
 
 theme.border_width  = "1"
-theme.border_normal = "#000000"
-theme.border_focus  = "#333333cc"
+theme.border_normal = "#131313ff"
+theme.border_focus  = "#33333300"
 theme.border_marked = "#91231c"
 
 -- There are another variables sets
@@ -72,7 +72,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg /home/scyn/pictures/wallpaper.jpg" } 
+theme.wallpaper_cmd = { "awsetbg " .. os.getenv("HOME") .. "/pictures/wallpaper.jpg" } 
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
