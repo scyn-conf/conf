@@ -2,4 +2,4 @@ export XDG_CONFIG_HOME=$HOME/.config
 xcompmgr &
 conky -c ~/.conkyrc &
 exec awesome -c ~/.awesomerc.lua
-exec xscreensaver -no-splash &
+export TERM='urxvt -e /bin/zsh'
