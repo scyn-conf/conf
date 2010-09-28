@@ -14,18 +14,15 @@ export TSOCKS_USERNAME=$LOGIN
 export NNTPSERVER='news.epita.fr'
 
 # Greetings
-
 echo -e	"[`date "+%d/%m/%y  %l:%M"`] Welcome on PIE, $PSEUDO."
 
 # ssh/scp aliases to use tsocks
 alias ssh='tsocks ssh'
 alias scp='tsocks scp'
 
-# zlock
-function zlock()
-{
-    /usr/bin/zlock -immed -notime					\
-		   -text "-<(              $PSEUDO              )>-"	\
-		   -pwtext '> unlock ! < ... > I said... UNLOCK!    '
-}
+# get sm
+if [ $HOST != freebsd ] && [ $HOST != gate-ssh ]; then
+	host=`/usr/school/bin/ns_who -h $LOGIN | grep '10.200' | head -n 1 | sed -e 's/.*10\.200\.\([0-9]*\)\..*/\1/g'`
+	export HOST="sm$host"
+fi
 

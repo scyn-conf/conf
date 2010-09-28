@@ -54,8 +54,8 @@ function precmd()
     esac
 
 reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
-white="%{`print "\e[37;1m"`%}"
 gray="%{`print "\e[37m"`%}"
+white="%{`print "\e[37;1m"`%}"
 yellow="%{`print "\e[33m"`%}"
 lyellow="%{`print "\e[33;1m"`%}"
 red="%{`print "\e[31m"`%}"
@@ -65,15 +65,14 @@ lgreen="%{`print "\e[32;1m"`%}"
 blue="%{`print "\e[34m"`%}"
 lblue="%{`print "\e[34;1m"`%}"
 purple="%{`print "\e[35m"`%}"
-lgreen="%{`print "\e[35;1m"`%}"
+lpurple="%{`print "\e[35;1m"`%}"
 cyan="%{`print "\e[36m"`%}"
 lcyan="%{`print "\e[36;1m"`%}"
 clr="%{$reset_color%}"
 
 
-PROMPT="${yellow}$HOST${clr}${yellow}:%~${yellow}$vcs${clr}
-${yellow}($clr$lyellow%!$clr${yellow})$clr${yellow}42sh${yellow}$ $clr"
-RPROMPT="%(?..${red}Err %?%b$clr )| ${yellow}%D{%H:%M}${clr}"
+PROMPT="${green}[$HOST]${cyan}[%~] ${blue}42sh> ${clr}"
+RPROMPT="${blue}< $blue%! $clr%(?..${red}[%?]%b)${cyan}$vcs${green}[%D{%H:%M}]${clr}"
 
 }
 

@@ -6,9 +6,6 @@
 
 umask 002
 
-export http_proxy='http://etud.epita.fr/proxy.pac'
 export BLOCK_SIZE=human-readable
-export EDITOR="gvim"
-
-
+export EDITOR="vim"
 
