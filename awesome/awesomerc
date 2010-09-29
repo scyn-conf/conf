@@ -21,12 +21,12 @@ require("teardrop")
 -- }}}
 -- {{{ Variables definition
 -- Themes define colours, icons, and wallpapers
-beautiful.init(os.getenv("HOME") .. ".config/awesome/themes/scyn/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/scyn/theme.lua")
 
 -- Variables
 terminal = "urxvt"
 app_launcher = "gmrun"
-browser="firefox"
+browser="chromium"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -376,8 +376,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "r", function () awful.util.spawn("gmrun") end),
 --    awful.key({ modkey, "Control" }, "r", awesome.restart),
 --    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    awful.key({ modkey            },"Return",      function () teardrop("urxvt -name teardropright", "bottom", "right") end),
-    awful.key({ modkey },"Tab",      function () teardrop("urxvt -name teardropleft", "bottom", "left") end),
+    awful.key({ modkey            },"Return",      function () teardrop("urxvt -name teardropright", "bottom", "right", 0.5, 1.0) end),
+    awful.key({ modkey },"Tab",      function () teardrop("urxvt -name teardropleft", "bottom", "left", 0.5, 1.0) end),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
