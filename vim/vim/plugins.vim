@@ -3,7 +3,7 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OMNICOMPLETION
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cpp
@@ -16,11 +16,16 @@ let OmniCpp_SelectFirstItem = 2
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VCSCOMMANDS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let VCSCommandGitExec = '/usr/bin/git'
 let VCSCommandSVNExec = '/usr/bin/svn'
 let VCSCommandSplit = 'vertical'
 set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AUTOFILE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let me_name='Scyn - Remi Chaintron'
+let me_mail='remi.chaintron@gmail.com'
