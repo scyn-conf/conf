@@ -101,11 +101,12 @@ set foldmethod=marker
 
 
 "}}}
-" {{{	FORMATING
+" {{{	FORMATING 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set textwidth=80 => This is now handled by ToogleTextWidth function ! (see fun.vim)
-highlight col79 ctermbg=Red guibg=Red
+"highlight col79 ctermbg=Red guibg=Red
 
+let g:epita_coding_style=1 " Activate additionnal syntax definitions (EPITA Coding Style compliance). Comment to desactivate.
 
 "}}}
 " {{{	SEARCHING
