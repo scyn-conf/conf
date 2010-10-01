@@ -1,4 +1,4 @@
-" File: c.vim
+  " File: c.vim
 " Brief: Additionnal syntax definitions for EPITA Coding Style
 " Version: 0.1
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
@@ -67,8 +67,8 @@ if exists('g:eCS_operators')
 	" /
 	syn match	eCS_operators		"[^ \t*]/\|/[^= *]" " binary operator / and comments
 	" &
-	syn match	eCS_operators		"[^ ]&[^&=a-zA-Z0-9_( ]" " binary &, logical & and address access
-	syn match	eCS_operators		"\([^-+=/\*%<>&|^] \|[^ ]\)&[a-zA-Z0-9_(]" " address access
+	syn match	eCS_operators		"&[^&=a-zA-Z0-9_( ]\|[^ &]&" " binary &, logical & and address access
+	syn match	eCS_operators		"\([^-+=/\*%<>&|^] \|[^ \t]\)&[a-zA-Z0-9_(]" " address access
 	" !(), !=
 	syn match	eCS_operators		"[^ (]![^a-zA-Z0-9_(=]\|! \|[a-zA-Z0-9_)] ![^=]"
 	" ~
@@ -78,7 +78,7 @@ if exists('g:eCS_operators')
 	" %
 	syn match	eCS_operators		"[^ ]%=\?\|%=[^ ]\|%[^ =]"
 	" |, ||
-	syn match	eCS_operators		"[^ ]|[^|=]\|[^|]|[^ =]"
+	syn match	eCS_operators		"[^| ]|\||[^|= ]"
 	" <, >
 	syn match	eCS_operators		"[^ <]<\|<[^ <]"
 	syn match	eCS_operators		"[^ >-]>\|[^-]>[^> =]\|->[^(a-zA-Z0-9_]\| ->"
