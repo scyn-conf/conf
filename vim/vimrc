@@ -106,7 +106,6 @@ set foldmethod=marker
 "set textwidth=80 => This is now handled by ToogleTextWidth function ! (see fun.vim)
 "highlight col79 ctermbg=Red guibg=Red
 
-let g:epita_coding_style=1 " Activate additionnal syntax definitions (EPITA Coding Style compliance). Comment to desactivate.
 
 "}}}
 " {{{	SEARCHING
@@ -124,6 +123,7 @@ source ~/.vim/fun.vim
 source ~/.vim/mappings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/langdep.vim
+source ~/.vim/codingstyle.vim
 
 
 "}}}
