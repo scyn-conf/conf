@@ -62,8 +62,8 @@ if exists('g:eCS_operators')
 	syn match	eCS_operators		"[^a-zA-Z0-9_]-- "
 	syn match	eCS_operators		"[^-+=/\*%<>&|^] -[a-zA-Z0-9_(]"
 	" *
-	syn match	eCS_operators		"[^ /]\*[^=a-zA-Z0-9_(/]" " binary operator *, comments and pointers dereferencement
-	syn match	eCS_operators		"\([^-+=/\*%<>&|^] \|[^ ]\)\*[a-zA-Z0-9_(/]" " pointers dereferencement
+	syn match	eCS_operators		"[^ \t/]\*[^=a-zA-Z0-9_(/]" " binary operator *, comments and pointers dereferencement
+	syn match	eCS_operators		"\([^-+=/\*%<>&|^(] \|[^\t( ]\)\*[a-zA-Z0-9_(/]" " pointers dereferencement
 	" /
 	syn match	eCS_operators		"[^ \t*]/\|/[^= *]" " binary operator / and comments
 	" &
