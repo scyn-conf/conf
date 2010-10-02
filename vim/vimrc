@@ -101,10 +101,10 @@ set foldmethod=marker
 
 
 "}}}
-" {{{	FORMATING
+" {{{	FORMATING 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set textwidth=80 => This is now handled by ToogleTextWidth function ! (see fun.vim)
-highlight col79 ctermbg=Red guibg=Red
+"highlight col79 ctermbg=Red guibg=Red
 
 
 "}}}
@@ -123,6 +123,7 @@ source ~/.vim/fun.vim
 source ~/.vim/mappings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/langdep.vim
+source ~/.vim/codingstyle.vim
 
 
 "}}}
