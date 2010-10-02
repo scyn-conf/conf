@@ -110,12 +110,4 @@ alias ssh_epita='ssh chaint_r@ssh.epita.fr'
 alias ack-grep='~/bin/ack-standalone'
 alias netsoul='~/bin/netsoul-connect.py&'
 
-## My rm
-rm ()
-{
-	if [ ! -e ~/.trash ]; then
-		mkdir ~/.trash
-	fi
-	mv $* $HOME/.trash/
-}
 

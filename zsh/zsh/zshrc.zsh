@@ -15,3 +15,4 @@ source ./prompt.zsh
 source ./vcs.zsh
 source ./x.zsh
 source ./zlock.zsh
+source ./rm.zsh
