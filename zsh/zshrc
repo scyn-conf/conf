@@ -7,12 +7,12 @@ CONF_DIR="$HOME/conf"
 ZSH_CONF_DIR="$CONF_DIR/zsh"
 
 pushd "$ZSH_CONF_DIR/zsh" >&-
+source zshrc.zsh
 
 # Handle known hosts
 case $HOST in
 	lisp|caml|ruby|ada|php|asp|sh|java|apl|pascal)
 		source ./acu.zsh
-		source ./epita.zsh
 	;;
 	A.Bettik)
 		source ./a.bettik.zsh
@@ -33,7 +33,6 @@ case $HOST in
 	;;
 esac
 
-source zshrc.zsh
 popd >&-
 
 ## Keep an empty line!

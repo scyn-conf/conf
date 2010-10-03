@@ -5,7 +5,7 @@
 
 
 case `uname -s` in
-	Darwin)
+	Darwin|FreeBSD)
 		alias ls="ls -o -G -p -F"
 		;;
 	*)

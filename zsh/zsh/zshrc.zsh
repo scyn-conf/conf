@@ -6,13 +6,14 @@
 
 source ./alias.zsh
 source ./completion.zsh
-source ./env_kaneton.zsh
 source ./env.zsh
+source ./env_kaneton.zsh
 source ./history.zsh
 source ./ls.zsh
 source ./opt.zsh
 source ./prompt.zsh
+source ./rm.zsh
 source ./vcs.zsh
 source ./x.zsh
 source ./zlock.zsh
-source ./rm.zsh
+source ./ssh.zsh
