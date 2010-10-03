@@ -17,3 +17,4 @@ source ./vcs.zsh
 source ./x.zsh
 source ./zlock.zsh
 source ./ssh.zsh
+source ./arc.zsh
