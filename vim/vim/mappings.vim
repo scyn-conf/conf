@@ -61,7 +61,10 @@ nmap <silent> <unique> <SPACE>o :FufBuffer<CR>
 nmap <silent> <unique> <SPACE>f :FufFile<CR>
 nmap <silent> <unique> <SPACE>d :FufDir<CR>
 nmap <silent> <unique> <SPACE>c :FufChangeList<CR>
-nmap <silent> <unique> <SPACE>m :FufBookmark<CR>
+nmap <silent> <unique> <SPACE>m :FufBookmarkFile<CR>
+nmap <silent> <unique> <SPACE>a :FufBookmarkAddFile<CR>
+nmap <silent> <unique> <SPACE><TAB> :FufCoverageFile<CR>
+
 
 
 "}}}
