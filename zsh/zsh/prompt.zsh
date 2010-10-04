@@ -1,5 +1,9 @@
-## Prompt file
-#
+# File: env.zsh
+# Brief: Zsh prompt configuration file
+# Version: 1.0
+# Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
+
+
 ctime="white"
 cvcs="blue"
 cpath="green"
@@ -11,68 +15,61 @@ csepb="green"
 setopt prompt_subst
 
 if ((EUID == 0)); then
-    PROMPT_COLOR=red
+	PROMPT_COLOR=red
 fi
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' stagedstr '%F{28}●'
+zstyle ':vcs_info:*' unstagedstr '%F{11}●'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
+zstyle ':vcs_info:*' enable git svn hg
+
+setopt prompt_subst
 
 function precmd()
 {
-	time="%H:%M"
-	timestamp="%(?..%B%{$fg[$ctime]%}Err %?%b$clr )%{$fg[$cpath]%}| $clr%{$fg[$ctime]%}%B%D{$time}"
 
-    local base_dir branch
-
-    vcs=''
-    if [[ -d .svn ]] ; then
-        vcs="[svn:`svn info | grep Revision | sed 's/.* \(.*\)/\1/g'`]"
-    fi
-    base_dir='.'
-    while [[ ! -d $base_dir/.hg && ! -d $base_dir/.git && `readlink -f $base_dir` != / ]]; do
-	base_dir=$base_dir/..
-    done
-    if [[ -d $base_dir/.hg/ ]]; then
-	if [[ -f $base_dir/.hg/branch ]]; then
-            vcs="${vcs}[hg:`< $base_dir/.hg/branch`:`hg id -n`]"
+	if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]
+	{
+		zstyle ':vcs_info:*' formats '[%s:%b%c%u]'
+	}
 	else
-            vcs="${vcs}[hg:default:`hg id -n`]"
-	fi
-    elif [[ -d $base_dir/.git/ ]]; then
-	branch=`git branch`
-	if git describe --always >& /dev/null; then
-            vcs="${vcs}[git:$branch[3,-1]:`git describe --always`]"
-	else
-            vcs="${vcs}[git:uncommited]"
-	fi
-    fi
+	{
+		zstyle ':vcs_info:*' formats '[%a:%b%c%u%F{red}●%F{cyan}]'
+	}
 
-    case $TERM in
- 	*xterm*|*rxvt*|Eterm)
-	    echo -ne "\e]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007"
- 	;;
- 	screen*)
-	    echo -ne "\033]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007\033k`basename $PWD`\033\\"
- 	;;
-    esac
-
-reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
-gray="%{`print "\e[37m"`%}"
-white="%{`print "\e[37;1m"`%}"
-yellow="%{`print "\e[33m"`%}"
-lyellow="%{`print "\e[33;1m"`%}"
-red="%{`print "\e[31m"`%}"
-lred="%{`print "\e[31;1m"`%}"
-green="%{`print "\e[32m"`%}"
-lgreen="%{`print "\e[32;1m"`%}"
-blue="%{`print "\e[34m"`%}"
-lblue="%{`print "\e[34;1m"`%}"
-purple="%{`print "\e[35m"`%}"
-lpurple="%{`print "\e[35;1m"`%}"
-cyan="%{`print "\e[36m"`%}"
-lcyan="%{`print "\e[36;1m"`%}"
-clr="%{$reset_color%}"
-
-
-PROMPT="${green}[$HOST]${cyan}[%~] ${blue}42sh> ${clr}"
-RPROMPT="${blue}< $blue%! $clr%(?..${red}[%?]%b)${cyan}$vcs${green}[%D{%H:%M}]${clr}"
+	vcs_info
+	
+	case $TERM in
+		*xterm*|*rxvt*|Eterm)
+		echo -ne "\e]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007"
+		;;
+		screen*)
+		echo -ne "\033]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007\033k`basename $PWD`\033\\"
+		;;
+	esac
+	
+	reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
+	gray="%{`print "\e[37m"`%}"
+	white="%{`print "\e[37;1m"`%}"
+	yellow="%{`print "\e[33m"`%}"
+	lyellow="%{`print "\e[33;1m"`%}"
+	red="%{`print "\e[31m"`%}"
+	lred="%{`print "\e[31;1m"`%}"
+	green="%{`print "\e[32m"`%}"
+	lgreen="%{`print "\e[32;1m"`%}"
+	blue="%{`print "\e[34m"`%}"
+	lblue="%{`print "\e[34;1m"`%}"
+	purple="%{`print "\e[35m"`%}"
+	lpurple="%{`print "\e[35;1m"`%}"
+	cyan="%{`print "\e[36m"`%}"
+	lcyan="%{`print "\e[36;1m"`%}"
+	clr="%{$reset_color%}"
+	
+	
+	PROMPT="${green}[$HOST]${cyan}[%~] ${blue}42sh> ${clr}"
+	RPROMPT="${blue}< $blue%! $clr%(?..${red}[%?]%b)${cyan}${vcs_info_msg_0_}${cyan}${green}[%D{%H:%M}]${clr}"
 
 }
 
