@@ -1,3 +1,8 @@
+# File: arc.zsh
+# Brief: Extraction/Listing functions for archivers
+# Version: 1.0
+# Author: Arkanosis <arkanosis@gmail.com>
+#
 
 function x()
 {

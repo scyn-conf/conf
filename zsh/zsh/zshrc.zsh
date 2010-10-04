@@ -5,6 +5,9 @@
 
 
 source ./alias.zsh
+source ./arc.zsh
+source ./backup.zsh
+source ./bookmarks.zsh
 source ./completion.zsh
 source ./env.zsh
 source ./env_kaneton.zsh
@@ -13,8 +16,7 @@ source ./ls.zsh
 source ./opt.zsh
 source ./prompt.zsh
 source ./rm.zsh
+source ./ssh.zsh
 source ./vcs.zsh
 source ./x.zsh
 source ./zlock.zsh
-source ./ssh.zsh
-source ./arc.zsh
