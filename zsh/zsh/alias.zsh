@@ -1,15 +1,6 @@
 #alias gvim="~/src/mvim --remote-tab-silent"
 #
-export VIM_SERVER=`openssl rand -base64 20`
-alias v="gvim --servername $VIM_SERVER --remote "
-alias vs="gvim --servername 1 --remote "
-alias vall=f_vall 
-function f_vall ()
-{
-	for arg in $*; do
-		v `find . -name "$arg"`
-	done;
-}
+
 alias p="popd"
 alias c="dirs -c"
 

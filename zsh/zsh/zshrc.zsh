@@ -9,6 +9,7 @@ source ./arc.zsh
 source ./backup.zsh
 source ./bookmarks.zsh
 source ./completion.zsh
+source ./editor.zsh
 source ./env.zsh
 source ./env_kaneton.zsh
 source ./history.zsh

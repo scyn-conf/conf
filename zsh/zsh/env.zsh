@@ -7,6 +7,5 @@
 umask 002
 
 export BLOCK_SIZE=human-readable
-export EDITOR="vim"
 export PSEUDO="Scyn"
 
