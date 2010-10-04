@@ -33,7 +33,7 @@ function precmd()
 	if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
 		zstyle ':vcs_info:*' formats '[%s:%b%c%u]'
 	} else {
-		zstyle ':vcs_info:*' formats '[%a:%b%c%u%F{red}●%F{cyan}]'
+		zstyle ':vcs_info:*' formats '[%s:%b%c%u%F{red}●%F{cyan}]'
 	}
 
 	vcs_info
