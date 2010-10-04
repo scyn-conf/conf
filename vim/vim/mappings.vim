@@ -60,12 +60,12 @@ map <Leader>info :VCSInfo<CR>
 nmap <silent> <unique> <SPACE>o :FufBuffer<CR> 
 nmap <silent> <unique> <SPACE>f :FufFile<CR>
 nmap <silent> <unique> <SPACE>d :FufDir<CR>
-nmap <silent> <unique> <SPACE>l :FufChangeList<CR>
+nmap <silent> <unique> <SPACE>cl :FufChangeList<CR>
 nmap <silent> <unique> <SPACE>m :FufBookmarkFile<CR>
 nmap <silent> <unique> <SPACE>a :FufBookmarkAddFile<CR>
 nmap <silent> <unique> <SPACE><TAB> :FufCoverageFile<CR>
 nmap <silent> <unique> <SPACE>e :FufMruFile<CR>
-nmap <silent> <unique> <SPACE><TAB>c :FufMruCmd<CR>
+nmap <silent> <unique> <SPACE>c :FufMruCmd<CR>
 
 
 

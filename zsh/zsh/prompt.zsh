@@ -30,12 +30,9 @@ setopt prompt_subst
 function precmd()
 {
 
-	if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]
-	{
+	if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
 		zstyle ':vcs_info:*' formats '[%s:%b%c%u]'
-	}
-	else
-	{
+	} else {
 		zstyle ':vcs_info:*' formats '[%a:%b%c%u%F{red}●%F{cyan}]'
 	}
 
