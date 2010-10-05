@@ -8,8 +8,8 @@ alias f="find . -iname "
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
-alias g="egrep --color=auto -i"
-alias gr="egrep --color=auto -Rin"
+#alias g="egrep --color=auto -i"
+#alias gr="egrep --color=auto -Rin"
 #
 #alias ls="ls -l --color=auto"
 #alias la="ls -la --color=auto"
@@ -30,13 +30,7 @@ alias umsdb2="sudo umount /dev/sdb2"
 alias umsda1="sudo umount /dev/sda1"
 alias umsda2="sudo umount /dev/sda2"
 
-alias g="git"
 
-#~~~~ Olfeo aliases
-# Reconfigure /etc/resolv.conf
-alias resolv='sudo ~/.bin/resolv.py'
-# Reconfigure default gateways
-alias reroute='~/.bin/reroute.sh'
 
 gdist ()
 {
