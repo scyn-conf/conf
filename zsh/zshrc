@@ -8,7 +8,7 @@ ZSH_CONF_DIR="$CONF_DIR/zsh"
 ZSH_CONF_CACHE="$HOME/.zcache"
 
 pushd "$ZSH_CONF_DIR/zsh" >&-
-source zshrc.zsh
+source ./zshrc.zsh
 
 # Handle known hosts
 case $HOST in

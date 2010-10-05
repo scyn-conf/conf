@@ -1,10 +1,9 @@
 # File: bookmarks.zsh
-# Brief: Bookmark functions
+# Brief: Bookmarks functions for zsh conf
 # Version: 1.0
 # Author: Arkanosis <arkanosis@gmail.com>
 #
-
-
+#
 typeset -A bookmarks
 
 bookmarkentries=()
@@ -17,7 +16,7 @@ function s()
     bookmarkcompletions+=($1:$bookmarks[$1])
 }
 
-function r()
+function g()
 {
     cd $bookmarks[$1]
 }

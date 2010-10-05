@@ -1,4 +1,4 @@
-# File: zshrc
+# File: history.zsh
 # Brief: Zsh history configuration file
 # Version: 0.1
 # Author: Arkanosis <arkanosis@gmail.com>
