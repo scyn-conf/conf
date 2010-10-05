@@ -1,15 +1,28 @@
 # File: zshrc
 # Brief: Zsh history configuration file
 # Version: 0.1
-# Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
+# Author: Arkanosis <arkanosis@gmail.com>
 
 
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_STORE
-setopt APPEND_HISTORY
 
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
+export HISTFILE=$HOME/.zcache/history
+export HISTSIZE=1000
+export SAVEHIST=1000
 
+setopt inc_append_history
+setopt hist_ignore_all_dups
+
+function history-globbing-search-backward()
+{
+    no-magic-keys
+    zle history-incremental-pattern-search-backward
+    magic-keys
+}
+zle -N history-globbing-search-backward
+
+function zshaddhistory()
+{
+    if [[ ${1%%$'\n'} = (fg|bg) ]]; then
+	return 1
+    fi
+}
