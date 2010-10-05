@@ -16,11 +16,7 @@ rm ()
 
 	# for each argument
 	for file in $@; do
-		filename=`basename $file`
-		# if the file already exists in the trash, modify filename
-		if [ -e $TRASH/$filename ]; then
-			filename=$filename-`ls $TRASH/ | grep $filename | wc -l | sed 's/[ \t]//g'`
-		fi
+		filename=`basename $file`-`date +%Y-%m-%d`.trash
 		mv $file $TRASH/$filename
 	done
 }
