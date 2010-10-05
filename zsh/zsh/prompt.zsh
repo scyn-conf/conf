@@ -31,9 +31,9 @@ function precmd()
 {
 
 	if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-		zstyle ':vcs_info:*' formats '[%s:%b%c%u%F{cyan}]'
+		zstyle ':vcs_info:*' formats ':%F{blue}%s:%b%c%u'
 	} else {
-		zstyle ':vcs_info:*' formats '[%s:%b%c%u%F{red}«%F{cyan}]'
+		zstyle ':vcs_info:*' formats ':%F{blue}%s:%b%c%u%F{red}«'
 	}
 
 	vcs_info
@@ -63,10 +63,11 @@ function precmd()
 	cyan="%{`print "\e[36m"`%}"
 	lcyan="%{`print "\e[36;1m"`%}"
 	clr="%{$reset_color%}"
-	
-	
-	PROMPT="${green}[$HOST]${cyan}[%~] ${blue}42sh> ${clr}"
-	RPROMPT="${blue}< $blue%! $clr%(?..${red}[%?]%b)${cyan}${vcs_info_msg_0_}${cyan}${green}[%D{%H:%M}]${clr}"
+
+	PROMPT="${yellow}$USER${clr}@${green}$HOST${clr}:${blue}%~$clr${vcs_info_msg_0_}
+${blue}42sh> ${clr}"
+	RPROMPT="${blue}<%! $clr%(?..${red}[%?]%b)${green}[%D{%H:%M}]${clr}"
+
 
 }
 
