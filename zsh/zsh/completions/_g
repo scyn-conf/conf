@@ -1,9 +1,3 @@
-# File: _g.zsh
-# Brief: Completion definition for g() bookmark function
-# Version: 1.0
-# Author: Arkanosis <arkanosis@gmail.com>
-#
-
 #compdef g
 
 _describe -t bookmark 'bookmarks' bookmarkcompletions
