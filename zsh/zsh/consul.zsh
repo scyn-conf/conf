@@ -3,4 +3,5 @@
 # Version: 0.1
 # Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 
+export PATH="$PATH:/opt/local/bin"
 
