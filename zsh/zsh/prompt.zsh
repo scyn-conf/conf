@@ -39,9 +39,9 @@ function precmd()
 	which vcs_info >&-
 	if [ $? -eq 0 ]; then
 		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-			zstyle ':vcs_info:*' formats "[%s:%b%c%u$cyan]"
+			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u$cyan]"
 		} else {
-			zstyle ':vcs_info:*' formats "[%s:%b%c%u%F{red}?$cyan]"
+			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u%F{red}?$cyan]"
 		}
 		vcs_info
 	fi
