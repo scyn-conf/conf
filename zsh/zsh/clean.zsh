@@ -13,3 +13,5 @@ function clean()
 		find . -name "$expr" -delete
 	done
 }
+
+alias clearn="clean; clear"
