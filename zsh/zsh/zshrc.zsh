@@ -10,6 +10,7 @@ source ./alias.zsh
 source ./arc.zsh
 source ./backup.zsh
 source ./bookmarks.zsh
+source ./clean.zsh
 source ./completion.zsh
 source ./editor.zsh
 source ./env.zsh

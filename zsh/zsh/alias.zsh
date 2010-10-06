@@ -17,8 +17,8 @@ alias egrep="egrep --color=auto"
 alias -g L=" | less -R"
 
 #alias rm='rm -i'
-alias clean='rm -f *~ *\#* *.o *.so *.a .*~ 2> /dev/null'
-alias clean-tex='rm -f *log *out *snm *toc *nav *aux'
+#alias clean='rm -f *~ *\#* *.o *.so *.a .*~ 2> /dev/null'
+#alias clean-tex='rm -f *log *out *snm *toc *nav *aux'
 alias gccc='gcc -W -Wall -Werror -ansi -pedantic -g -L/usr/pkg/lib -lefence'
 
 alias msdb1="sudo mount /dev/sdb1 /media/sdb1"
