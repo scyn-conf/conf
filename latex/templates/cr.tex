@@ -1,0 +1,133 @@
+%% {{{ Uses
+%\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}   % accents dans le source
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{moreverb}
+\usepackage{url}
+\usepackage[francais]{babel}
+\pagestyle{empty}               % On ne numérote pas les pages
+\usepackage{vmargin}            % redéfinir les marges
+\setmarginsrb{3cm}{1cm}{3cm}{3cm}{0cm}{1.5cm}{0cm}{0cm}
+\renewcommand*\familydefault{\sfdefault} 
+%\setlength{\parindent}{pt} 
+%% my stuff
+
+\newcommand{\ssection}[1]{
+\vspace{0.7cm}
+\textbf{\large{\underline{#1}}}
+\vspace{0.3cm}
+}
+
+\newcommand{\stitle}[2]{
+	\title{#1}
+	\author{#2\\
+	\small{\url{remi.chaintron@gmail.com}}
+	}
+	\fancyhf{}
+	\fancyhead{}					% clear all header fields
+	\fancyhead[L]{\nouppercase{#1}}
+	\fancyhead[R]{\nouppercase{#2}}
+	\fancyfoot{}					% clear all footer fields
+	\pagestyle{fancyplain}
+}
+
+%\definecolor{rouge}{rgb}{0.5, 0.1, 0.1}
+\definecolor{rouge}{rgb}{0.2, 0.2, 0.3}
+\definecolor{bleu}{rgb}{0.4, 0.4, 0.4}
+\definecolor{black}{rgb}{0.0, 0.0, 0.0}
+\definecolor{quote}{rgb}{0.2, 0.40, 0.4}
+\definecolor{definition}{rgb}{0.2, 0.30, 0.4}
+\definecolor{important}{rgb}{0.3, 0.3, 0.4}%{0.1, 0.1, 0.7}%{0.9, 0.0, 0.1}%{0.8, 0.1, 0.0}
+\definecolor{technic}{rgb}{0.0, 0.0, 0.0}
+%\definecolor{technic}{rgb}{0.0, 0.0, 0.4}
+
+%% }}}
+%%	{{{ Definition
+\newcommand{\sdef}[2]{
+	\vspace{0.1cm}
+	\color{definition}
+	\textbf{#1 :}
+	#2
+	\vspace{0.2cm}
+	\color{black}
+}
+
+%% }}}
+%% {{{ Commands
+%%	{{{ Example
+\newcommand{\sexample}[1]
+{
+\footnotesize{       #1}
+\normalsize
+
+
+}
+%%	}}}
+%%	{{{ quote with source
+\newcommand{\squotesource}[2]
+{
+	\color{quote} 
+	\textit{#2}
+	\vspace{-0.2cm}
+	\begin{flushright}
+		\footnotesize
+		\textbf{#1}
+		\normalsize
+	\end{flushright}
+	\color{black}
+}
+
+%%	}}}
+%%	{{{ quote
+\newcommand{\squote}[1]
+{
+	\color{quote} 
+	\textit{#1}
+	\color{black}
+}
+
+%%	}}}
+%%	{{{ Note
+\newcommand{\snote}[2]{
+	{
+	\rule[0.1cm]{10cm}{0.02cm}
+	\hspace{-9cm}
+	\colorbox[rgb]{1, 1, 1}{#1}
+	\footnotesize{#2}
+	}
+	\normalsize
+}
+
+%%	}}}
+%%	{{{ Remarque
+\newcommand{\sremark}[1]{
+	{
+	\rule[0.1cm]{10cm}{0.03cm}
+	\hspace{-9cm}
+	\colorbox[rgb]{1, 1, 1}{Remarque}\\
+	#1\\
+	}
+}
+
+%%	}}}
+%%	{{{ Important
+\newcommand{\simportant}[1]{
+	{
+	\rule[0.1cm]{10cm}{0.05cm}
+	\hspace{-9cm}
+	\colorbox[rgb]{1, 1, 1}{Important}\\
+	\textbf{#1\\}
+	}
+}
+
+%%	}}}
+%%	{{{ See also
+\newcommand{\seealso}[2]{
+\vspace{0.2cm}
+\par \textit{#1} #2
+}
+%%	}}}
+%% }}}

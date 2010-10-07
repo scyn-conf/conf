@@ -104,14 +104,11 @@ map <F5> :gnull
 " Folding functions
 map -f <ESC>/^}<RETURN><ESC>zf%
 " access to ~/.vimrc
-map :rc :e ~/.vimrc
-map <F2> :rc<RETURN>
+map <F2> :e ~/.vimrc<RETURN>
 " opens mappings file
-map :ma :e ~/.vim/mappings.vim
-map <F3> :ma<RETURN>
+map <F3> :e ~/.vim/mappings.vim<RETURN>
 " opens functions file
-map :fun :e ~/.vim/fun.vim
-map <F4> :fun<RETURN>
+map <F4> :e ~/.vim/fun.vim<RETURN>
 " Open cwd
 cmap ewd e .
 cmap sudow w !sudo tee %
