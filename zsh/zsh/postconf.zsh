@@ -12,6 +12,7 @@ fi
 cd /goinfre && s goinfre
 cd ~/.vim/ && s vimconf
 cd ~/.zsh/ && s zshconf
+cd ~/Downloads && s downloads
 
 
 
