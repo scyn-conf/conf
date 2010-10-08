@@ -5,3 +5,8 @@
 
 export PATH="$PATH:/opt/local/bin"
 
+cd ~/EPITA/ && s epita
+cd ~/EPITA/SRS/ && s srs
+
+
+
