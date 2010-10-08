@@ -55,7 +55,7 @@ function precmd()
 		;;
 	esac
 	
-	PROMPT="${lgreen}%D{%H:%M}$clr - $red$USER$clr at $yellow$HOST$clr in $blue%~$clr on $cyan${vcs_info_msg_0_}$clr
+	PROMPT="${lgreen}%D{%H:%M}$clr - $red`whoami`$clr at $yellow$HOST$clr in $blue%~$clr on $cyan${vcs_info_msg_0_}$clr
 %(?..${red}[%?] %b)$blue(%!) ${lblue}42sh>$clr "
 
 #	PROMPT="${blue}%~${dirt} ${vcs_info_msg_0_}$clr
