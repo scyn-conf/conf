@@ -1,68 +1,100 @@
-Cette conf vim est plus orientee gvim, notamment au niveau des colorscheme.
-Cependant elle devrait tourner sans problemes sur vim. N'hesitez pas a me faire
-remonter d'eventuels bugs/suggestions.
-
-Pour me contacter: remi.chaintron@gmail.com, merci d'utiliser la balise [vim]
-Vous pouvez egalement me mailer si vous souhaitez etre tenu informe des
-modifications qui ne tarderont pas dans la conf.
-
-Le fichier cheatsheet.gif contient un rappel des mappings basiques de vim.
-Suis un rapide et non-exhaustif overview de la conf.
+File: README
+Version: 0.2
+Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 
 
-1. Fichiers de configuration
+1. Introduction
 
-Les premiers fichiers a considerer sont les fichiers de configuration, a savoir
-principalement:
-~/.vimrc
-~/.vim/fun.vim
-~/.vim/mappings.vim
-Ces fichiers sont (ou sont en train d'etre) documentes, et ne devraient pas
-poser de problemes de comprehension.
+Ces fichiers de configuration sont libres de droits, et quiconque peut utiliser
+une partie ou l'intégralité de cette configuration selon son bon vouloir.
+
+Gardez à l'esprit que cette configuration est personnelle, dans le sens qu'elle
+s'adapte à mes besoins. Aussi, il est possible que certaines fonctionnalités ou
+choix ne vous conviennent pas. Je vous conseille donc de prendre le temps de
+faire le tri dans ce que vous souhaitez intégrer dans votre configuration.
+
+Je suis ouvert à toutes suggestions et remarques, et n'hésitez pas à me
+contacter (remi.chaintron@gmail.com) en cas de bugs, problèmes ou besoin
+d'explications :)
+
+2. Obtention
+
+Afin d'obtenir ces fichiers, plusieurs moyens sont à disposition:
+ - En clonant (lecture seule) le repository git hébergeant cette configuration:
+	42sh$ git clone git://github.com/scyn-conf/conf.git
+	ou
+	42sh$ git clone http://github.com/scyn-conf/conf.git 
+ - En récupérant une archive directement: 
+	http://github.com/scyn-conf/conf -> Downloads
+
+Remarque: Pour cloner le repository en passant par un proxy, il est nécessaire
+d'utiliser tsocks.
+	ex: 42sh$ tsocks git clone git://github.com/scyn-conf/conf.git
+
+3. Installation
+
+Dans le cas ou cette configuration aurait été obtenue directement à partir du
+repository git, il existe trois manières d'installer les fichiers pour vim
+
+ - En utilisant le script d'installation (des backups sont effectués des
+   fichiers existants):
+	42sh$ ./install.sh --vim
+
+ - En créant les liens symboliques (ce que le script d'installation fait)
+	42sh$ ln -s vim/vim ~/.vim
+	42sh$ ln -s vim/vimrc ~/.vimrc
+
+ - En copiant directement les fichiers
+	42sh$ cp -r vim/vim ~/.vim
+	42sh$ cp vim/vimrc ~/.vimrc
+	
+
+4. Architecture
+
+Voici une description succinte de l'architecture de cette configuration:
+
+conf/vim/vimrc			-> Fichier de configuration principal
+conf/vim/vim/after/		-> Fichiers chargés à la fin (override)
+conf/vim/vim/autoload/		-> Fonctions chargées automatiquement par vim
+conf/vim/vim/colors/		-> Définition des colorschemes
+conf/vim/vim/doc/		-> Documentation de vim et des plugins
+conf/vim/vim/ftdetect/		-> Détection des filetypes
+conf/vim/vim/ftplugin/		-> Plugins sur les filetypes
+conf/vim/vim/indent/		-> Fichiers d'indentation
+conf/vim/vim/plugin/		-> Plugins
+conf/vim/vim/skel/		-> Squelettes de fichiers (plugin Autofile)
+conf/vim/vim/snippets/		-> Snippets (plugin SnipMate)
+conf/vim/vim/spell/		-> Fichiers de correction orthographique 
+conf/vim/vim/syntax/		-> Définitions de syntaxe
+conf/vim/vim/abbrev.vim		-> Abréviations
+conf/vim/vim/cheatsheet.gif	-> Image représentant les raccourcis de vim
+conf/vim/vim/codingstyle.vim	-> Activation/Désactivation de coding styles
+conf/vim/vim/filetype.vim	-> Association extensions/type
+conf/vim/vim/fun.vim		-> Fonctions
+conf/vim/vim/langdep.vim	-> Variables liées aux langages
+conf/vim/vim/mappings.vim	-> Mappings
+conf/vim/vim/plugins.vim	-> Définition de variables globales pour les plugins
+
+
+5. Note pour les étudiants d'EPITA:
+
+Il est possible que les couleurs dans vim soient faussées dans xterm.
+Pour remédier à ce problème, vous pouvez:
+
+ - appeler le script suivant dans votre .mybashrc:
+   /u/all/chaint_r/public/.xtfix. Il permet d'"étendre" les couleurs d'xterm, et
+   ainsi avoir des couleurs bien plus agréables (et surtout visibles!)
+ - Utiliser un colorscheme différent (mais je vous conseille tout de même
+   d'utiliser .xtfix, pour plus de confort)
+
+Je vous conseille vivement de vous familiariser avec les fichiers suivants pour
+une utilisation confortable de cette configuration:
+conf/vim/vimrc
+conf/vim/vim/mappings.vim
+conf/vim/vim/fun.vim
+
+Ainsi que de regarder les différents plugins utilisés (situés dans
+conf/vim/vim/plugin/)
 
 
 
-2. Documentation
-
-Si besoin, vous pouvez regenerer les documentations annexes (plugins par
-exemple) en utilisant la commande ":helptags ~/.vim/doc/"
-
-
-
-3. Plugin
-
-DoxygenToolkit.vim -> generation de commentaires doxygen
-NERD_tree.vim -> buffer d'arborescence (mapping "nt")
-bufexplorer.vim -> liste de buffers (mapping "<SPACE>o")
-
-/!\
-snipMate.vim -> generation de code (voir article en bas)
-Ce plugin est absolument genial, je vous invite vivement a l'utiliser, il permet
-de generer du code de maniere extremement intelligente. N'hesitez pas a me poser
-des questions par mails sur ce plugin au besoin.
-/!\
-
-supertab.vim -> completion avec tab
-surround.vim -> gestion des ",',`,{,( etc, voir article en bas, assez pratique
-
-Des articles bien faits sont disponibles a ces adresses:
-http://www.catonmat.net/blog/vim-plugins-snipmate-vim/
-http://www.catonmat.net/blog/vim-plugins-surround-vim/
-http://www.catonmat.net/blog/vim-plugins-repeat-vim/
-
-D'autres plugins plus orientes S2/cpp sont egalement integres.
-
-
-
-4. Fonctions
-
-Deux fonctions mappees sur F11 et F12 sont tres interessantes:
-
-F11: My_indent_style
-Cette fonction permet de configurer combien d'espaces un tab vaut. Le mode 3
-(kernel) ne devrait pas vous servir. Cette fonction est totalement
-norme-compliant au niveau des indentations.
-
-F12: See_tab
-Cette fonction vous permet de voir les tab, ca peut etre tres utile pour
-verifier que des choses sont bien alignees.
