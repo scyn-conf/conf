@@ -38,15 +38,15 @@ repository git, il existe trois manières d'installer les fichiers pour vim
 
  - En utilisant le script d'installation (des backups sont effectués des
    fichiers existants):
-	42sh$ ./install.sh --vim
+	42sh$ conf/install.sh --vim
 
  - En créant les liens symboliques (ce que le script d'installation fait)
-	42sh$ ln -s vim/vim ~/.vim
-	42sh$ ln -s vim/vimrc ~/.vimrc
+	42sh$ ln -s conf/vim/vim ~/.vim
+	42sh$ ln -s conf/vim/vimrc ~/.vimrc
 
  - En copiant directement les fichiers
-	42sh$ cp -r vim/vim ~/.vim
-	42sh$ cp vim/vimrc ~/.vimrc
+	42sh$ cp -r conf/vim/vim ~/.vim
+	42sh$ cp conf/vim/vimrc ~/.vimrc
 	
 
 4. Architecture
