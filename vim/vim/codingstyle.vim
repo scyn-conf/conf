@@ -7,7 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable additionnal syntax definitions (EPITA Coding Style compliance).
 " Comment variables definitions to disable
-let g:eCS_enabled=1 
+"let g:eCS_enabled=1 
 if exists('g:eCS_enabled')
 	let g:eCS_80columns=1
 	let g:eCS_functions=1
