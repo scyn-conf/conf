@@ -68,9 +68,10 @@ if has("gui_running")
 	set cursorline
 	set hlsearch
 else
+	set t_Co=16
 	colorscheme scyn_pale
 endif
-set history=500		" keep 50 lines of command line history
+set history=500		" keep 500 lines of command line history
 set ruler		" show the cursor position all the time
 set number
 
