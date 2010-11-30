@@ -8,6 +8,7 @@ source ~/.vim/compatibility.vim
 source ~/.vim/general.vim
 source ~/.vim/autocommands.vim
 source ~/.vim/buffers.vim
+"source ~/.vim/completion.vim
 source ~/.vim/display.vim
 source ~/.vim/editing.vim
 source ~/.vim/folding.vim
@@ -19,6 +20,7 @@ source ~/.vim/search.vim
 source ~/.vim/sudo.vim
 source ~/.vim/syntax.vim
 source ~/.vim/tags.vim
+source ~/.vim/tiger.vim
 source ~/.vim/textwidth.vim
 source ~/.vim/windows.vim
 

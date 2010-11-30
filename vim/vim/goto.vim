@@ -4,11 +4,15 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
 
+" Mappings:{{{
+"------------------------------------------------------------------------------
 " Go to file under cursor in a split
-nmap hgf :split <cfile><CR>
+noremap <silent>	hgf	:split <cfile><CR>
 " Go to file under cursor in a vertical split
-nmap vgf :vsplit <cfile><CR>
+noremap <silent>	vgf	:vsplit <cfile><CR>
 " Go to file under cursor in a new tab
-nmap tgf :tabedit <cfile><CR>
+noremap <silent>	tgf	:tabedit <cfile><CR>
 
+
+"}}}
 

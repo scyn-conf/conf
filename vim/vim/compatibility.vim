@@ -4,6 +4,17 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 
 
+" Preload:{{{
+"------------------------------------------------------------------------------
+" Load Pathogen
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin indent on
+
+"}}}
+" Options:{{{
+"------------------------------------------------------------------------------
 " Disable Vi-compatibility
 set nocompatible
 " In the case we are using evim, do not load configuration
@@ -18,3 +29,4 @@ else
 endif
 
 
+"}}}
