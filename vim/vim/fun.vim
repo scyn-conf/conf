@@ -3,6 +3,31 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
 " vim600: set foldmethod=marker:
+"
+"
+function! SetCursorPosition()
+    if &filetype !~ 'commit\c'
+        if line("'\"") > 0 && line("'\"") <= line("$")
+            exe "normal! g`\""
+            normal! zz
+        endif
+    end
+endfunction
+
+function! StatuslineCurrentHighlight()
+""    let name = synIDattr(synID(line('.'),col('.'),1),'name')
+""    if name == ''
+""        return ''
+""    else
+""	return '[' . name . ']'
+""    endif
+	echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+     \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
+     \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+     \ . ">"
+
+endfunction
+
 
 " {{{ MayComplete ()
 " Use tab to insert tab or completion.

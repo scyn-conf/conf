@@ -112,3 +112,15 @@ map <F4> :e ~/.vim/fun.vim<RETURN>
 " Open cwd
 cmap ewd e .
 cmap sudow w !sudo tee %
+
+
+"make Y consistent with C and D
+nnoremap Y y$
+
+" Maps to make handling windows a bit easier
+noremap <silent> <C-S-LEFT> :vertical resize -10<CR>
+noremap <silent> <C-S-DOWN> :resize -10<CR>
+noremap <silent> <C-S-RIGHT> :vertical resize +10<CR>
+noremap <silent> <C-S-UP> :resize +10<CR>
+
+
