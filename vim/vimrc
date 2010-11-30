@@ -1,150 +1,25 @@
 " File: vimrc
-" Brief: Vim configuration file
-" Version: 2.0
+" Project: scyn-conf/vim
+" Brief: Vim main configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
-" vim600: set foldmethod=marker:
-"
 
-" Compatibility: (/!\ These settings should not be altered){{{
-"------------------------------------------------------------------------------
-" Disable Vi-compatibilty
-set nocompatible
-" In the case we are using evim, do not load configuration
-if v:progname =~? "evim"
-    finish
-endif
-" If we are using VMS version of vim, do not create back-ups
-if has("vms")
-    set nobackup
-else
-    set backup
-endif
-
-
-" }}}
-" General:{{{
-"------------------------------------------------------------------------------
-" Show incomplete commands
-set showcmd
-" Show current mode
-set showmode
-" Minimal number of lines to scroll when the cursor gets of the screen
-set scrolloff=16
-" Completion mode (behaves like bash)
-set wildmode=list:longest
-" Patterns to ignore when completing file or directry names
-set wildignore=*.o,*.obj,*.bak,*.exe,*~
-" ~/.viminfo file settings
-set viminfo='1000,f1,:500,/500,<50,s10,h
-" :list command configuration
-set listchars+=tab:I.,trail:_
-" Do not redraw when running macros (much faster)
-set lazyredraw
-" Allow to change buffer without saving
-set hidden
-" Allow vim to update file without asking
-set autoread
-" Set default text width value (see also: ToogleTextWidth function)
-set textwidth=80
-" Number of lines for command line history
-set history=500
-" Use utf8
-set fileencoding=utf8
-set encoding=utf8
-" Enable filetype plugins
-filetype plugin on
-" Disable syntax highlighting for lines that are too long (much faster)
-set synmaxcol=2048
-
-
-" }}}
-" Behavior:{{{
-"------------------------------------------------------------------------------
-" Do not continue comments for line created using o or O
-set formatoptions-=o
-" Allow backspace over everything in insert mode
-set backspace=indent,eol,start
-" Don't wrap lines but break lines at convenient points
-set nowrap
-set linebreak
-" Folds use markers {{{ and }}}
-set foldmethod=marker
-" Commands that are able to open folds
-set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-" Timeout for macros
-set timeoutlen=500
-
-
-" }}}
-" Appearance:{{{
-"------------------------------------------------------------------------------
-" Enable syntax
-syntax on
-" Set colorscheme
-" Gui configuration
-if has("gui_running")
-    set guioptions-=m	" no menu bar
-    set guioptions-=T	" no toolbar
-    set guioptions-=r	" no right-hand scrollbar
-    set guioptions-=L	" no left-hand scrollbar
-    set cursorline	" currrent line is highlighted
-    set hlsearch	" highlight search matches
-    colorscheme scyn_pale " set colorscheme
-    set vb t_vb=	" disable visualbell and beeps"
-else " terminal configuration
-    set t_Co=16		" Use 8 colors
-    colorscheme scyn_pale " set colorscheme
-endif
-" Show the cursor position
-set ruler
-" Show line numbers
-set number
-" Status line
-set statusline=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
-" Get rid of separator chars
-set fillchars=""
-
-" }}}
-" Indentation:{{{
-"------------------------------------------------------------------------------
-" Do NOT insert spaces instead of tabs
-set noexpandtab
-" Number of spaces in the file a <Tab> counts for.
-" (/!\ This value should not be changed!)
-set tabstop=8
-" Number of columns a <Tab> counts for
-set softtabstop=8
-" Number of spaces to use for each step of indentation
-set shiftwidth=8
-" Insert blanks according to shiftwidth, tabstop and softtabstop
-set smarttab
-" Set auto indentation
-set autoindent
-
-
-" }}}
-" Search:{{{
-"------------------------------------------------------------------------------
-" Ignore case of normal letters in patterns
-set ignorecase
-" Ignore case when the pattern contains lowercase letters only
-set smartcase
-" Search wrap around the end of the file
-set nowrapscan
-" Show the current first match when search"
-set incsearch
-
-
-" }}}
-" Source:{{{
-"------------------------------------------------------------------------------
-source ~/.vim/fun.vim
-source ~/.vim/mappings.vim
-source ~/.vim/plugins.vim
-source ~/.vim/langdep.vim
-source ~/.vim/codingstyle.vim
+source ~/.vim/compatibility.vim
+source ~/.vim/general.vim
 source ~/.vim/autocommands.vim
-
+source ~/.vim/buffers.vim
+source ~/.vim/display.vim
+source ~/.vim/editing.vim
+source ~/.vim/folding.vim
+source ~/.vim/goto.vim
+source ~/.vim/indentation.vim
+source ~/.vim/langdep.vim
+source ~/.vim/plugins.vim
+source ~/.vim/search.vim
+source ~/.vim/sudo.vim
+source ~/.vim/syntax.vim
+source ~/.vim/tags.vim
+source ~/.vim/textwidth.vim
+source ~/.vim/windows.vim
 
 " }}}"

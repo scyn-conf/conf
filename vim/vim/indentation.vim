@@ -1,54 +1,43 @@
-" File: fun.vim
-" Brief: Functions used in vim configuration file
+" File: indentation.vim
+" Project: scyn-conf/vim
+" Brief: Vim indentation configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
-" vim600: set foldmethod=marker:
-"
-"
-function! SetCursorPosition()
-    if &filetype !~ 'commit\c'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
-    end
-endfunction
 
-function! StatuslineCurrentHighlight()
-""    let name = synIDattr(synID(line('.'),col('.'),1),'name')
-""    if name == ''
-""        return ''
-""    else
-""	return '[' . name . ']'
-""    endif
-	echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-     \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
-     \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
-     \ . ">"
-
-endfunction
+" Options:{{{
+"------------------------------------------------------------------------------
+" Do NOT insert spaces instead of tabs
+set noexpandtab
+" Number of spaces in the file a <Tab> counts for.
+" (/!\ This value should not be changed!)
+set tabstop=8
+" Number of columns a <Tab> counts for
+set softtabstop=8
+" Number of spaces to use for each step of indentation
+set shiftwidth=8
+" Insert blanks according to shiftwidth, tabstop and softtabstop
+set smarttab
+" Set auto indentation
+set autoindent
 
 
-" {{{ MayComplete ()
-" Use tab to insert tab or completion.
-function MayComplete()
-	let col = col('.')-1
-	if !col || getline('.')[col-1] !~ '\k'
-		return "\<Tab>"
-	else
-		return "\<C-N>"
-	endif
-endfunction
+"}}}
+" Variables:{{{
+"------------------------------------------------------------------------------
+" Default indent style. Values can be 2, 4 and 8
+let g:my_set_style = 2
 
 
 " }}}
-" {{{ My_indent_style ()
-let g:my_set_style = 2
-function! My_indent_style()
+" Functions:{{{
+"------------------------------------------------------------------------------
+" Allow user to switch between indentation styles
+" Note: it does not reindent files
+function! s:IndentStyle()
 	echo "Styles: "
-	echo "	[0] normal-2 (default)"
+	echo "	[0] normal-2"
 	echo "	[1] normal-4"
-	echo "	[2] normal-8"
+	echo "	[2] normal-8 (default)"
 	echo "	[3] kernel-8"
 	let g:indent_style=input ("Specify indenting style : ")
 	if g:indent_style < 3
@@ -93,9 +82,8 @@ function! My_indent_style()
 endfunction
 
 
-" }}}
-" {{{ SeeTab ()
-fu! SeeTab()
+" Display tabs
+function! s:SeeTabs()
 	if !exists("g:SeeTabEnabled")
 		let g:SeeTabEnabled = 1
 		let g:SeeTab_list = &list
@@ -115,23 +103,35 @@ fu! SeeTab()
 		silent! exe "hi ".substitute(g:SeeTabSpecialKey,'xxx','','e')
 		unlet g:SeeTabEnabled g:SeeTab_list g:SeeTab_listchars
 	endif
-endfunc
-
-
-" }}}
-" {{{ ToogleTextWidth ()
-let g:defaultTextWidth = 1
-function! ToogleTextWidth ()
-	if g:defaultTextWidth == 1
-		silent! exe "set textwidth=80" 
-		let g:defaultTextWidth = 0
-		echo "Textwidth value is now set to 80"
-	else
-		silent! exe "set textwidth=200"
-		let g:defaultTextWidth = 1
-		echo "Textwidth value is now set to 200"
-	endif
 endfunction
 
 
-" }}}
+" Reindent current file
+function! s:ReindentFile()
+  silent! execute "normal ggvG=``"
+endfunction
+
+
+"}}}"
+" Commands: {{{
+"------------------------------------------------------------------------------
+command! -nargs=0	ReindentFile	call s:ReindentFile()
+command! -nargs=0	SeeTabs		call s:SeeTabs()
+command! -nargs=0	IndentStyle	call s:IndentStyle()
+
+
+"}}}
+" Mappings:{{{
+"------------------------------------------------------------------------------
+" Reindent current file
+noremap <silent>	<F12>	:ReindentFile<CR>
+noremap <silent>	==	:ReindentFile<CR>
+" SeeTabs mapping
+noremap <silent>	<F11>	:SeeTabs<CR>
+" IndentStyle mapping
+noremap <silent>	<F10>	:IndentStyle<CR>
+
+
+"}}}
+
+
