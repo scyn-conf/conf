@@ -93,7 +93,7 @@ if has("gui_running")
     colorscheme scyn_pale " set colorscheme
     set vb t_vb=	" disable visualbell and beeps"
 else " terminal configuration
-    set t_Co=8		" Use 8 colors
+    set t_Co=16		" Use 8 colors
     colorscheme scyn_pale " set colorscheme
 endif
 " Show the cursor position
