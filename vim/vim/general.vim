@@ -27,8 +27,6 @@ filetype plugin on
 set synmaxcol=2048
 " Do not continue comments for line created using o or O
 set formatoptions-=o
-" Allow backspace over everything in insert mode
-set backspace=indent,eol,start
 " Don't wrap lines but break lines at convenient points
 set nowrap
 set linebreak

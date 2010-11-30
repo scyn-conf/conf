@@ -2,21 +2,22 @@
 " Project: scyn-conf/vim
 " Brief: Vim compatibility configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
+"
 
-
-" Preload:{{{
-"------------------------------------------------------------------------------
-" Load Pathogen
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-
-"}}}
 " Options:{{{
 "------------------------------------------------------------------------------
 " Disable Vi-compatibility
 set nocompatible
+" Load Pathogen
+runtime! autoload/pathogen.vim
+silent! call pathogen#runtime_append_all_bundles()
+" Necessary for arrows and some other keys to work
+set term=builtin_ansi
+" Enable plugin and indent filetypes
+filetype plugin on
+filetype indent on
+" Allow backspace over everything in insert mode
+set backspace=2
 " In the case we are using evim, do not load configuration
 if v:progname =~? "evim"
     finish

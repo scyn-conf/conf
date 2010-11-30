@@ -18,6 +18,9 @@ let OmniCpp_SelectFirstItem = 2
 let me_name='Scyn - Remi Chaintron'
 let me_mail='remi.chaintron@gmail.com'
 
+" SuperTab
+let g:SuperTabCrMapping = 0
+
 
 "}}}
 " Mappings:{{{
