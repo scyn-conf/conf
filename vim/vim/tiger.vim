@@ -1,5 +1,5 @@
 " File: tiger.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Tiger configuration file for vim
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

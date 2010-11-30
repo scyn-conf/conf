@@ -1,5 +1,5 @@
 " File: windows.vim
-" Project: scyn-conf/windows.vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim windows configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

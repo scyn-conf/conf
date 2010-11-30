@@ -1,5 +1,5 @@
 " File: syntax.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim syntax related configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

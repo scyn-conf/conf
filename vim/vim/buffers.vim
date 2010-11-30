@@ -1,5 +1,5 @@
 " File: buffers.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim buffers configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

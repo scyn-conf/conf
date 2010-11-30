@@ -1,5 +1,5 @@
 " File: autocommands.vim
-" Project: Scyn-conf/vim
+" Project: Scyn-conf/conf/vim
 " Brief: Autocommands for vim
 " Version: 2.0
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>

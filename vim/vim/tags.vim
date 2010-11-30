@@ -1,5 +1,5 @@
 " File: tags.vim
-" Project: scyn-conf/tags.vim
+" Project: scyn-conf/conf/tags.vim
 " Brief: Vim tags configuration
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

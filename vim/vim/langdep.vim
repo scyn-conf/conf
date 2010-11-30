@@ -1,5 +1,5 @@
 " File: .vim/langdep.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim Language configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

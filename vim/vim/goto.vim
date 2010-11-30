@@ -1,5 +1,5 @@
 " File: goto.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim 'goto' configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

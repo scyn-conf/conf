@@ -1,5 +1,5 @@
 " File: general.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim general configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

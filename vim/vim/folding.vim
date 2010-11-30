@@ -1,5 +1,5 @@
 " File: folding.vim
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim folding configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

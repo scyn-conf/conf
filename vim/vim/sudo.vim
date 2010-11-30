@@ -1,5 +1,5 @@
 " File: sudo.vim
-" Project: scyn-conf/sudo.vim
+" Project: scyn-conf/conf/sudo.vim
 " Brief: Vim sudo configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

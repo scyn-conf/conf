@@ -1,5 +1,5 @@
 " File: vimrc
-" Project: scyn-conf/vim
+" Project: scyn-conf/conf/vim
 " Brief: Vim main configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
@@ -8,7 +8,6 @@ source ~/.vim/compatibility.vim
 source ~/.vim/general.vim
 source ~/.vim/autocommands.vim
 source ~/.vim/buffers.vim
-"source ~/.vim/completion.vim
 source ~/.vim/display.vim
 source ~/.vim/editing.vim
 source ~/.vim/folding.vim
