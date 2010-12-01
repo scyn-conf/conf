@@ -16,6 +16,7 @@ source ~/.vim/indentation.vim
 source ~/.vim/langdep.vim
 source ~/.vim/plugins.vim
 source ~/.vim/search.vim
+source ~/.vim/statusline.vim
 source ~/.vim/sudo.vim
 source ~/.vim/syntax.vim
 source ~/.vim/tags.vim

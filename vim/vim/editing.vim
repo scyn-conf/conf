@@ -7,8 +7,9 @@
 " Functions:{{{
 "------------------------------------------------------------------------------
 function! s:DeleteTrailingWhiteSpaces()
-	silent! execute "normal :%s/\s\+$//<CR>``:noh<CR>"
-endfunction
+	silent! execute "%substitute/\\s\\+$//"
+	noh    
+endfunction  
 
 
 " }}}

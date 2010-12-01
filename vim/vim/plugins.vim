@@ -21,6 +21,10 @@ let me_mail='remi.chaintron@gmail.com'
 " SuperTab
 let g:SuperTabCrMapping = 0
 
+" Syntastic
+let syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list=1
+
 
 "}}}
 " Mappings:{{{
