@@ -1,5 +1,5 @@
 " File: compatibility.vim
-" Project: scyn-conf/conf/vim
+" Project: scyn-conf/vim
 " Brief: Vim compatibility configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

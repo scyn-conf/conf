@@ -1,59 +1,172 @@
-"%% SiSU Vim color file
-" late, based on slate.
-" Slate Maintainer: Ralph Amissah <ralph@amissah.com>
-" (originally looked at desert Hans Fugal <hans@fugal.net> http://hans.fugal.net/vim/colors/desert.vim (2003/05/06)
-:set background=dark
-:highlight clear
-if version > 580
- hi clear
- if exists("syntax_on")
- syntax reset
- endif
-endif
-:hi Normal guifg=White guibg=grey15
-:hi Cursor guibg=khaki guifg=slategrey
-:hi VertSplit guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
-:hi Folded guibg=black guifg=grey40 ctermfg=grey ctermbg=darkgrey
-:hi FoldColumn guibg=black guifg=grey20 ctermfg=4 ctermbg=7
-:hi IncSearch guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
-:hi ModeMsg guifg=goldenrod cterm=none ctermfg=brown
-:hi MoreMsg guifg=SeaGreen ctermfg=darkgreen
-:hi NonText guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=blue
-:hi Question guifg=springgreen ctermfg=green
-:hi Search guibg=peru guifg=wheat cterm=none ctermfg=grey ctermbg=blue
-:hi SpecialKey guifg=yellowgreen ctermfg=darkgreen
-:hi StatusLine guibg=#c2bfa5 guifg=black gui=none cterm=bold,reverse
-:hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
-:hi Title guifg=gold gui=bold cterm=bold ctermfg=yellow
-:hi Statement guifg=#8b0000 ctermfg=darkyellow
-:hi Visual gui=none guifg=khaki guibg=olivedrab cterm=reverse
-:hi WarningMsg guifg=salmon ctermfg=1
-:hi String guifg=SkyBlue ctermfg=lightblue
-:hi Comment term=bold ctermfg=grey guifg=grey40
-:hi Constant guifg=#ffa0a0 ctermfg=darkgreen
-:hi Special guifg=darkkhaki ctermfg=yellow
-:hi Identifier guifg=salmon ctermfg=red
-:hi Include guifg=red ctermfg=darkred
-:hi PreProc guifg=pink ctermfg=red
-:hi Operator guifg=Red ctermfg=yellow
-:hi Define guifg=gold gui=bold ctermfg=yellow
-:hi Type guifg=CornflowerBlue ctermfg=green
-:hi Function guifg=navajowhite ctermfg=brown
-:hi Structure guifg=green ctermfg=green
-:hi LineNr guifg=grey50 ctermfg=grey guibg=grey17
-:hi Ignore guifg=grey40 cterm=bold ctermfg=7
-:hi Todo guifg=orangered
+" File: scyn.vim
+" Project: scyn-conf/vim
+" Brief: Vim 'scyn' colorscheme
+" Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
+"
 
-"" :hi Todo guifg=orangered " guibg=yellow2
-:hi Directory ctermfg=darkcyan
-:hi ErrorMsg cterm=bold guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
-:hi VisualNOS cterm=bold,underline
-:hi WildMenu ctermfg=0 ctermbg=3
-:hi DiffAdd ctermbg=4
-:hi DiffChange ctermbg=5
-:hi DiffDelete cterm=bold ctermfg=4 ctermbg=6
-:hi DiffText cterm=bold ctermbg=1
-:hi Underlined cterm=underline ctermfg=5
-:hi Error guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
-:hi SpellErrors guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
-let g:colors_name = "scyn"
+
+set background=dark
+hi clear
+
+if exists("syntax_on")
+  syntax reset
+endif
+
+let colors_name = "ir_black"
+
+
+"hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+
+" General colors
+hi Normal           guifg=#f6f3e8     guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi NonText          guifg=#070707     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+
+hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
+hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+
+hi VertSplit        guifg=#202020     guibg=#202020     gui=NONE      ctermfg=red    ctermbg=darkgray    cterm=NONE
+hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=white       ctermbg=darkgray    cterm=NONE
+hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=blue        ctermbg=darkgray    cterm=NONE  
+
+hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+
+hi SpecialKey       guifg=#808080     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+
+hi WildMenu         guifg=green       guibg=yellow      gui=NONE      ctermfg=black       ctermbg=yellow      cterm=NONE
+hi PmenuSbar        guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=NONE
+"hi Ignore           guifg=gray        guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+
+hi Error            guifg=NONE        guibg=darkred        gui=NONE ctermfg=white       ctermbg=darkred         cterm=NONE     guisp=#FF6C60 " undercurl color
+hi ErrorMsg         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=red         cterm=NONE
+hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=red         cterm=NONE
+
+" Message displayed in lower left, such as --INSERT--
+hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
+
+if version >= 700 " Vim 7.x specific colors
+  hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=darkgray        cterm=BOLD
+  hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+  hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
+  hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=white       ctermbg=darkgray        cterm=NONE
+  hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=black        ctermbg=lightgreen        cterm=NONE
+  hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
+endif
+
+" Syntax highlighting
+hi Comment          guifg=#333333     guibg=NONE        gui=italic    ctermfg=darkgray	 ctermbg=NONE        cterm=NONE
+hi String           guifg=#b1d631     guibg=NONE        gui=NONE      ctermfg=green ctermbg=NONE        cterm=NONE
+hi Number           guifg=#d78700     guibg=NONE        gui=NONE      ctermfg=172 ctermbg=NONE        cterm=NONE
+
+hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold
+hi PreProc          guifg=#ffd787     guibg=NONE        gui=NONE      ctermfg=222        ctermbg=NONE        cterm=NONE
+hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold  " if else end
+
+hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
+hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
+
+hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
+hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=yellow ctermbg=NONE        cterm=NONE
+hi Type             guifg=#9AcD32     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
+hi Structure        guifg=#CD853F     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
+hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33 ctermbg=NONE        cterm=bold
+
+hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=darkyellow      ctermbg=NONE        cterm=NONE
+hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
+hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
+
+" Special for CPP
+hi cppcoutcolor     guifg=#98FB98     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
+hi cppcerrcolor     guifg=#E9967A     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
+hi CppStdColor      guifg=#ADFF2F     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
+
+hi link CppStdColor  	cppstdcolor
+
+hi link Character       Constant
+hi link Boolean         Constant
+hi link Float           Number
+hi link Repeat          Statement
+hi link Label           Statement
+hi link Exception       Statement
+hi link Include         PreProc
+hi link Define          PreProc
+hi link Macro           PreProc
+hi link PreCondit       PreProc
+hi link StorageClass    Type
+hi link Structure       Structure
+hi link Typedef         Type
+hi link Tag             Special
+hi link SpecialChar     Special
+hi link SpecialComment  Special
+hi link Debug           Special
+
+
+" Special for Ruby
+hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
+hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
+hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
+hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
+hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE  "and break, etc
+"hi rubyGlobalVariable          guifg=#FFCCFF      guibg=NONE      gui=NONE      ctermfg=lightblue      ctermbg=NONE      cterm=NONE  "yield
+hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
+"rubyInclude
+"rubySharpBang
+"rubyAccess
+"rubyPredefinedVariable
+"rubyBoolean
+"rubyClassVariable
+"rubyBeginEnd
+"rubyRepeatModifier
+"hi link rubyArrayDelimiter    Special  " [ , , ]
+"rubyCurlyBlock  { , , }
+
+hi link rubyClass             Keyword 
+hi link rubyModule            Keyword 
+hi link rubyKeyword           Keyword 
+hi link rubyOperator          Operator
+hi link rubyIdentifier        Identifier
+hi link rubyInstanceVariable  Identifier
+hi link rubyGlobalVariable    Identifier
+hi link rubyClassVariable     Identifier
+hi link rubyConstant          Type  
+
+
+" Special for Java
+" hi link javaClassDecl    Type
+hi link javaScopeDecl         Identifier 
+hi link javaCommentTitle      javaDocSeeTag 
+hi link javaDocTags           javaDocSeeTag 
+hi link javaDocParam          javaDocSeeTag 
+hi link javaDocSeeTagParam    javaDocSeeTag 
+
+hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+"hi javaClassDecl              guifg=#CCFFCC     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
+
+
+" Special for XML
+hi link xmlTag          Keyword 
+hi link xmlTagName      Conditional 
+hi link xmlEndTag       Identifier 
+
+
+" Special for HTML
+hi link htmlTag         Keyword 
+hi link htmlTagName     Conditional 
+hi link htmlEndTag      Identifier 
+
+
+" Special for Javascript
+hi link javaScriptNumber      Number 
+
+
+" Special for Python
+"hi  link pythonEscape         Keyword      
+
+
+" Special for CSharp
+hi  link csXmlTag             Keyword      
+
+
+" Special for PHP

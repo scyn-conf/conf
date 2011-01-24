@@ -35,17 +35,15 @@ function precmd()
 	lcyan="%{`print "\e[36;1m"`%}"
 	clr="%{$reset_color%}"
 
-
 	which vcs_info >&-
 	if [ $? -eq 0 ]; then
 		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-			zstyle ':vcs_info:*' formats "on ${cyan}[%s:%b:%7.7i%c%u$cyan]"
+			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u$cyan]"
 		} else {
-			zstyle ':vcs_info:*' formats "on ${cyan}[%s:%b:%7.7i%c%u%F{red}?$cyan]"
+			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u%F{red}?$cyan]"
 		}
 		vcs_info
 	fi
-	
 	case $TERM in
 		*xterm*|*rxvt*|Eterm)
 		echo -ne "\e]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007"
@@ -55,7 +53,7 @@ function precmd()
 		;;
 	esac
 	
-	PROMPT="${lgreen}%D{%H:%M}$clr - $red`whoami`$clr at $yellow$HOST$clr in $blue%~$clr ${vcs_info_msg_0_}$clr
+	PROMPT="${lgreen}%D{%H:%M}$clr - $red$USER$clr at $yellow$HOST$clr in $blue%~$clr on $cyan${vcs_info_msg_0_}$clr
 %(?..${red}[%?] %b)$blue(%!) ${lblue}42sh>$clr "
 
 #	PROMPT="${blue}%~${dirt} ${vcs_info_msg_0_}$clr

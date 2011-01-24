@@ -7,10 +7,10 @@
 " Mappings:{{{
 "------------------------------------------------------------------------------
 " Move between windows
-noremap <silent> <SPACE>k <C-w><up>
-noremap <silent> <SPACE>j <C-w><down>
-noremap <silent> <SPACE>l <C-w><right>
-noremap <silent> <SPACE>h <C-w><left>
+map <silent> <SPACE>k <C-w><up>
+map <silent> <SPACE>j <C-w><down>
+map <silent> <SPACE>l <C-w><right>
+map <silent> <SPACE>h <C-w><left>
 " Resize windows
 noremap <silent> <C-S-LEFT> :vertical resize -10<CR>
 noremap <silent> <C-S-DOWN> :resize -10<CR>

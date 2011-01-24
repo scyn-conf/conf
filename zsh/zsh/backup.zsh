@@ -17,3 +17,15 @@ function bak()
     done
 }
 
+
+function unbak()
+{
+    if ! ((#)); then
+	echo 'Usage: unbak <files>' >&2
+	return 1
+    fi
+
+    for file; do
+	mv $file `echo $file | sed 's/-201.*//g'`
+    done
+}

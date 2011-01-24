@@ -17,7 +17,7 @@ syntax match txtTagDoc "\[doc\]"
 
 syntax region txtShell start=+^\$+ end=+$+ contains=txtComment
 
-hi def link txtSection 		Keyword
+hi def link txtSection 		Type
 hi def link txtOK 		String
 hi def link txtSubSection   Keyword
 hi def link txtKO 		cppcerrcolor

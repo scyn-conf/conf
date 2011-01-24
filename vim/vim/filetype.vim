@@ -1,5 +1,6 @@
-" File: .vim/filetype.vim
-" Brief: filetype informations
+" File: filetype.vim
+" Project: scyn-conf/vim
+" Brief: Vim filetype informations configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
 "

@@ -1,5 +1,5 @@
 " File: search.vim
-" Project: scyn-conf/conf/vim
+" Project: scyn-conf/vim
 " Brief: Vim search configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

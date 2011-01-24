@@ -9,9 +9,14 @@ TRASHFILES='*~ #*~ *.sw[poa]'
 
 function clean()
 {
+	rm $TRASHFILES
+}
+
+function rclean()
+{
 	for expr in `echo $TRASHFILES`; do
 		find . -name "$expr" -delete
 	done
 }
 
-alias clearn="clean; clear"
+alias clrn="clean; clear"

@@ -1,0 +1,3 @@
+#compdef rs
+
+_describe -t trashfile 'trashfiles' trashcompletions

@@ -1,5 +1,5 @@
 " File: indentation.vim
-" Project: scyn-conf/conf/vim
+" Project: scyn-conf/vim
 " Brief: Vim indentation configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "

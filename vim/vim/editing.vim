@@ -1,5 +1,5 @@
 " File: editing.vim
-" Project: scyn-conf/conf/editing.vim
+" Project: scyn-conf/vim
 " Brief: Vim edition configuration file
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
