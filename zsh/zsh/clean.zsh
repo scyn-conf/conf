@@ -9,7 +9,9 @@ TRASHFILES='*~ #*~ *.sw[poa]'
 
 function clean()
 {
-	rm $TRASHFILES
+	for expr in `echo $TRASHFILES`; do
+		/bin/rm -rf "$expr"
+	done
 }
 
 function rclean()

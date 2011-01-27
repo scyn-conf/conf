@@ -5,10 +5,11 @@
 #
 #
 typeset -A bookmarks
-
 bookmarkentries=()
 bookmarkcompletions=()
+BOOKMARKS_CACHE=$ZSH_CONF_CACHE/bookmarks
 
+# save bookmark
 function s()
 {
     bookmarkentries+=($1)
@@ -16,11 +17,13 @@ function s()
     bookmarkcompletions+=($1:$bookmarks[$1])
 }
 
+# go to bookmark
 function g()
 {
     cd $bookmarks[$1]
 }
 
+# delete bookmark
 function d()
 {
     newbookmarkentries=()
@@ -33,12 +36,12 @@ function d()
 	fi
     done
 
-    bookmarkentries=$newbookmarkentries
-    bookmarkcompletions=$newbookmarkcompletions
-
+    bookmarkentries=($newbookmarkentries)
+    bookmarkcompletions=($newbookmarkcompletions)
     unset $bookmarks[$1]
 }
 
+# show bookmarks
 function bk()
 {
     for bookmark in $bookmarkentries; do
@@ -46,4 +49,14 @@ function bk()
     done
 }
 
-
+# read bookmark cache file
+function bk_read_cache()
+{
+	if [ -e $BOOKMARKS_CACHE ]; then
+		for line in `cat $BOOKMARKS_CACHE`; do
+			bk_name=${line%:*}
+			bk_path=${line##*:}
+			cd $bk_path && s $bk_name
+		done
+	fi
+}

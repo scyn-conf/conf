@@ -8,16 +8,6 @@ if ! [[ -d $ZSH_CONF_CACHE ]]; then
     mkdir -p $ZSH_CONF_CACHE
 fi
 
-bookmarks_file=~/.zsh_bookmarks
-
-if [ -e $bookmarks_file ]; then
-	for line in `cat $bookmarks_file`; do
-		bk_name=`echo "$line" | sed -e 's/:.*//g'`
-		bk_path=`echo "$line" | sed -e 's/.*://g'`
-		echo "$bk_name:$bk_path"
-		cd $bk_path && s $bk_name
-	done
-fi
-
-
+bk_read_cache
+trash_read_cache
 
