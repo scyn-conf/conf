@@ -4,8 +4,24 @@
 
 [color]
 	ui = true
-
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = blue reverse
+	local = green
+	remote = red
+[color "diff"]
+	meta = yellow
+	frag = cyan
+	old = red
+	new = green
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
 [alias]
+	lgs  = log --graph --stat
 	st   = status
 	ci   = commit -a
 	b    = branch
