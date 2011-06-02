@@ -1,0 +1,81 @@
+\documentclass[10pt]{beamer}
+\usetheme{Darmstadt}
+\setbeamercolor{structure}{fg=black, bg=white}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{times}
+\usepackage{pslatex}
+\usepackage{moreverb}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphics}
+\usepackage{color}
+\setbeamercovered{dynamic}
+%\pgfdeclareimage[height=1.1cm]{logo}{images/epita}
+%\logo{\pgfuseimage{logo}}
+\AtBeginSection[]{\frame{\frametitle{Outline}\tableofcontents[current]}}
+
+\definecolor{darkbluegreen}{rgb}{0.2, 0.40, 0.4}
+\definecolor{darkblue}{rgb}{0.2, 0.30, 0.4}
+\definecolor{darkviolet}{rgb}{0.3, 0.3, 0.4}%{0.1, 0.1, 0.7}%{0.9, 0.0, 0.1}%{0.8, 0.1, 0.0}
+\definecolor{technic}{rgb}{0.0, 0.0, 0.0}
+
+\setbeamercolor{palette primary}{use=structure, fg=white, bg=darkblue}
+\setbeamercolor{palette secondary}{use=structure, bg=darkblue}
+\setbeamercolor{palette tertiary}{use=structure, fg=white, bg=green}
+\setbeamercolor{palette quaternary}{use=structure, fg=white, bg=darkblue}
+
+\setbeamercolor*{titlelike}{parent=palette secondary, fg=white}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{author in head/foot}{fg=white,bg=darkblue}
+\setbeamercolor{date in head/foot}{fg=white,bg=darkblue}
+\setbeamercolor{title in head/foot}{fg=white,bg=darkblue}
+\setbeamercolor{item}{parent=block title,fg=white,bg=darkblue}
+\setbeamercolor{section in toc}{fg=darkblue}
+
+\setbeamercolor{item}{fg=darkblue!80!gray, bg=lightgray}
+
+\setbeamercolor{block title}{parent=palette secondary, bg=darkblue, fg=white}
+\setbeamercolor{block title alerted}{use=alerted text, bg=alerted text. darkblue}
+\setbeamercolor{block title example}{use=example text, bg=example text. darkblue}
+
+\setbeamercolor{normal}{bg=background, fg=backgroundm}
+
+\setbeamercolor{block body}{parent=normal text,use=block title, bg=white}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted, bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\setbeamertemplate{footline}{
+ \leavevmode%
+ \hbox{\hspace*{-0.06cm}
+   \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+     \usebeamerfont{author in head/foot}\insertshortauthor%~~(\insertshortinst\itute)
+   \end{beamercolorbox}%
+   \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{section in head/foot}%
+     \usebeamerfont{section in head/foot}\insertshorttitle
+   \end{beamercolorbox}%
+   \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+     \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+ \end{beamercolorbox}}%
+ \vskip0pt%
+}
+
+\newcommand{\coloredblock}[2]{\color{#1}#2\color{darkblue}}
+\newcommand{\red}[1]{\coloredblock{red}{#1}}
+\newcommand{\black}[1]{\coloredblock{darkblue}{#1}}
+\newcommand{\green}[1]{\coloredblock{green}{#1}}
+\newcommand{\blue}[1]{\coloredblock{blue}{#1}}
+\newcommand{\trans}{}
+\newcommand{\lang}[1]{\textbf{\emph{#1}}}
+\newcommand{\rb}{\lang{Ruby}}
+\newcommand{\img}[2]{\scalebox{#1}[#1]{\includegraphics{#2}}}
+\newcommand{\codeimg}[1]{\img{1.0}{generated/#1}}
+\newcommand{\ier}{$^{ier}$}
+\newcommand{\iere}{$^{i\grave{e}re}$}
+\newcommand{\ieme}{$^{i\grave{e}me}$}
+
