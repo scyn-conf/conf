@@ -24,6 +24,5 @@ source ~/.vim/tags.vim
 source ~/.vim/tiger.vim
 source ~/.vim/textwidth.vim
 source ~/.vim/windows.vim
-source ~/.vim/calc.vim
+source ~/.vim/yank.vim
 
-" }}}"

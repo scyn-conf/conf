@@ -8,14 +8,14 @@
 " Options:{{{
 "------------------------------------------------------------------------------
 " Status line
-set statusline=%r%m%n:%f\ %l,%c
+set statusline=%r%m%n:%f
 set statusline+=%=
 set statusline+=%#warningmsg#
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineLongLineWarning()}
 set statusline+=%{StatuslineTabWarning()}
 set statusline+=%*
-set statusline+=\ (%p%%/%LL)
+set statusline+=\ (%p%%/%LL)\ %l,%c
 
 " Always display statusline
 set laststatus=2
@@ -52,7 +52,7 @@ endfunction
 
 " Update status line
 function! s:UpdateStatusLine()
-	set statusline=%r%m%n:%f\ %l,%c
+	set statusline=%r%m%n:%f
 	if g:SyntaxDebug == 1
 		set statusline+=\ %{SyntaxDebug()}
 	endif
@@ -65,7 +65,7 @@ function! s:UpdateStatusLine()
 	set statusline+=%{StatuslineLongLineWarning()}
 	set statusline+=%{StatuslineTabWarning()}
 	set statusline+=%*
-	set statusline+=\ (%p%%/%LL)
+	set statusline+=\ (%p%%/%LL)\ %l,%c
 
 endfunction
 
@@ -118,12 +118,12 @@ function! StatuslineLongLineWarning()
 			let b:statusline_long_line_warning = ''
 			return b:statusline_long_line_warning
 		endif
-		let long_line_lens = s:LongLines()
-		if len(long_line_lens) > 0
+		let long_lines = s:LongLines()
+		let threshold = (&tw ? &tw : 80)
+		if len(long_lines) > 0
 			let b:statusline_long_line_warning = "[" .
-						\ '#' . len(long_line_lens) . "," .
-						\ 'm' . s:Median(long_line_lens) . "," .
-						\ '$' . max(long_line_lens) . "]"
+			\ "&tw l" . long_lines[0][0] . " (" . long_lines[0][1] . "/" . threshold . ") "
+			\ . len(long_lines) . "+]"
 		else
 			let b:statusline_long_line_warning = ""
 		endif
@@ -131,7 +131,7 @@ function! StatuslineLongLineWarning()
 	return b:statusline_long_line_warning
 endfunction
 
-"return a list containing the lengths of the long lines in this buffer
+"return a list containing tuples with the line number and the length of the long lines
 function! s:LongLines()
 	let threshold = (&tw ? &tw : 80)
 	let spaces = repeat(" ", &ts)
@@ -139,9 +139,10 @@ function! s:LongLines()
 
 	let i = 1
 	while i <= line("$")
-		let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
+"		let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
+		let len = strlen(getline(i))
 		if len > threshold
-			call add(long_line_lens, len)
+			call add(long_line_lens, [i, len])
 		endif
 		let i += 1
 	endwhile

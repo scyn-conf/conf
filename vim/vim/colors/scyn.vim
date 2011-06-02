@@ -4,169 +4,116 @@
 " Author: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
 "
 
-
-set background=dark
 hi clear
 
-if exists("syntax_on")
-  syntax reset
+set background=dark
+if version > 580
+    hi clear
+    if exists("syntax_on")
+        syntax reset
+    endif
+endif
+let g:colors_name="scyn"
+
+
+hi Boolean		guifg=#AE81FF
+hi Character		guifg=#E6DB74
+"hi Number		guifg=#AE81FF
+"hi Number		guifg=#FF9800
+hi Number		guifg=#f6c84c
+"hi String		guifg=#E6DB74
+hi String		guifg=#A6E22E
+"hi Conditional		guifg=#d02e54			gui=bold
+hi Conditional		guifg=#96CBFE			gui=none
+hi Constant		guifg=#AE81FF			gui=bold
+hi Cursor		guifg=#000000	guibg=#F8F8F0
+hi Debug		guifg=#BCA3A3			gui=bold
+hi Define		guifg=#66D9EF
+hi Delimiter		guifg=#66D9EF
+"hi Delimiter		guifg=#8F8F8F
+hi DiffAdd				guibg=#13354A
+hi DiffChange		guifg=#89807D 	guibg=#4C4745
+hi DiffDelete		guifg=#960050 	guibg=#1E0010
+hi DiffText				guibg=#4C4745	gui=italic,bold
+
+hi Directory		guifg=#A6E22E			gui=bold
+hi Error		guifg=#d02e54 	guibg=#1B1D1E
+hi ErrorMsg		guifg=#d02e54 	guibg=#1B1D1E 	gui=italic
+hi Exception		guifg=#d02e54			gui=bold
+hi Float		guifg=#AE81FF
+hi FoldColumn		guifg=#465457 	guibg=#000000
+hi Folded		guifg=#465457 	guibg=#000000
+hi Function		guifg=#A6E22E
+hi Identifier		guifg=#FD971F
+hi Ignore		guifg=#808080			guibg=bg
+hi IncSearch		guifg=#C4BE89 	guibg=#000000
+
+"hi Keyword		guifg=#d02e54			gui=bold
+hi Keyword		guifg=#66D9EF			gui=none
+hi Label		guifg=#E6DB74			gui=none
+hi Macro		guifg=#C4BE89			gui=italic
+hi SpecialKey		guifg=#66D9EF			gui=italic
+
+hi MatchParen		guifg=#000000 	guibg=#FD971F 	gui=bold
+hi ModeMsg		guifg=#E6DB74
+hi MoreMsg		guifg=#E6DB74
+hi Operator		guifg=#d02e54
+
+"hi Pmenu		guifg=#66D9EF 	guibg=#000000
+hi Pmenu		guifg=#66D9EF 	guibg=#1B1D1E
+"hi PmenuSel				guibg=#808080
+hi PmenuSel		guifg=#A6E22E   guibg=#1B1D1E	gui=bold
+hi PmenuSbar				guibg=#080808
+"hi PmenuThumb		guifg=#66D9EF
+hi PmenuThumb		guifg=#202020
+
+hi PreCondit		guifg=#A6E22E			gui=bold
+"hi PreProc		guifg=#A6E22E
+hi Preproc		guifg=#d02e54			gui=none
+hi Question		guifg=#66D9EF
+hi Repeat		guifg=#96CBFE			gui=bold
+hi Search		guifg=#FFFFFF 	guibg=#455354
+" marks column
+hi SignColumn		guifg=#A6E22E 	guibg=#232526
+"hi SpecialChar		guifg=#d02e54			gui=bold
+hi SpecialChar		guifg=#d02e54			gui=bold
+hi SpecialComment	guifg=#465457			gui=bold
+hi Special		guifg=#66D9EF	guibg=bg	gui=italic
+hi SpecialKey		guifg=#888A85			gui=italic
+if has("spell")
+hi SpellBad		guisp=#FF0000			gui=undercurl
+hi SpellCap		guisp=#7070F0			gui=undercurl
+hi SpellLocal		guisp=#70F0F0			gui=undercurl
+hi SpellRare		guisp=#FFFFFF			gui=undercurl
 endif
 
-let colors_name = "ir_black"
+"hi Statement		guifg=#d02e54			gui=bold
+hi Statement		guifg=#96CBFE			gui=none
+"hi StatusLine		guifg=#455354			guibg=fg
+hi StatusLine		guifg=#69D9EF 	guibg=#1B1D1E	gui=none
+hi StatusLineNC		guifg=#293739 	guibg=#1B1D1E	gui=none
+hi StorageClass		guifg=#FD971F			gui=italic
+hi Structure		guifg=#66D9EF
+hi Tag			guifg=#d02e54			gui=italic
+hi Title		guifg=#ef5939
+hi Todo			guifg=#FFFFFF	guibg=bg	gui=bold
 
+hi Typedef		guifg=#66D9EF
+hi Type			guifg=#66D9EF			gui=none
+hi Underlined		guifg=#808080			gui=underline
 
-"hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-
-" General colors
-hi Normal           guifg=#f6f3e8     guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText          guifg=#070707     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
-
-hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
-hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-
-hi VertSplit        guifg=#202020     guibg=#202020     gui=NONE      ctermfg=red    ctermbg=darkgray    cterm=NONE
-hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=white       ctermbg=darkgray    cterm=NONE
-hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=blue        ctermbg=darkgray    cterm=NONE  
-
-hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-
-hi SpecialKey       guifg=#808080     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-
-hi WildMenu         guifg=green       guibg=yellow      gui=NONE      ctermfg=black       ctermbg=yellow      cterm=NONE
-hi PmenuSbar        guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=NONE
-"hi Ignore           guifg=gray        guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-
-hi Error            guifg=NONE        guibg=darkred        gui=NONE ctermfg=white       ctermbg=darkred         cterm=NONE     guisp=#FF6C60 " undercurl color
-hi ErrorMsg         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=red         cterm=NONE
-hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=red         cterm=NONE
-
-" Message displayed in lower left, such as --INSERT--
-hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
-
-if version >= 700 " Vim 7.x specific colors
-  hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=darkgray        cterm=BOLD
-  hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
-  hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
-  hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=white       ctermbg=darkgray        cterm=NONE
-  hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=black        ctermbg=lightgreen        cterm=NONE
-  hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
-endif
-
-" Syntax highlighting
-hi Comment          guifg=#333333     guibg=NONE        gui=italic    ctermfg=darkgray	 ctermbg=NONE        cterm=NONE
-hi String           guifg=#b1d631     guibg=NONE        gui=NONE      ctermfg=green ctermbg=NONE        cterm=NONE
-hi Number           guifg=#d78700     guibg=NONE        gui=NONE      ctermfg=172 ctermbg=NONE        cterm=NONE
-
-hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold
-hi PreProc          guifg=#ffd787     guibg=NONE        gui=NONE      ctermfg=222        ctermbg=NONE        cterm=NONE
-hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=bold  " if else end
-
-hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
-hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
-
-hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
-hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=yellow ctermbg=NONE        cterm=NONE
-hi Type             guifg=#9AcD32     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
-hi Structure        guifg=#CD853F     guibg=NONE        gui=NONE      ctermfg=Yellow      ctermbg=NONE        cterm=bold
-hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33 ctermbg=NONE        cterm=bold
-
-hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=darkyellow      ctermbg=NONE        cterm=NONE
-hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
-hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
-
-" Special for CPP
-hi cppcoutcolor     guifg=#98FB98     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
-hi cppcerrcolor     guifg=#E9967A     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
-hi CppStdColor      guifg=#ADFF2F     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
-
-hi link CppStdColor  	cppstdcolor
-
-hi link Character       Constant
-hi link Boolean         Constant
-hi link Float           Number
-hi link Repeat          Statement
-hi link Label           Statement
-hi link Exception       Statement
-hi link Include         PreProc
-hi link Define          PreProc
-hi link Macro           PreProc
-hi link PreCondit       PreProc
-hi link StorageClass    Type
-hi link Structure       Structure
-hi link Typedef         Type
-hi link Tag             Special
-hi link SpecialChar     Special
-hi link SpecialComment  Special
-hi link Debug           Special
-
-
-" Special for Ruby
-hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
-hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
-hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
-hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
-hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE  "and break, etc
-"hi rubyGlobalVariable          guifg=#FFCCFF      guibg=NONE      gui=NONE      ctermfg=lightblue      ctermbg=NONE      cterm=NONE  "yield
-hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
-"rubyInclude
-"rubySharpBang
-"rubyAccess
-"rubyPredefinedVariable
-"rubyBoolean
-"rubyClassVariable
-"rubyBeginEnd
-"rubyRepeatModifier
-"hi link rubyArrayDelimiter    Special  " [ , , ]
-"rubyCurlyBlock  { , , }
-
-hi link rubyClass             Keyword 
-hi link rubyModule            Keyword 
-hi link rubyKeyword           Keyword 
-hi link rubyOperator          Operator
-hi link rubyIdentifier        Identifier
-hi link rubyInstanceVariable  Identifier
-hi link rubyGlobalVariable    Identifier
-hi link rubyClassVariable     Identifier
-hi link rubyConstant          Type  
-
-
-" Special for Java
-" hi link javaClassDecl    Type
-hi link javaScopeDecl         Identifier 
-hi link javaCommentTitle      javaDocSeeTag 
-hi link javaDocTags           javaDocSeeTag 
-hi link javaDocParam          javaDocSeeTag 
-hi link javaDocSeeTagParam    javaDocSeeTag 
-
-hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-"hi javaClassDecl              guifg=#CCFFCC     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
-
-
-" Special for XML
-hi link xmlTag          Keyword 
-hi link xmlTagName      Conditional 
-hi link xmlEndTag       Identifier 
-
-
-" Special for HTML
-hi link htmlTag         Keyword 
-hi link htmlTagName     Conditional 
-hi link htmlEndTag      Identifier 
-
-
-" Special for Javascript
-hi link javaScriptNumber      Number 
-
-
-" Special for Python
-"hi  link pythonEscape         Keyword      
-
-
-" Special for CSharp
-hi  link csXmlTag             Keyword      
-
-
-" Special for PHP
+hi VertSplit		guifg=#808080 	guibg=#1B1D1E 	gui=bold
+hi VisualNOS				guibg=#403D3D
+hi Visual				guibg=#403D3D
+hi WarningMsg		guifg=#d02e54 	guibg=#1B1D1E 	gui=italic
+hi WildMenu		guifg=#66D9EF 	guibg=#000000
+hi Normal		guifg=#F8F8F2 	guibg=#101213
+"   hi Comment		guifg=#465457
+hi Comment		guifg=#293739
+"hi CursorLine				guibg=#293739
+hi CursorLine				guibg=#1B1D1E
+hi CursorColumn				guibg=#1B1D1E
+"hi LineNr		guifg=#BCBCBC 	guibg=#232526
+hi LineNr		guifg=#293739 	guibg=#101213
+"hi NonText		guifg=#BCBCBC 	guibg=#232526
+hi NonText		guifg=#BCBCBC 	guibg=#101213

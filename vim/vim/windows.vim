@@ -16,5 +16,11 @@ noremap <silent> <C-S-LEFT> :vertical resize -10<CR>
 noremap <silent> <C-S-DOWN> :resize -10<CR>
 noremap <silent> <C-S-RIGHT> :vertical resize +10<CR>
 noremap <silent> <C-S-UP> :resize +10<CR>
+" Rotate windows
+map <S-LEFT>	<C-w>H
+map <S-RIGHT>	<C-w>L
+map <S-UP>	<C-w>K
+map <S-DOWN>	<C-w>J
+
 
 "}}}

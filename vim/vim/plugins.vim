@@ -15,15 +15,16 @@ let OmniCpp_MayCompleteScope = 1
 let OmniCpp_SelectFirstItem = 2
 
 " Autofile
-let me_name='Scyn - Remi Chaintron'
-let me_mail='remi.chaintron@gmail.com'
+let me_name = 'Scyn - Remi Chaintron'
+let me_mail = 'remi.chaintron@gmail.com'
 
 " SuperTab
 let g:SuperTabCrMapping = 0
 
 " Syntastic
 let syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_disabled_filetypes = ['tex']
 
 
 "}}}
