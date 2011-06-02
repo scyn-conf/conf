@@ -28,9 +28,9 @@ case $HOST in
 		exit
 	;;
 	*)
-		if /usr/school/bin/ns_who >&-; then
-			source ./epita.zsh
-		fi
+	#	if /usr/school/bin/ns_who >&-; then
+	#		source ./epita.zsh
+	#	fi
 	;;
 esac
 

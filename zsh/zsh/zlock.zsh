@@ -14,12 +14,12 @@ case $HOST in
 		# FIXME
 	;;
 	*)
-		if /usr/school/bin/ns_who >&-; then
+	#	if /usr/school/bin/ns_who >&-; then
 
-			alias zlock="/usr/bin/zlock -immed -notime		\
-			-text \"-<(              $PSEUDO              )>-\"	\
-			-pwtext '> unlock ! < ... > I said... UNLOCK!    '"
-		fi
+	#		alias zlock="/usr/bin/zlock -immed -notime		\
+	#		-text \"-<(              $PSEUDO              )>-\"	\
+	#		-pwtext '> unlock ! < ... > I said... UNLOCK!    '"
+	#	fi
 	;;
 esac
 

@@ -9,3 +9,4 @@ umask 002
 export BLOCK_SIZE=human-readable
 export PSEUDO="Scyn"
 
+PATH="$PATH:/usr/sbin/:$HOME/bin/"

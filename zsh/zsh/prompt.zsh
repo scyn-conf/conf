@@ -38,9 +38,9 @@ function precmd()
 	which vcs_info >&-
 	if [ $? -eq 0 ]; then
 		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u$cyan]"
+			zstyle ':vcs_info:*' formats "on$cyan [%s:%b:%7.7i%c%u$cyan]"
 		} else {
-			zstyle ':vcs_info:*' formats "[%s:%b:%7.7i%c%u%F{red}?$cyan]"
+			zstyle ':vcs_info:*' formats "on$cyan [%s:%b:%7.7i%c%u%F{red}?$cyan]"
 		}
 		vcs_info
 	fi
@@ -53,8 +53,8 @@ function precmd()
 		;;
 	esac
 	
-	PROMPT="${lgreen}%D{%H:%M}$clr - $red$USER$clr at $yellow$HOST$clr in $blue%~$clr on $cyan${vcs_info_msg_0_}$clr
-%(?..${red}[%?] %b)$blue(%!) ${lblue}42sh>$clr "
+	PROMPT="${yellow}%D{%H:%M}$clr - $green$USER$clr at $red$HOST$clr in $blue%~$clr ${vcs_info_msg_0_}$clr
+%(?..${red}[%?] %b)$cyan(%!) ${lblue}42sh>$clr "
 
 #	PROMPT="${blue}%~${dirt} ${vcs_info_msg_0_}$clr
 #${dirt}$USER${yellow}@${dirt}$HOST${blue} 42sh> ${clr}"
