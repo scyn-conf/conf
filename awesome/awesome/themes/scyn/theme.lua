@@ -6,14 +6,14 @@ theme = {}
 
 theme.font          = "DejaVu Sans 9"
 
-theme.bg_normal     = "#202020dd"
-theme.bg_focus      = "#202020cc"
-theme.bg_urgent     = "#a5cb0caa"
+theme.bg_normal     = "#202020ff"
+theme.bg_focus      = "#202020ff"
+theme.bg_urgent     = "#200000ff"
 theme.bg_minimize   = "#444444"
 
-theme.fg_normal     = "#555555"
+theme.fg_normal     = "#d02e54"
 theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
+theme.fg_urgent     = "#66D9EF"
 theme.fg_minimize  = "#ffffff"
 
 theme.border_width  = "1"
@@ -72,7 +72,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg " .. os.getenv("HOME") .. "/pictures/wallpaper.jpg" } 
+--theme.wallpaper_cmd = { "awsetbg " .. os.getenv("HOME") .. "/pictures/wallpaper.jpg" } 
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
@@ -86,7 +86,7 @@ theme.layout_tileleft = "/usr/share/awesome/themes/default/layouts/tileleftw.png
 theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
 theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
 
-theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
+theme.awesome_icon = os.getenv("HOME") .. "/conf/awesome/awesome/themes/scyn/icons/awesome16.png"
 -- {{{ Widget icons
 theme.widget_cpu    = "/home/scyn/.config/awesome/icons2/cpu.png"
 theme.widget_netup  = "/home/scyn/.config/awesome/icons2/up.png"
