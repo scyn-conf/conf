@@ -8,7 +8,7 @@ IMPORTANT: if you are using the 'cpu' function, it will cause a segmentation fau
 To call this script in Conky, use the following (assuming that you save this script to ~/scripts/rings.lua):
 	lua_load ~/scripts/rings-v1.2.lua
 	lua_draw_hook_pre ring_stats
-	
+
 Changelog:
 + v1.2 -- Added option for the ending angle of the rings (07.10.9009)
 + v1.1 -- Added options for the starting angle of the rings, and added the "max" variable, to allow for variables that output a numerical value rather than a percentage (29.09.2009)
@@ -40,295 +40,606 @@ function draw_ring(cr,t,pt)
 	cairo_set_source_rgba(cr,rgb_to_r_g_b(bgc,bga))
 	cairo_set_line_width(cr,ring_w)
 	cairo_stroke(cr)
-	
+
 	-- Draw indicator ring
 
-	cairo_arc(cr,conky_window.width / 2, conky_window.height / 2 - conky_window.height / 20, ring_r,angle_0,angle_0+t_arc)
+	cairo_arc(cr, xc, yc, ring_r,angle_0,angle_0+t_arc)
 	cairo_set_source_rgba(cr,rgb_to_r_g_b(fgc,fga))
-	cairo_stroke(cr)		
+	cairo_stroke(cr)
 end
 -- }}}
 -- {{{ init_vars
 function init_vars ()
-	seconds_cx = conky_window.width / 2
-	seconds_cy = conky_window.height / 2
-	minutes_cx = conky_window.width / 2
-	minutes_cy = conky_window.height / 2
-	hours_cx = conky_window.width / 2
-	hours_cy = conky_window.height / 2
+	seconds_cx = 11 * conky_window.width / 12
+	seconds_cy = 3 * conky_window.height / 20
+	seconds_radius=100
 
-	seconds_radius=140
+	minutes_cx = 11 * conky_window.width / 12
+	minutes_cy = 3 * conky_window.height / 20
 	minutes_radius=90
-	hours_radius=50
-	center_radius=20
+
+	hours_cx = 11 * conky_window.width / 12
+	hours_cy = 3 * conky_window.height / 20
+	hours_radius=80
+
+	cpu_cx = 11 * conky_window.width / 12 - 170
+	cpu_cy = 3 * conky_window.height / 20 + 20
+	cpu_radius = 35
+
+	ram_cx = 11 * conky_window.width / 12 - 150
+	ram_cy = 3 * conky_window.height / 20 + 85
+	ram_radius=30
+
+	swap_cx = 11 * conky_window.width / 12 - 105
+	swap_cy = 3 * conky_window.height / 20 + 135
+	swap_radius=30
+
+	fs_cx = 11 * conky_window.width / 12 - 40
+	fs_cy = 3 * conky_window.height / 20 + 160
+	fs_radius=30
+
+	entropy_cx = 11 * conky_window.width / 12 + 30
+	entropy_cy = 3 * conky_window.height / 20 + 170
+	entropy_radius=30
+
+
 	return {
---		{ -- center
---			name='time',
---			arg='%S',
+		{ -- seconds progress
+			name='time',
+			arg='%S',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xeee8aa,
+			fg_alpha=0.5,
+			x=seconds_cx,
+			y=seconds_cy,
+			radius=seconds_radius,
+			thickness=5,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+		{ -- minutes progress
+			name='time',
+			arg='%M',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x96cbfe,
+			fg_alpha=0.5,
+			x=minutes_cx,
+			y=minutes_cy,
+			radius=minutes_radius,
+			thickness=5,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+		{ -- hours progress
+			name='time',
+			arg='%H',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x9acd32,
+			fg_alpha=0.5,
+			x=hours_cx,
+			y=hours_cy,
+			radius=hours_radius,
+			thickness=5,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				if value < 12 then
+					value = value * 30
+				else
+					value = (value - 12) * 30
+				end
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+ --		{ -- swap
+ --			name='swapperc',
+ --			arg='%H',
+ --			max=1,
+ --			bg_colour=0xffffff,
+ --			bg_alpha=0.5,
+ --			fg_colour=0xffffff,
+ --			fg_alpha=0.5,
+ --			x=swap_cx,
+ --			y=swap_cy,
+ --			radius=swap_radius,
+ --			thickness=2,
+ --			start_angle=0,
+ --			end_angle=360,
+ --			transformation = function (self, value)
+ --				value = value * 3.6
+ --				self["start_angle"] = 0
+ --				self["end_angle"] = value
+ --				return self, 1
+ --			end
+ --		},
+
+		{ -- ram
+			name='memperc',
+			arg='%H',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=ram_cx,
+			y=ram_cy,
+			radius=ram_radius,
+			thickness=2,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+		{ -- entropy
+			name='entropy_perc',
+			arg=nil,
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=entropy_cx,
+			y=entropy_cy,
+			radius=entropy_radius,
+			thickness=2,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+		{ -- cpu0
+			name='cpu',
+			arg='cpu0',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=1,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius + 2,
+			thickness=2,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+		{ -- cpu1
+			name='cpu',
+			arg='cpu1',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x0050aa,
+			fg_alpha=1,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius - 2,
+			thickness=1,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				color = 0x0050aa
+				if value <= 5 then
+					color = 0xadbed1
+				elseif value > 5 and value <= 20 then
+					color = 0xace1af
+				elseif value > 20 and value <= 50 then
+					color = 0xfcda98
+				elseif value > 50 and value <= 75 then
+					color = 0xf3ba5e
+				elseif value > 75 and value <= 100 then
+					color = 0xf3785e
+				end
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				self["fg_colour"] = color
+				return self, 1
+			end
+		},
+
+
+		{ -- cpu2
+			name='cpu',
+			arg='cpu2',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x0050aa,
+			fg_alpha=1,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius - 4,
+			thickness=1,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				color = 0x0050aa
+				if value <= 5 then
+					color = 0xadbed1
+				elseif value > 5 and value <= 20 then
+					color = 0xace1af
+				elseif value > 20 and value <= 50 then
+					color = 0xfcda98
+				elseif value > 50 and value <= 75 then
+					color = 0xf3ba5e
+				elseif value > 75 and value <= 100 then
+					color = 0xf3785e
+				end
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				self["fg_colour"] = color
+				return self, 1
+			end
+		},
+
+
+		{ -- cpu3
+			name='cpu',
+			arg='cpu3',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x0050aa,
+			fg_alpha=1,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius - 6,
+			thickness=1,
+			start_angle=5,
+			end_angle=360,
+			transformation = function (self, value)
+				color = 0x0050aa
+				if value <= 5 then
+					color = 0xadbed1
+				elseif value > 5 and value <= 20 then
+					color = 0xace1af
+				elseif value > 20 and value <= 50 then
+					color = 0xfcda98
+				elseif value > 50 and value <= 75 then
+					color = 0xf3ba5e
+				elseif value > 75 and value <= 100 then
+					color = 0xf3785e
+				end
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				self["fg_colour"] = color
+				return self, 1
+			end
+		},
+
+
+		{ -- cpu4
+			name='cpu',
+			arg='cpu4',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0x0050aa,
+			fg_alpha=1,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius - 8,
+			thickness=1,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				color = 0x0050aa
+				if value <= 5 then
+					color = 0xadbed1
+				elseif value > 5 and value <= 20 then
+					color = 0xace1af
+				elseif value > 20 and value <= 50 then
+					color = 0xfcda98
+				elseif value > 50 and value <= 75 then
+					color = 0xf3ba5e
+				elseif value > 75 and value <= 100 then
+					color = 0xf3785e
+				end
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				self["fg_colour"] = color
+				return self, 1
+			end
+		},
+
+		{ -- fs
+			name='fs_used_perc',
+			arg='/',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=fs_cx,
+			y=fs_cy,
+			radius=fs_radius,
+			thickness=2,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				value = value * 3.6
+				self["start_angle"] = 0
+				self["end_angle"] = value
+				return self, 1
+			end
+		},
+
+--		{ -- swap rule
+--			name='swapperc',
+--			arg='%H',
 --			max=1,
 --			bg_colour=0xffffff,
---			bg_alpha=0.0,
+--			bg_alpha=0.5,
 --			fg_colour=0xffffff,
---			fg_alpha=1.0,
---			x=seconds_cx,
---			y=seconds_cy,
---			radius=center_radius - 3,
---			thickness=2,
+--			fg_alpha=0.5,
+--			x=swap_cx,
+--			y=swap_cy,
+--			radius=swap_radius,
+--			thickness=0.3,
 --			start_angle=0,
 --			end_angle=360,
 --			transformation = function (self, value)
 --				return self, 1
 --			end
---
 --		},
-		{ -- seconds hand 1
-			name='time',
-			arg='%S',
+
+		{ -- ram rule
+			name='memperc',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=1.0,
+			fg_alpha=0.5,
+			x=ram_cx,
+			y=ram_cy,
+			radius=ram_radius,
+			thickness=0.3,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				return self, 1
+			end
+		},
+
+		{ -- entropy rule
+			name='entropy_perc',
+			arg=nil,
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=entropy_cx,
+			y=entropy_cy,
+			radius=entropy_radius,
+			thickness=0.3,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				return self, 1
+			end
+		},
+
+		{ -- cpu rule
+			name='cpu',
+			arg='cpu0',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=cpu_cx,
+			y=cpu_cy,
+			radius=cpu_radius,
+			thickness=0.3,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				return self, 1
+			end
+		},
+
+		{ -- fs rule
+			name='fs_used_perc',
+			arg='/',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
+			x=fs_cx,
+			y=fs_cy,
+			radius=fs_radius,
+			thickness=0.3,
+			start_angle=0,
+			end_angle=360,
+			transformation = function (self, value)
+				return self, 1
+			end
+		},
+
+		{ -- Watch outer shell
+			name='time',
+			arg='%H',
+			max=1,
+			bg_colour=0xffffff,
+			bg_alpha=0.5,
+			fg_colour=0xffffff,
+			fg_alpha=0.5,
 			x=seconds_cx,
 			y=seconds_cy,
-			radius=seconds_radius - (seconds_radius - minutes_radius) / 2 + 2,
-			thickness=seconds_radius-minutes_radius,
+			radius = seconds_radius + 10,
+			thickness=0.5,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				v = value * 6
-				self["start_angle"] = v + 2
-				self["end_angle"] = v + 4
 				return self, 1
 			end
+
 		},
-		{ -- seconds hand 2
+
+		{ -- Watch outer shell
 			name='time',
-			arg='%S',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=1.0,
+			fg_alpha=0.5,
 			x=seconds_cx,
 			y=seconds_cy,
-			radius=seconds_radius - (seconds_radius - minutes_radius) / 2 + 2,
-			thickness=seconds_radius-minutes_radius,
+			radius = seconds_radius + 7,
+			thickness=1.5,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				v = value * 6
-				self["start_angle"] = v - 3
-				self["end_angle"] = v -1
 				return self, 1
 			end
+
 		},
-		{ -- seconds circle 1
+
+		{ -- Watch inner shell
 			name='time',
-			arg='%S',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
-			x=seconds_cx,
-			y=seconds_cy,
-			radius=seconds_radius,
-			thickness=4,
+			fg_alpha=0.5,
+			x= hours_cx,
+			y= hours_cy,
+			radius = hours_radius - 4,
+			thickness=0.5,
 			start_angle=0,
 			end_angle=360,
 			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value + 3
-				self["end_angle"] = value + 120
 				return self, 1
 			end
+
 		},
-		{ -- seconds circle 2
+
+		{ -- decoration
 			name='time',
-			arg='%S',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
-			x=seconds_cx,
-			y=seconds_cy,
-			radius=seconds_radius,
-			thickness=4,
-			start_angle=0,
-			end_angle=360,
-			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value - 120
-				self["end_angle"] = value - 3
-				return self, 1
-			end
-		},
-		{ -- minutes hand 1
-			name='time',
-			arg='%M',
-			max=1,
-			bg_colour=0xffffff,
-			bg_alpha=0.0,
-			fg_colour=0xffffff,
-			fg_alpha=1.0,
-			x=minutes_cx,
-			y=minutes_cy,
-			radius=minutes_radius - (minutes_radius - hours_radius) / 2 + 2,
-			thickness=minutes_radius - hours_radius,
-			start_angle=0,
-			end_angle=360,
-			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value + 2
-				self["end_angle"] = value + 4
-				return self, 1
-			end
-		},
-		{ -- minutes hand 2
-			name='time',
-			arg='%M',
-			max=1,
-			bg_colour=0xffffff,
-			bg_alpha=0.0,
-			fg_colour=0xffffff,
-			fg_alpha=1.0,
-			x=minutes_cx,
-			y=minutes_cy,
-			radius=minutes_radius - (minutes_radius - hours_radius) / 2 + 2,
-			thickness=minutes_radius - hours_radius,
-			start_angle=0,
-			end_angle=360,
-			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value -3
-				self["end_angle"] = value - 1
-				return self, 1
-			end
-		},
-		{ -- minutes circle 1
-			name='time',
-			arg='%M',
-			max=1,
-			bg_colour=0xffffff,
-			bg_alpha=0.0,
-			fg_colour=0xffffff,
-			fg_alpha=0.9,
-			x=minutes_cx,
-			y=minutes_cy,
-			radius=minutes_radius,
-			thickness=4,
-			start_angle=0,
-			end_angle=360,
-			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value + 3
-				self["end_angle"] = value + 120
-				return self, 1
-			end
-		},
-		{ -- minutes circle 2
-			name='time',
-			arg='%M',
-			max=1,
-			bg_colour=0xffffff,
-			bg_alpha=0.0,
-			fg_colour=0xffffff,
-			fg_alpha=0.9,
-			x=minutes_cx,
-			y=minutes_cy,
-			radius=minutes_radius,
-			thickness=4,
-			start_angle=0,
-			end_angle=360,
-			transformation = function (self, value)
-				value = value * 6
-				self["start_angle"] = value - 120
-				self["end_angle"] = value - 3
-				return self, 1
-			end
-		},
-		{ -- hours hand 1
-			name='time',
-			arg='%I',
-			max=1,
-			bg_colour=0xffffff,
-			bg_alpha=0.0,
-			fg_colour=0xffffff,
-			fg_alpha=1.0,
+			fg_alpha=0.5,
 			x=hours_cx,
 			y=hours_cy,
-			radius=hours_radius - (hours_radius - center_radius) / 2 + 2,
-			thickness=hours_radius - center_radius,
-			start_angle=0,
-			end_angle=360,
+			radius=235,
+			thickness=0.5,
+			start_angle=90,
+			end_angle=270,
 			transformation = function (self, value)
-				self["start_angle"] = value * 30 + 3
-				self["end_angle"] = value * 30 + 6
 				return self, 1
 			end
 		},
-		{ -- hours hand 2
+
+		{ -- decoration
 			name='time',
-			arg='%I',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=1.0,
+			fg_alpha=0.5,
 			x=hours_cx,
 			y=hours_cy,
-			radius=hours_radius - (hours_radius - center_radius) / 2 + 2,
-			thickness=hours_radius - center_radius,
-			start_angle=0,
-			end_angle=360,
+			radius=230,
+			thickness=3,
+			start_angle=290,
+			end_angle=0,
 			transformation = function (self, value)
-				self["start_angle"] = value * 30 - 5
-				self["end_angle"] = value * 30 - 2
 				return self, 1
 			end
 		},
-		{ -- hours circle 1
+
+		{ -- decoration
 			name='time',
-			arg='%I',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
+			fg_alpha=0.5,
 			x=hours_cx,
 			y=hours_cy,
-			radius=hours_radius,
-			thickness=4,
-			start_angle=0,
-			end_angle=360,
+			radius=235,
+			thickness=0.5,
+			start_angle=290,
+			end_angle=0,
 			transformation = function (self, value)
-				self["start_angle"] = value * 30 + 6
-				self["end_angle"] = value * 30 + 120
 				return self, 1
 			end
 		},
-		{ -- hours circle 2
+
+		{ -- decoration
 			name='time',
-			arg='%I',
+			arg='%H',
 			max=1,
 			bg_colour=0xffffff,
-			bg_alpha=0.0,
+			bg_alpha=0.5,
 			fg_colour=0xffffff,
-			fg_alpha=0.9,
+			fg_alpha=0.5,
 			x=hours_cx,
 			y=hours_cy,
-			radius=hours_radius,
-			thickness=4,
-			start_angle=0,
-			end_angle=360,
+			radius=230,
+			thickness=3,
+			start_angle=90,
+			end_angle=270,
 			transformation = function (self, value)
-				self["start_angle"] = value * 30 - 120
-				self["end_angle"] = value * 30 - 3
 				return self, 1
 			end
 		}
+
+
+
 	}
 end
 -- }}}
@@ -337,24 +648,28 @@ function conky_ring_stats()
 	local function setup_rings(cr,pt)
 		local str=''
 		local value=0
-		
-		str=string.format('${%s %s}',pt['name'],pt['arg'])
+
+		if pt['arg'] == nil then
+			str=string.format('${%s}',pt['name'])
+		else
+			str=string.format('${%s %s}',pt['name'],pt['arg'])
+		end
 		str=conky_parse(str)
-		
+
 		value=tonumber(str)
-		pct=value/pt['max']
-		
+--		pct=value/pt['max']
+
 		draw_ring(cr,value,pt)
 	end
 
 	if conky_window==nil then return end
 	settings_table = init_vars ()
 	local cs=cairo_xlib_surface_create(conky_window.display,conky_window.drawable,conky_window.visual, conky_window.width,conky_window.height)
-	local cr=cairo_create(cs)	
-	
+	local cr=cairo_create(cs)
+
 	local updates=conky_parse('${updates}')
 	update_num=tonumber(updates)
-	
+
 	if update_num>5 then
 		for i in pairs(settings_table) do
 			setup_rings(cr,settings_table[i])

@@ -24,8 +24,8 @@ own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 border_inner_margin 0
 border_outer_margin 0
 
-minimum_size 1440 900
-maximum_width 1440
+minimum_size 1920 1080
+maximum_width 1920
 
 alignment tr
 gap_x 0
@@ -54,21 +54,24 @@ lua_load ~/.config/conky/clock_rings.lua
 lua_draw_hook_pre conky_ring_stats
 
 TEXT
- 
-#${alignr 200}${color FFFFFF}${voffset 50}${color FFFFFF}${font caviar dreams:size=11}${time %H:%M}${font}
-#${voffset 8}${color FFFFFF}${font caviar dreams:size=16}${time %A}${font}${voffset -8}${alignr 50}${color FFFFFF}${font caviar dreams:size=32}${time %e}${font}
-#${color FFFFFF}${voffset -30}${color FFFFFF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font}${color FFFFFF}${hr}
-#${voffset 140}${font caviar dreams:size=10}${alignr}Home${font}
-#${color FFFFFF}${voffset 6}${sysname}${alignr}${kernel}${machine}
-#Uptime:$alignr${color FFFFFF}$uptime_short
-#${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
-#${color FFFFFF}${goto 25}CPU
-#${color FFFFFF}${goto 50}${voffset 23}${memperc}%
-#${color FFFFFF}${goto 50}RAM
-#${color FFFFFF}${goto 75}${voffset 23}${swapperc}%
-#${color FFFFFF}${goto 75}SWAP
-#${color FFFFFF}${goto 100}${voffset 23}${fs_used_perc /}%
-#${color FFFFFF}${goto 100}Disk
-#${color FFFFFF}${goto 125}${voffset 25}${upspeed rtls0}
-#${color FFFFFF}${goto 125}${downspeed rtls0}
-#${color FFFFFF}${goto 125}Net
+
+# clock rings text
+${voffset 117}	${color FFFFFF}	${goto 1680}	${font caviar dreams:size=8}	${time %A, %b %e}		${font}
+${voffset 0}	${color FFFFFF} ${goto 1610}	${font caviar dreams:size=24}	${time %H:%M:%S}	${font}
+${voffset 5}	${color FFFFFF}	${goto 1710}	${font caviar dreams:size=10}	${time %Y}	${font}
+
+# system text
+${voffset -100}	${color FFFFFF} ${goto 1460}	${sysname} ${kernel} ${machine}
+${voffset 5}	${color FFFFFF} ${goto 1535}	Up: $uptime_short
+
+# system rings text
+${voffset 15}	${color FFFFFF} ${goto 1560}	${cpu cpu0}%
+${voffset 1}	${color FFFFFF} ${goto 1560}	cpu
+${voffset 40}	${color FFFFFF} ${goto 1580}	${memperc}%
+${voffset 1}	${color FFFFFF} ${goto 1580}	ram
+#${voffset 20}	${color FFFFFF} ${goto 1625}	${swapperc}
+#${voffset 1}	${color FFFFFF} ${goto 1625}	swap
+${voffset 50}	${color FFFFFF} ${goto 1685}	${fs_used_perc /}%
+${voffset 1}	${color FFFFFF} ${goto 1685}	  fs /
+${voffset -18}	${color FFFFFF} ${goto 1755}	${entropy_perc}%
+${voffset 1}	${color FFFFFF} ${goto 1752}	entropy
