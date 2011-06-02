@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
 xcompmgr &
-#conky -c ~/.conkyrc &
+nitrogen --set-centered pictures/wallpaper.jpg 
 exec awesome -c ~/.awesomerc.lua
 export TERM='urxvt -e /bin/zsh'
