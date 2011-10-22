@@ -1,55 +1,64 @@
+% Document class
 \documentclass[10pt]{beamer}
-\usetheme{Darmstadt}
-\setbeamercolor{structure}{fg=black, bg=white}
+
+% {{{ Packages
+% Packages
 \usepackage{listings}
 \usepackage{verbatim}
 \usepackage{times}
 \usepackage{pslatex}
 \usepackage{moreverb}
+\usepackage{alltt}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphics}
 \usepackage{color}
+\usepackage{fancyvrb}
+
+% }}} Packages (end)
+% {{{ Colors definitions
+\definecolor{deepgrayblue}{rgb}{0.1, 0.2, 0.4}
+
+% }}} Colors definitions (end)
+% {{{ Beamer tweaking
+% Beamer theme and colors
+\usetheme{Darmstadt}
+\useoutertheme{miniframes}
+%\setbeamercolor{colors}{bg=deepgrayblue, fg=white}
+\setbeamercolor{colors}{fg=deepgrayblue, bg=white}
+
+% Beamer configuration
 \setbeamercovered{dynamic}
-%\pgfdeclareimage[height=1.1cm]{logo}{images/epita}
-%\logo{\pgfuseimage{logo}}
-\AtBeginSection[]{\frame{\frametitle{Outline}\tableofcontents[current]}}
+\AtBeginSection[]{\frame{\frametitle{Outline}\footnotesize{\tableofcontents[current]}} }
 
-\definecolor{darkbluegreen}{rgb}{0.2, 0.40, 0.4}
-\definecolor{darkblue}{rgb}{0.2, 0.30, 0.4}
-\definecolor{darkviolet}{rgb}{0.3, 0.3, 0.4}%{0.1, 0.1, 0.7}%{0.9, 0.0, 0.1}%{0.8, 0.1, 0.0}
-\definecolor{technic}{rgb}{0.0, 0.0, 0.0}
+% Darmstadt color configuration
+%\setbeamercolor{section in head/foot}{bg=deepgrayblue, fg=white}
+\setbeamercolor*{titlelike}{parent=palette secondary, bg=deepgrayblue, fg=white}
+% Singapore color configuration
+% Medium light aspect
+%\setbeamercolor{section in head/foot}{bg=white, fg=deepgrayblue}
+%\setbeamercolor*{titlelike}{parent=palette secondary, bg=deepgrayblue, fg=white}
+% light aspect
+%\setbeamercolor{section in head/foot}{bg=deepgrayblue, fg=white}
+%\setbeamercolor*{titlelike}{parent=palette secondary, fg=deepgrayblue, bg=white}
+%  Very light aspect
+%\setbeamercolor{section in head/foot}{bg=white, fg=deepgrayblue}
+%\setbeamercolor*{titlelike}{parent=palette secondary, bg=white, fg=deepgrayblue}
 
-\setbeamercolor{palette primary}{use=structure, fg=white, bg=darkblue}
-\setbeamercolor{palette secondary}{use=structure, bg=darkblue}
-\setbeamercolor{palette tertiary}{use=structure, fg=white, bg=green}
-\setbeamercolor{palette quaternary}{use=structure, fg=white, bg=darkblue}
-
-\setbeamercolor*{titlelike}{parent=palette secondary, fg=white}
-
-\setbeamercolor*{separation line}{}
-\setbeamercolor*{fine separation line}{}
-
-\setbeamercolor{author in head/foot}{fg=white,bg=darkblue}
-\setbeamercolor{date in head/foot}{fg=white,bg=darkblue}
-\setbeamercolor{title in head/foot}{fg=white,bg=darkblue}
-\setbeamercolor{item}{parent=block title,fg=white,bg=darkblue}
-\setbeamercolor{section in toc}{fg=darkblue}
-
-\setbeamercolor{item}{fg=darkblue!80!gray, bg=lightgray}
-
-\setbeamercolor{block title}{parent=palette secondary, bg=darkblue, fg=white}
-\setbeamercolor{block title alerted}{use=alerted text, bg=alerted text. darkblue}
-\setbeamercolor{block title example}{use=example text, bg=example text. darkblue}
-
-\setbeamercolor{normal}{bg=background, fg=backgroundm}
-
+%% Beamer colors : main frame
+\setbeamercolor{palette primary}{bg=deepgrayblue, fg=white}
+\setbeamercolor{palette secondary}{bg=deepgrayblue, fg=white}
+\setbeamercolor{palette tertiary}{bg=deepgrayblue, fg=white}
+\setbeamercolor{palette quaternary}{bg=deepgrayblue, fg=white}
+%% Beamer colors : blocks
+\setbeamercolor{block title}{parent=palette secondary, bg=white, fg=deepgrayblue}
+\setbeamercolor{block title alerted}{use=alerted text, bg=white, fg=deepgrayblue}
+\setbeamercolor{block title example}{use=example text, bg=white, fg=deepgrayblue}
 \setbeamercolor{block body}{parent=normal text,use=block title, bg=white}
 \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted, bg=block title alerted.bg!10!bg}
 \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
-
+% Beamer footline
 \setbeamertemplate{footline}{
  \leavevmode%
  \hbox{\hspace*{-0.06cm}
@@ -64,18 +73,25 @@
  \end{beamercolorbox}}%
  \vskip0pt%
 }
+%% Beamer colors : misc
+\setbeamercolor{normal}{bg=deepgrayblue, fg=deepgrayblue}
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+\setbeamercolor{author in head/foot}{bg=white,fg=deepgrayblue}
+\setbeamercolor{date in head/foot}{bg=white,fg=deepgrayblue}
+\setbeamercolor{title in head/foot}{bg=white,fg=deepgrayblue}
+\setbeamercolor{item}{parent=block title,bg=white,fg=deepgrayblue}
+\setbeamercolor{section in toc}{fg=deepgrayblue}
+\setbeamercolor{item}{fg=deepgrayblue!80!gray, bg=black}
 
-\newcommand{\coloredblock}[2]{\color{#1}#2\color{darkblue}}
-\newcommand{\red}[1]{\coloredblock{red}{#1}}
-\newcommand{\black}[1]{\coloredblock{darkblue}{#1}}
-\newcommand{\green}[1]{\coloredblock{green}{#1}}
-\newcommand{\blue}[1]{\coloredblock{blue}{#1}}
-\newcommand{\trans}{}
-\newcommand{\lang}[1]{\textbf{\emph{#1}}}
-\newcommand{\rb}{\lang{Ruby}}
-\newcommand{\img}[2]{\scalebox{#1}[#1]{\includegraphics{#2}}}
-\newcommand{\codeimg}[1]{\img{1.0}{generated/#1}}
-\newcommand{\ier}{$^{ier}$}
-\newcommand{\iere}{$^{i\grave{e}re}$}
-\newcommand{\ieme}{$^{i\grave{e}me}$}
 
+% }}} Beamer tweaking (end)
+% {{{ Lstlisting tweaking
+\lstset{language=c}
+
+% }}} Lstlisting tweaking (end)
+% {{{ Environnements
+% Code environment (use fancyvrb package)
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\footnotesize}
+
+% }}} Environnements (end)
