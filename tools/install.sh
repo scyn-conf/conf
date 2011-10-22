@@ -24,13 +24,13 @@ while echo $INSTALL_PATH | grep '\.\.' > /dev/null; do
 done
 
 BLUE="\033[34m"
-LBLUE="\033[34;1m"
+LBLUE="\033[94m"
 RED="\033[31m"
-LRED="\033[31;1m"
+LRED="\033[91m"
 YELLOW="\033[33m"
-LYELLOW="\033[33;1m"
+LYELLOW="\033[93m"
 GREEN="\033[32m"
-LGREEN="\033[32;1m"
+LGREEN="\033[92m"
 RST="\033[0m"
 
 executable=`basename $0`
@@ -92,7 +92,7 @@ installation ()
 				echo -e "${YELLOW}Stopping $DST installation${RST}"
 				return
 			else
-				echo "Overwriting $SAVE" 
+				echo "Overwriting $SAVE"
 			fi
 		fi
 		# if the configuration file exists and is not a symlink, save it
@@ -227,7 +227,7 @@ case `uname -s` in
 			mkdir ~/.config
 		fi
 		perform_action $AWESOME awesome/awesome ~/.config/awesome
-		
+
 		# X init scripts
 		perform_action $X X/xinitrc ~/.xinitrc
 		perform_action $X X/xinitrc ~/.xsession
