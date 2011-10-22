@@ -362,15 +362,15 @@ function widgets.cpu(format, padding)
 			color='<span color="'
 			if number == 0 then
 				color = color .. '#606060'
-			elseif number > 0 and number <= 20 then
+			elseif number > 0 and number <= 5 then
 				color = color .. '#ADBED1'
-			elseif number > 20 and number <= 40 then
+			elseif number > 5 and number <= 20 then
 				color = color .. '#ACE1AF'
-			elseif number > 40 and number <= 60 then
+			elseif number > 20 and number <= 50 then
 				color = color .. '#FCDA98'
-			elseif number > 60 and number <= 80 then
+			elseif number > 50 and number <= 75 then
 				color = color .. '#F3BA5E'
-			elseif number > 80 then
+			elseif number > 75 then
 				color = color .. '#F3785E'
 			end
 			color = color .. '">'
