@@ -23,6 +23,7 @@ source ./rm.zsh
 source ./ssh.zsh
 source ./x.zsh
 source ./zlock.zsh
+source ./zsh-syntax-highlighting.zsh
 source ./postconf.zsh
 
 popd >&-
