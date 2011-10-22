@@ -24,6 +24,7 @@ set laststatus=2
 
 "}}}
 " Variables:{{{
+"------------------------------------------------------------------------------
 let g:SyntaxDebug = 0
 let g:CharAnalysis = 0
 

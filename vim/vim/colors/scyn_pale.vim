@@ -129,8 +129,12 @@ hi cppcoutcolor     guifg=#98FB98     guibg=NONE        gui=NONE      ctermfg=gr
 hi cppcerrcolor     guifg=#E9967A     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
 hi CppStdColor      guifg=#ADFF2F     guibg=NONE        gui=NONE      ctermfg=green        ctermbg=NONE        cterm=bold
 
-hi link CppStdColor  	cppstdcolor
+" special for notes
+hi notesUnderline	guifg=#a1d651	guibg=NONE	gui=underline ctermfg=green	ctermbg=NONE cterm=underline
+hi notesBold		guifg=#ED9121	guibg=NONE	gui=bold ctermfg=yellow	ctermbg=NONE cterm=bold
+hi notesItalic		guifg=#FFD2A7	guibg=NONE	gui=italic ctermfg=yellow	ctermbg=NONE cterm=italic
 
+hi link CppStdColor  	cppstdcolor
 hi link Character       Constant
 hi link Boolean         Constant
 hi link Float           Number
@@ -149,6 +153,9 @@ hi link SpecialChar     Special
 hi link SpecialComment  Special
 hi link Debug           Special
 
+hi link notesUnderline	Underline
+hi link notesBold	Bold
+hi link notesItalic	Italic
 "hi link shVariable	Special
 
 " Python
