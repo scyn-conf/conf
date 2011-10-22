@@ -1,55 +1,40 @@
 ## Colors
-*background:	#101213
+*background:	#202020
 *foreground:	#ffffff
-
 ! Black
 *color0:      	#000000
-*color8:      	#444444
-
+*color8:      	#202020
 ! Red
-!*color1:      	#ba3232
-!*color1:      	#F92672
-*color1:	#d02e54
-!*color9:      	#ff8585
-*color9:      	#F92672
-
+*color1:      	#ff6347
+*color9:      	#ff6347
 ! Green
-!*color2:      	#67A712
 *color2:      	#A6E22E
-!*color10:     	#b1d631
 *color10:     	#A6E22E
-
-
 ! Yellow
-*color3:      	#f6c84c
-*color11:     	#fff796
-
+*color3:     	#f4af60
+*color11:      	#f6c84c
 ! Blue
-!*color4:      	#6B89A8
-*color4:     	#66D9EF
-!*color12:     	#7e8aa2
-*color12:      	#96CBFE
-
+*color4:      	#1e90ff
+*color12:     	#00bfff
 ! Purple
-*color5:     	#e89dde
-*color13:     	#c94cb9
-
+*color5:     	#293739
+*color13:     	#1b1d1e
 ! Cyan
 *color6:      	#948771
 *color14:     	#6ef4ec
-
 ! White
-*color7:      	#D4CDB9
+*color7:      	#303030
 *color15:     	#ffffff
 
-## Misc
-xterm*faceName:		Bitstream Vera Sans Mono
-xterm*faceSize:		9
-URxvt.font:		xft:Monospace-10
+# General
+URxvt.font:		xft:Monospace-9
 URxvt*scrollBar:	false
 URxvt*borderLess:	false
+! URxvt*inheritPixmap:	true
+! URxvt*tint:		white
+# tabs
+URxvt*tabbed.tabbar-fg: 7
+URxvt*tabbed.tabbar-bg:	8
+URxvt*tabbed.tab-fg:	12
+URxvt*tabbed.tab-bg:	8
 
-## Transparency
-#URxvt*inheritPixmap:	true
-#URxvt*tintColor:	lightblue
-#URxvt*shading:		15
