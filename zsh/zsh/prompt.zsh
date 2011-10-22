@@ -16,32 +16,56 @@ zstyle ':vcs_info:*' get-revision true
 
 setopt prompt_subst
 
+export PROMPT_STYLE=complete
+function switch_prompt()
+{
+	case `echo $PROMPT_STYLE` in
+		complete)
+			export PROMPT_STYLE=simple
+		;;
+		simple)
+			export PROMPT_STYLE=complete
+		;;
+		*)
+		;;
+	esac
+}
+
+function active_jobs()
+{
+	nb_processes=`jobs | wc -l`
+	if [ $nb_processes -eq 1 ]; then
+		echo -n "[$nb_processes&]"
+	elif [ $nb_processes -gt 1 ]; then
+		echo -n "[$nb_processes&]"
+	fi
+}
+
 function precmd()
 {
 	reset="%{`print "\e(B\e)B\e*B\e+B"`%}"
-	white="%{`print "\e[37;1m"`%}"
-	lwhite="%{`print "\e[37m"`%}"
-	yellow="%{`print "\e[33m"`%}"
-	lyellow="%{`print "\e[33;1m"`%}"
-	red="%{`print "\e[31m"`%}"
-	lred="%{`print "\e[31;1m"`%}"
-	green="%{`print "\e[32m"`%}"
-	lgreen="%{`print "\e[32;1m"`%}"
-	blue="%{`print "\e[34m"`%}"
-	lblue="%{`print "\e[34;1m"`%}"
-	purple="%{`print "\e[35m"`%}"
-	lpurple="%{`print "\e[35;1m"`%}"
-	cyan="%{`print "\e[36m"`%}" # cyan
-	lcyan="%{`print "\e[36;1m"`%}"
+	dark_red="%{`print "\e[31m"`%}"
+	dark_green="%{`print "\e[32m"`%}"
+	dark_yellow="%{`print "\e[33m"`%}"
+	dark_blue="%{`print "\e[34m"`%}"
+	dark_purple="%{`print "\e[35m"`%}"
+	dark_cyan="%{`print "\e[36m"`%}"
+	dark_white="%{`print "\e[37m"`%}"
+	red="%{`print "\e[91m"`%}"
+	green="%{`print "\e[92m"`%}"
+	yellow="%{`print "\e[93m"`%}"
+	blue="%{`print "\e[94m"`%}"
+	purple="%{`print "\e[95m"`%}"
+	cyan="%{`print "\e[96m"`%}"
+	white="%{`print "\e[97m"`%}"
 	clr="%{$reset_color%}"
 
-	which vcs_info >&-
-	if [ $? -eq 0 ]; then
-		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-			zstyle ':vcs_info:*' formats "on$cyan [%s:%b:%7.7i%c%u$cyan]"
-		} else {
-			zstyle ':vcs_info:*' formats "on$cyan [%s:%b:%7.7i%c%u%F{red}?$cyan]"
-		}
+	if `vcs_info >&-`; then
+		if [ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]; then
+			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u"
+		else
+			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F${red}?$dark_cyan"
+		fi
 		vcs_info
 	fi
 	case $TERM in
@@ -52,16 +76,24 @@ function precmd()
 		echo -ne "\033]0;${HOST%%.*}:${PWD/$HOME/~} $vcs\007\033k`basename $PWD`\033\\"
 		;;
 	esac
-	
-	PROMPT="${yellow}%D{%H:%M}$clr - $green$USER$clr at $red$HOST$clr in $blue%~$clr ${vcs_info_msg_0_}$clr
-%(?..${red}[%?] %b)$cyan(%!) ${lblue}42sh>$clr "
 
-#	PROMPT="${blue}%~${dirt} ${vcs_info_msg_0_}$clr
-#${dirt}$USER${yellow}@${dirt}$HOST${blue} 42sh> ${clr}"
-#	RPROMPT="${blue}<%! $clr%(?..${red}[%?]%b)${green}[%D{%H:%M}]${clr}"
-
-
+	case `echo $PROMPT_STYLE` in
+		complete)
+PROMPT="$yellow%D{%H:%M}$clr - Logged as $green$USER$clr on $red$HOST$clr in $blue%~$clr ${vcs_info_msg_1_}
+$(active_jobs)%(?..${red}[%?] %b)$dark_cyan(%!) ${dark_blue}42sh>$clr "
+RPROMPT="${vcs_info_msg_0_}$clr"
+		;;
+		simple)
+RPROMPT="${vcs_info_msg_0_}$yellow [%D{%H:%M}]"
+PROMPT="%(?..$red}[%?] %b)$blue%~ ${vcs_info_msg_1_}
+$green$USER$clr@$red$HOST$clr: "
+		;;
+		*)
+		;;
+	esac
 }
+
+
 
 autoload -U colors
 colors
