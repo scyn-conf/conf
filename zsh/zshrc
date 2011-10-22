@@ -22,9 +22,9 @@ case $HOST in
 		source ./consul.zsh
 	;;
 	gate-ssh)
-		echo -e "\033[31mLogged in gate-ssh, forwarding to freebsd\033[0m"
+		echo -e "\033[91mLogged in gate-ssh, forwarding to freebsd\033[0m"
 		ssh freebsd
-		echo -e "\033[31mLogged out freebsd, disconnecting from gate-ssh\033[0m"
+		echo -e "\033[91mLogged out freebsd, disconnecting from gate-ssh\033[0m"
 		exit
 	;;
 	*)
@@ -34,6 +34,9 @@ case $HOST in
 	;;
 esac
 
+echo -e	"\033[94mLogged in on \033[33m`date "+%d/%m/%y"`\033[0m \033[94mat \033[33m`date "+%l:%M"`\033[0m"
+echo -e "\033[94m`uname -a`\n\033[0m"
+echo -e "Welcome on \033[34m$HOST\033[0m, \033[32m$PSEUDO\033[0m.\n"
 popd >&-
 
 ## Keep an empty line!
