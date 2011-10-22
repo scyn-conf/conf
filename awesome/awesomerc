@@ -8,7 +8,7 @@ require("beautiful")
 require("naughty")
 -- Plugins
 require("shifty")
-require("vicious")
+--require("vicious")
 require("teardrop")
 -- Variables definition
 require("variables")
@@ -42,9 +42,9 @@ awful.button({}, 5, awful.tag.viewprev)
 
 -- Widgets
 separator = widget({type = 'textbox', name = "separator"})
-separator.text = " "
-datewidget = widget({type = 'textbox', name='datewidget'})
-vicious.register(datewidget, vicious.widgets.date, '<span color="' .. beautiful.fg_focus .. '">%b %d, %R</span>', 30)
+--separator.text = " "
+--datewidget = widget({type = 'textbox', name='datewidget'})
+--vicious.register(datewidget, vicious.widgets.date, '<span color="' .. beautiful.fg_focus .. '">%b %d, %R</span>', 30)
 
 -- Tasklist
 mytasklist	= {}
@@ -106,8 +106,8 @@ for s = 1, screen.count() do
 	mywibox[s].widgets =
 	{
 		{
-			separator,
-	 		datewidget,
+			--separator,
+	 		--datewidget,
 			separator,
 			mytaglist[s],
 			mytasklist[s],
