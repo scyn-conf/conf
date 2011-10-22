@@ -15,8 +15,6 @@ set t_vb=
 set showcmd
 " Show current mode
 set showmode
-" Set colorscheme
-"let g:molokai_original = 1
 " Gui configuration
 if has("gui_running")
     set guioptions-=m	" no menu bar
@@ -25,10 +23,10 @@ if has("gui_running")
     set guioptions-=L	" no left-hand scrollbar
     set cursorline	" currrent line is highlighted
     set hlsearch	" highlight search matches
-    colorscheme scyn " set colorscheme
+    colorscheme spring	" set colorscheme
 else " terminal configuration
-    set t_Co=16		" Use 8 colors
-    colorscheme scyn " set colorscheme
+    set t_Co=16		" Use 16 colors
+    colorscheme spring
 endif
 " Show the cursor position
 set ruler
@@ -36,6 +34,8 @@ set ruler
 set number
 " Get rid of separator chars
 set fillchars=""
+" Set tab labels
+set guitablabel=[%n:%t]
 
 
 "}}}
