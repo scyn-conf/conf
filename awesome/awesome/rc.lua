@@ -1,1 +1,1 @@
-/home/remichaintron/conf/awesome/awesomerc
+/home/scyn/conf/awesome/awesomerc
