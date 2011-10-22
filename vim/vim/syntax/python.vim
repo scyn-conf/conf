@@ -113,7 +113,6 @@ syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 syn keyword pythonSelf 		self
 
-
 syn match pythonDocComment "^[\t ]*\"\"\".*\"\"\"$"
 
 " Decorators (new in Python 2.4)
@@ -151,6 +150,9 @@ syn region pythonString		start=+'''+ end=+'''+ keepend contains=pythonEscape,pyt
 " Doc strings
 syn region pythonDocString		start=+^[\t ]*"""+ end=+"""$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,pythonDocStringAnnotation,@Spell
 syn region pythonDocString		start=+^'''[\t ]*+ end=+'''$+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,pythonDocStringAnnotation,@Spell
+syn match  pythonDocStringAnnotation	"@param.*:" display contained
+syn match  pythonDocStringAnnotation	"@return.*:" display contained
+syn match  pythonDocStringAnnotation	"@rtype.*:" display contained
 
 syn match  pythonEscape		    +\\[abfnrtv'"\\]+ display contained
 syn match  pythonEscape		    "\\\o\o\=\o\=" display contained
@@ -310,7 +312,7 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonComment		Comment
   HiLink pythonCoding		Special
-  HiLink pythonRun		Special
+  HiLink pythonRun		SpecialChar
   HiLink pythonTodo		Todo
 
   HiLink pythonError		Error
@@ -319,7 +321,7 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonString		String
   HiLink pythonRawString	String
-  HiLink pythonEscape			Special
+  HiLink pythonEscape			SpecialChar
   HiLink pythonEscapeError		Error
 
   HiLink pythonBytes		    String
@@ -328,8 +330,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBytesEscape		Special
   HiLink pythonBytesEscapeError	Error
 
-  HiLink pythonStrFormatting	Special
-  HiLink pythonStrFormat    	Special
+  HiLink pythonStrFormatting	SpecialChar
+  HiLink pythonStrFormat	SpecialChar
   HiLink pythonStrTemplate	    Special
 
   HiLink pythonDocTest		Special
@@ -351,6 +353,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonExClass	Structure
   HiLink pythonSelf 	Special
   HiLink pythonDocString Comment
+  HiLink pythonDocStringAnnotation Special
   delcommand HiLink
 endif
 

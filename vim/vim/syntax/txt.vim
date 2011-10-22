@@ -10,6 +10,7 @@ syntax match txtKO "KO"
 syntax match txtDone "\[-\].*$" contains=txtTagDoc
 syntax match txtTodo "\[+\]"
 syntax match txtImportant "\[!\]"
+syntax match txtUnderline ""
 syntax match txtReported "\[r\]"
 syntax match txtCurrent  "\[%\]"
 syntax match txtTagDoc "\[doc\]"

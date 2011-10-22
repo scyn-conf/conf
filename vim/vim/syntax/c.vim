@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	C
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2006 May 01
+" Maintainer: Scyn - Remi Chaintron <remi.chaintron@gmail.com>
+" Last Change:	2011 July 21
 
 " Quit when a (custom) syntax file was already loaded
 if exists("b:current_syntax")
@@ -13,15 +13,20 @@ syn keyword	cStatement	goto break return continue asm
 syn keyword	cLabel		case default
 syn keyword	cConditional	if else switch
 syn keyword	cRepeat		while for do
-syn keyword	cTodo		contained TODO FIXME XXX WARNING TEMPORARY 
-syn match 	mywarning 	display contained "/!\\"
+syn keyword	cTodo		contained TODO FIXME XXX WARNING TEMPORARY FIX ENDFIX
+" FIX: scyn
 syn match 	logins 		display contained "<.*>"
-syn keyword     cFix 		contained FIXME_TC1 FIXEND_TC1  FIXBEGIN_TC1 FIXEND_TC1 FIXBEGIN_TC2 FIXEND_TC2 FIXBEGIN_TC3 FIXEND_TC3 FIXBEGIN FIXEND FIXBEGIN_TC4 FIXEND_TC4 FIXBEGIN_TC5 FIXEND_TC5 FIXBEGIN_TC6 FIXEND_TC6 FIXBEGIN_TC7 FIXEND_TC7 FIXBEGIN_TC8 FIXEND_TC8 FIXBEGIN_TC9 FIXEND_TC9
-
-
-
+syn keyword	cFix		contained "fixbegin" "fixend"
+syn match	cCommentHeaders contained " .*:"
+syn match	cMacros		"\([A-Z]\([A-Z]_\)*\)*"
+syn match	cUserTypes	"[^a-zA-Z0-9(][st]_[_a-z0-9_A-Z]*[^);_a-zA-Z0-9]"
+syn match	cFunctionArgSeparator ", " contained
+syn region	cFunctionName	matchgroup=Function start="[_a-zA-Z][_a-zA-Z0-9]*[ ]\?(" end=")" contains=cFunctionName,cType,cString,cNumber,cStorageClass,cMacros,cConstant,cStructure,cParenGroup,cFunctionArgSeparator,cCharacter
+syn match	cLogicalOperators "\(&&\|||\)"
+" FIX: scyn (end)
+"
 " cCommentGroup allows adding matches for special things in comments
-syn cluster	cCommentGroup	contains=cTodo,cFix,mywarning,logins
+syn cluster	cCommentGroup	contains=cTodo,cBadContinuation
 
 " String and Character constants
 " Highlight special characters (those which have a backslash) differently
@@ -68,16 +73,24 @@ if exists("c_space_errors")
   endif
 endif
 
+" This should be before cErrInParen to avoid problems with #define ({ xxx })
+if exists("c_curly_error")
+  syntax match cCurlyError "}"
+  syntax region	cBlock		start="{" end="}" contains=ALLBUT,cCurlyError,@cParenGroup,cErrInParen,cCppParen,cErrInBracket,cCppBracket,cCppString,@Spell fold
+else
+  syntax region	cBlock		start="{" end="}" transparent fold
+endif
+
 "catch errors caused by wrong parenthesis and brackets
 " also accept <% for {, %> for }, <: for [ and :> for ] (C99)
 " But avoid matching <::.
-syn cluster	cParenGroup	contains=cParenError,cIncluded,cSpecial,cCommentSkip,cCommentString,cComment2String,@cCommentGroup,cCommentStartError,cUserCont,cUserLabel,cBitField,cCommentSkip,cOctalZero,cCppOut,cCppOut2,cCppSkip,cFormat,cNumber,cFloat,cOctal,cOctalError,cNumbersCom
+syn cluster	cParenGroup	contains=cParenError,cIncluded,cSpecial,cCommentSkip,cCommentString,cComment2String,@cCommentGroup,cCommentStartError,cUserCont,cUserLabel,cBitField,cOctalZero,cCppOut,cCppOut2,cCppSkip,cFormat,cNumber,cFloat,cOctal,cOctalError,cNumbersCom,cUserTypes
 if exists("c_no_curly_error")
   syn region	cParen		transparent start='(' end=')' contains=ALLBUT,@cParenGroup,cCppParen,cCppString,@Spell
   " cCppParen: same as cParen but ends at end-of-line; used in cDefine
   syn region	cCppParen	transparent start='(' skip='\\$' excludenl end=')' end='$' contained contains=ALLBUT,@cParenGroup,cParen,cString,@Spell
   syn match	cParenError	display ")"
-  syn match	cErrInParen	display contained "^[{}]\|^<%\|^%>\|[^ ]==[^ ]"
+  syn match	cErrInParen	display contained "^[{}]\|^<%\|^%>"
 elseif exists("c_no_bracket_error")
   syn region	cParen		transparent start='(' end=')' contains=ALLBUT,@cParenGroup,cCppParen,cCppString,@Spell
   " cCppParen: same as cParen but ends at end-of-line; used in cDefine
@@ -92,14 +105,9 @@ else
   syn match	cErrInParen	display contained "[\]{}]\|<%\|%>"
   syn region	cBracket	transparent start='\[\|<::\@!' end=']\|:>' contains=ALLBUT,@cParenGroup,cErrInParen,cCppParen,cCppBracket,cCppString,@Spell
   " cCppBracket: same as cParen but ends at end-of-line; used in cDefine
-  syn region	cCppBracket	transparent start='\[\|<::\@!' skip='\\$' excludenl end=']\|:>' end='$' contained contains=ALLBUT,@cParenGroup, cErrInParen,cParen,cBracket,cString,@Spell
+  syn region	cCppBracket	transparent start='\[\|<::\@!' skip='\\$' excludenl end=']\|:>' end='$' contained contains=ALLBUT,@cParenGroup,cErrInParen,cParen,cBracket,cString,@Spell
   syn match	cErrInBracket	display contained "[);{}]\|<%\|%>"
 endif
-
-"Blocks?
-" syn region	cBlock		transparent start="{" end="}"  contains=ALLBUT,@cParenGroup,cCppParen,cErrInParen,cErrInBracket,cCppBracket,cCppString,@Spell
-" syn match    	cErrorInBlock   contained "\(\(\n.\+\n\=\)\{26,}\)\|\(\n.\+\n\n\n\)"
-" hi def link 	cErrorInBlock   cError
 
 "integer number, or floating point number without a dot and with "f".
 syn case ignore
@@ -141,32 +149,32 @@ if exists("c_comment_strings")
   syntax region cComment2String	contained start=+L\=\\\@<!"+ skip=+\\\\\|\\"+ end=+"+ end="$" contains=cSpecial
   syntax region  cCommentL	start="//" skip="\\$" end="$" keepend contains=@cCommentGroup,cComment2String,cCharacter,cNumbersCom,cSpaceError,@Spell
   if exists("c_no_comment_fold")
-    syntax region cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cCommentString,cCharacter,cNumbersCom,cSpaceError,@Spell
+    " Use "extend" here to have preprocessor lines not terminate halfway a
+    " comment.
+    syntax region cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cCommentString,cCharacter,cNumbersCom,cSpaceError,@Spell extend
   else
-    syntax region cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cCommentString,cCharacter,cNumbersCom,cSpaceError,@Spell fold
+    syntax region cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cCommentString,cCharacter,cNumbersCom,cSpaceError,@Spell fold extend
   endif
 else
   syn region	cCommentL	start="//" skip="\\$" end="$" keepend contains=@cCommentGroup,cSpaceError,@Spell
   if exists("c_no_comment_fold")
-    syn region	cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cSpaceError,@Spell
+    syn region	cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cSpaceError,@Spell extend
   else
-    syn region	cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cSpaceError,@Spell fold
+    syn region	cComment	matchgroup=cCommentStart start="/\*" end="\*/" contains=@cCommentGroup,cCommentStartError,cSpaceError,@Spell fold extend
   endif
 endif
 " keep a // comment separately, it terminates a preproc. conditional
 syntax match	cCommentError	display "\*/"
 syntax match	cCommentStartError display "/\*"me=e-1 contained
 
-syntax match	cmyType display "[^a-zA-Z0-9(][st]_[a-z0-9_A-Z]*"
-
-
-syntax region	cBlock		start="{" end="}" transparent fold
-
 syn keyword	cOperator	sizeof
 if exists("c_gnu")
   syn keyword	cStatement	__asm__
   syn keyword	cOperator	typeof __real__ __imag__
 endif
+" FIX: scyn
+syn match	cType		"[_a-zA-Z][_a-zA-Z0-9]*\*"
+" FIX: scyn (end)
 syn keyword	cType		int long short char void  s_*
 syn keyword	cType		signed unsigned float double
 if !exists("c_no_ansi") || exists("c_ansi_typedefs")
@@ -188,7 +196,6 @@ endif
 if exists("c_gnu")
   syn keyword	cType		__label__ __complex__ __volatile__
 endif
-
 
 syn keyword	cStructure	struct union enum typedef
 syn keyword	cStorageClass	static register auto volatile extern const
@@ -213,7 +220,7 @@ if !exists("c_no_ansi") || exists("c_ansi_constants") || exists("c_gnu")
   syn keyword cConstant SCHAR_MAX SINT_MAX SLONG_MAX SSHRT_MAX
   if !exists("c_no_c99")
     syn keyword cConstant __func__
-    syn keyword cConstant LLONG_MAX ULLONG_MAX
+    syn keyword cConstant LLONG_MIN LLONG_MAX ULLONG_MAX
     syn keyword cConstant INT8_MIN INT16_MIN INT32_MIN INT64_MIN
     syn keyword cConstant INT8_MAX INT16_MAX INT32_MAX INT64_MAX
     syn keyword cConstant UINT8_MAX UINT16_MAX UINT32_MAX UINT64_MAX
@@ -270,7 +277,7 @@ if !exists("c_no_c99") " ISO C99
 endif
 
 " Accept %: for # (C99)
-syn region	cPreCondit	start="^\s*\(%:\|#\)\s*\(if\|ifdef\|ifndef\|elif\)\>" skip="\\$" end="$" end="//"me=s-1 contains=cComment,cCppString,cCharacter,cCppParen,cParenError,cNumbers,cCommentError,cSpaceError
+syn region	cPreCondit	start="^\s*\(%:\|#\)\s*\(if\|ifdef\|ifndef\|elif\)\>" skip="\\$" end="$"  contains=cComment,cCommentL,cCppString,cCharacter,cCppParen,cParenError,cNumbers,cCommentError,cSpaceError
 syn match	cPreCondit	display "^\s*\(%:\|#\)\s*\(else\|endif\)\>"
 if !exists("c_no_if0")
   if !exists("c_no_if0_fold")
@@ -286,7 +293,7 @@ syn match	cIncluded	display contained "<[^>]*>"
 syn match	cInclude	display "^\s*\(%:\|#\)\s*include\>\s*["<]" contains=cIncluded
 "syn match cLineSkip	"\\$"
 syn cluster	cPreProcGroup	contains=cPreCondit,cIncluded,cInclude,cDefine,cErrInParen,cErrInBracket,cUserLabel,cSpecial,cOctalZero,cCppOut,cCppOut2,cCppSkip,cFormat,cNumber,cFloat,cOctal,cOctalError,cNumbersCom,cString,cCommentSkip,cCommentString,cComment2String,@cCommentGroup,cCommentStartError,cParen,cBracket,cMulti
-syn region	cDefine		start="^\s*\(%:\|#\)\s*\(define\|undef\)\>" skip="\\$" end="$" end="//"me=s-1 contains=ALLBUT,@cPreProcGroup,@Spell
+syn region	cDefine		start="^\s*\(%:\|#\)\s*\(define\|undef\)\>" skip="\\$" end="$" keepend contains=ALLBUT,@cPreProcGroup,@Spell
 syn region	cPreProc	start="^\s*\(%:\|#\)\s*\(pragma\>\|line\>\|warning\>\|warn\>\|error\>\)" skip="\\$" end="$" keepend contains=ALLBUT,@cPreProcGroup,@Spell
 
 " Highlight User Labels
@@ -314,11 +321,11 @@ else
     let b:c_minlines = 15	" mostly for () constructs
   endif
 endif
-exec "syn sync ccomment cComment minlines=" . b:c_minlines
-
-
-" My syntaxes
-
+if exists("c_curly_error")
+  syn sync fromstart
+else
+  exec "syn sync ccomment cComment minlines=" . b:c_minlines
+endif
 
 " Define the default highlighting.
 " Only used when an item doesn't have highlighting yet
@@ -330,11 +337,11 @@ hi def link cLabel		Label
 hi def link cUserLabel		Label
 hi def link cConditional	Conditional
 hi def link cRepeat		Repeat
-hi def link cCharacter		Character
+hi def link cCharacter		cString
 hi def link cSpecialCharacter	cSpecial
 hi def link cNumber		Number
 hi def link cOctal		Number
-hi def link cOctalZero		PreProc	 " link this to Error if you want
+hi def link cOctalZero		PreProc	
 hi def link cFloat		Float
 hi def link cOctalError		cError
 hi def link cParenError		cError
@@ -344,6 +351,7 @@ hi def link cCommentError	cError
 hi def link cCommentStartError	cError
 hi def link cSpaceError		cError
 hi def link cSpecialError	cError
+hi def link cCurlyError		cError
 hi def link cOperator		Operator
 hi def link cStructure		Structure
 hi def link cStorageClass	StorageClass
@@ -363,16 +371,21 @@ hi def link cString		String
 hi def link cComment		Comment
 hi def link cSpecial		SpecialChar
 hi def link cTodo		Todo
-hi def link cFix 		Fix
-hi def link mywarning 		Todo
+hi def link cBadContinuation	Error
 hi def link cCppSkip		cCppOut
 hi def link cCppOut2		cCppOut
 hi def link cCppOut		Comment
+" FIX: scyn
 hi def link cOperator		Op
 hi def link cOperatorError	cError
 hi def link cmyParenError	cError
-hi def link cmyType		cType
 hi def link logins 		Identifier
-
+hi def link cCommentHeaders	SpecialComment
+hi def link cMacros		Macro
+hi def link cUserTypes		Type
+hi def link cLogicalOperators	Statement
+hi def link cFunctionArgSeparator Function
+" FIX: scyn (end)
 let b:current_syntax = "c"
+
 " vim: ts=8

@@ -370,9 +370,9 @@ syn match floatNumber		"[-+]\=[0-9]\+\.[0-9]\+\(E[-+]\=[0-9]\+\)\=" contains=flo
 syn match floatNumber		":\([0-9a-f]\+_*\)\+"
 
 " Character string constants
-"syn match asmx86StringError	"'[ -~]*'"
-"syn match asmx86StringError	"'[ -~]*$"
-"syn region asmx86String		start="'" skip="''" end="'" oneline contains=asmx86CharError
+syn match asmx86StringError	"'[ -~]*'"
+syn match asmx86StringError	"'[ -~]*$"
+syn region asmx86String		start="'" skip="''" end="'" oneline contains=asmx86CharError
 syn match asmx86CharError	"[^ -~]" contained
 
 " Immediate data
