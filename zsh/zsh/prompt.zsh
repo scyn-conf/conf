@@ -61,10 +61,10 @@ function precmd()
 	clr="%{$reset_color%}"
 
 	if `vcs_info >&-`; then
-		if [ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]; then
+		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
 			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u"
 		else
-			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F${red}?$dark_cyan"
+			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F ${red}?$dark_cyan"
 		fi
 		vcs_info
 	fi
