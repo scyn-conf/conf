@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT=./tools/install.sh
+SCRIPT=./install.sh
 PROJECT=conf
 
 all: install
