@@ -11,9 +11,11 @@ augroup filetypedetect
     au BufRead,BufNewFile *.aasm 			set filetype=asm
 ""    au BufRead,BufNewFile *.s 				set filetype=mips
     au BufRead,BufNewFile *.s,*.S 			set filetype=asmx86
+    au BufRead,BufNewFile *.op,*.opcodes		set filetype=asmx86
     au BufRead,BufNewFile *.tig,*tig			set filetype=tiger
     au BufRead,BufNewFile *.ll,*.yy			set filetype=cpp
     au BufRead,BufNewFile *.txt 			set filetype=txt
+    au BufRead,BufNewFile .conkyrc			set filetype=conkyrc
 augroup END
 
 augroup Binary
