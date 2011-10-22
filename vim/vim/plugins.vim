@@ -26,6 +26,11 @@ let syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_disabled_filetypes = ['tex']
 
+" NERDTree
+let NERDChristmasTree = 1
+let NERDTreeChDirMode = 2
+let NERDTreeWinPos = 'right'
+
 
 "}}}
 " Mappings:{{{
@@ -35,16 +40,14 @@ nmap <silent> <unique> <SPACE>o :FufBuffer<CR>
 nmap <silent> <unique> <SPACE>f :FufFile<CR>
 nmap <silent> <unique> <SPACE>d :FufDir<CR>
 nmap <silent> <unique> <SPACE>cl :FufChangeList<CR>
-nmap <silent> <unique> <SPACE>m :FufBookmarkFile<CR>
-nmap <silent> <unique> <SPACE>a :FufBookmarkAddFile<CR>
+nmap <silent> <unique> <SPACE>b :FufBookmarkDir<CR>
+nmap <silent> <unique> <SPACE>a :FufBookmarkAddDir<CR>
 nmap <silent> <unique> <SPACE><TAB> :FufCoverageFile<CR>
 nmap <silent> <unique> <SPACE>e :FufMruFile<CR>
 nmap <silent> <unique> <SPACE>c :FufMruCmd<CR>
 
 " NERDTree
 map <F8> :NERDTree `pwd`<RETURN>
-
-
 
 
 "}}}
