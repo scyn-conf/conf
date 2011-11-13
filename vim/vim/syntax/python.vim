@@ -106,7 +106,7 @@ syn keyword pythonStatement	with nonlocal
 syn keyword pythonStatement	False None True
 syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn keyword pythonRepeat	for while
+syn keyword pythonRepeat	for while in and is not or
 syn keyword pythonConditional	if elif else
 syn keyword pythonPreCondit	import from
 syn keyword pythonException	try except finally
@@ -303,8 +303,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonFunction		Function
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
+  HiLink pythonOperator		Repeat
   HiLink pythonException	Exception
-  HiLink pythonOperator		Conditionnal
 
   HiLink pythonDecorator	Define
   HiLink pythonDottedName	Function
