@@ -14,7 +14,7 @@ setlocal iskeyword+=-
 
 syn keyword zshTodo             contained TODO FIXME XXX NOTE
 " FIX: scyn
-syn match   zshCommentTitle	' .*:' contained
+syn match   zshCommentTitle	'# [^ ]*:' contained
 " ENDFIX
 syn region  zshComment          oneline start='\%(^\|\s\)#' end='$' contains=zshTodo,@Spell,zshCommentTitle
 
