@@ -16,19 +16,19 @@ endif
 let g:colors_name="spring"
 
 " Syntax highlighting
-hi Normal		guifg=#f8f8f2 	guibg=#191b1c
-hi Comment		guifg=#424242			ctermfg=darkmagenta				gui=italic
-hi Number		guifg=#f4af60			ctermfg=darkyellow				gui=NONE
+hi Normal		guifg=#f8f8f2 	guibg=#171c21
+hi Comment		guifg=#323232			ctermfg=darkmagenta				gui=italic
+hi Number		guifg=#ffc465			ctermfg=darkyellow				gui=NONE
 hi String		guifg=#a6e22e			ctermfg=lightgreen				gui=italic
-hi Constant		guifg=#948771			ctermfg=darkcyan
+hi Constant		guifg=#ffc465			ctermfg=yellow
 hi Statement		guifg=#00bfff			ctermfg=blue					gui=none
 hi Keyword		guifg=#66d9ef			ctermfg=blue					gui=none
-hi Conditional		guifg=#00bfff			ctermfg=blue					gui=none
-hi Repeat		guifg=#00bfff			ctermfg=blue					gui=none
+hi Conditional		guifg=#1e90ff			ctermfg=blue					gui=none
+hi Repeat		guifg=#1e90ff			ctermfg=blue					gui=none
 "hi Identifier		guifg=#a6e22e			ctermfg=lightgreen
-hi Identifier		guifg=#00bfff			ctermfg=lightblue
+hi Identifier		guifg=#1e90ff			ctermfg=lightblue
 hi Operator		guifg=#ff7f50			ctermfg=lightred
-hi Function		guifg=#f6c84c			ctermfg=yellow
+hi Function		guifg=#00bfff			ctermfg=lightblue
 
 hi Preproc		guifg=#ff6347			ctermfg=lightred				gui=none
 hi Macro		guifg=#948771			ctermfg=darkcyan
@@ -39,7 +39,7 @@ hi Exception		guifg=#ff6347			ctermfg=lightred				gui=none
 
 hi Structure		guifg=#00bfff			ctermfg=blue					gui=none
 hi Typedef		guifg=#4682b4			ctermfg=blue
-hi Type			guifg=#1e90ff			ctermfg=darkblue				gui=none
+hi Type			guifg=#a6e22e			ctermfg=darkblue				gui=none
 hi StorageClass		guifg=#948771			ctermfg=darkcyan
 
 hi SpecialChar		guifg=#ff6347			ctermfg=lightred				gui=none
@@ -92,7 +92,8 @@ hi Folded		guifg=#00bfff 	guibg=#191b1c	ctermfg=blue
 
 " Search
 hi Ignore		guifg=#808080									guibg=bg
-hi IncSearch		guifg=#c4be89 	guibg=#000000
+hi IncSearch		guifg=#1e90ff 	guibg=#000000
+hi Search		guifg=#ffffff 	guibg=#00bfff
 
 " Menu
 hi Pmenu		guifg=#00bfff 	guibg=#1b1d1e	ctermfg=blue		ctermbg=darkgray
