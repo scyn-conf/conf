@@ -19,4 +19,4 @@ clean:
 	find . -name ".*.sw*" -delete
 
 dist: clean
-	tar  cjvf /tmp/scyn-conf_`date "+%Y-%m-%d"`.tar.bz2 ../conf
+	tar  --exclude-vcs -cjvf /tmp/scyn-conf_`date "+%Y-%m-%d"`.tar.bz2 ../conf
