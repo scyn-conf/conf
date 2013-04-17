@@ -1,5 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export TERM='urxvt -e /bin/zsh'
-xcompmgr &
+xcompmgr -c -C -o0.2 -t1 -l1 -r2 &
 xset -dpms s off
-exec awesome -c ~/.awesomerc.lua
+#conky -c ~/conf/conky/conkyrc &
+#xrandr --output DVI-I-2 --right-of DVI-I-1
+exec awesome -c ~/.config/rc.lua
