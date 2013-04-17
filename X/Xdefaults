@@ -1,40 +1,41 @@
 ## Colors
-*background:	#202020
+*background:	#171c21
 *foreground:	#ffffff
 ! Black
-*color0:      	#000000
-*color8:      	#202020
+*color0:      	#171c21
+*color8:      	#000000
 ! Red
-*color1:      	#ff6347
-*color9:      	#ff6347
+*color1:      	#f11438
+*color9:      	#ef3756
 ! Green
 *color2:      	#A6E22E
 *color10:     	#A6E22E
 ! Yellow
-*color3:     	#f4af60
-*color11:      	#f6c84c
+*color3:     	#f49b00
+*color11:      	#ffc465
 ! Blue
-*color4:      	#1e90ff
+*color4:      	#00bfff
 *color12:     	#00bfff
 ! Purple
 *color5:     	#293739
 *color13:     	#1b1d1e
 ! Cyan
-*color6:      	#948771
+*color6:      	#14eef1
 *color14:     	#6ef4ec
 ! White
 *color7:      	#303030
 *color15:     	#ffffff
 
 # General
-URxvt.font:		xft:Monospace-9
+URxvt.font:		xft:DejaVu Sans Mono-9
 URxvt*scrollBar:	false
 URxvt*borderLess:	false
-! URxvt*inheritPixmap:	true
-! URxvt*tint:		white
+#URxvt*transparent:	true
+#URxvt*inheritPixmap:	true
+#URxvt*tint:		blue
 # tabs
 URxvt*tabbed.tabbar-fg: 7
-URxvt*tabbed.tabbar-bg:	8
+URxvt*tabbed.tabbar-bg:	0
 URxvt*tabbed.tab-fg:	12
-URxvt*tabbed.tab-bg:	8
+URxvt*tabbed.tab-bg:	0
 
