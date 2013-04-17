@@ -4,23 +4,22 @@
 
 theme = {}
 
---theme.font        = "Segoe UI 10"
-theme.font        = "Source Code Pro Regular 10"
+theme.font          = "DejaVu Sans 9"
 
-theme.bg_normal     = "#171c21cc"
-theme.bg_focus      = "#171c21cc"
-theme.bg_urgent     = "#00bfffcc"
+theme.bg_normal     = "#101010ff"
+theme.bg_focus      = "#101010ff"
+theme.bg_urgent     = "#a6e22eff"
 theme.bg_minimize   = "#444444"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#00bfff"
-theme.fg_urgent     = "#555555"
-theme.fg_minimize  = "#555555"
+theme.fg_normal     = "#ffffff"
+theme.fg_focus      = "#a6e22e"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize  = "#ffffff"
 
 theme.border_width  = "2"
-theme.border_normal = "#30303022"
-theme.border_focus  = "#33333300"
-theme.border_marked = "#91231c"
+theme.border_normal = "#20202000"
+theme.border_focus  = "#30303000"
+theme.border_marked = "#91231c00"
 
 -- There are another variables sets
 -- overriding the default one when
@@ -39,9 +38,9 @@ theme.tasklist_floating_icon = "/usr/share/awesome/themes/default/tasklist/float
 -- Variables set for theming menu
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
---theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
---theme.menu_height   = "15"
---theme.menu_width    = "100"
+theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
+theme.menu_height   = "15"
+theme.menu_width    = "100"
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -86,6 +85,8 @@ theme.layout_tilebottom = "/usr/share/awesome/themes/default/layouts/tilebottomw
 theme.layout_tileleft = "/usr/share/awesome/themes/default/layouts/tileleftw.png"
 theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
 theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
+
+theme.awesome_icon = os.getenv("HOME") .. "/conf/awesome/awesome/themes/scyn/icons/awesome16.png"
 
 
 return theme

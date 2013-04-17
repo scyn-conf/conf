@@ -12,7 +12,7 @@ terminal	=	"/usr/bin/urxvt -pe tabbed"
 terminal_td	=	"/usr/bin/urxvt -pe tabbed -name teardrop"
 terminal_launcher =	"/usr/bin/urxvt -name launcher"
 app_launcher	=	"gmrun"
-browser		=	"chromium"
+browser		=	"chromium-browser"
 editor		=	os.getenv("EDITOR") or "editor"
 editor_cmd	=	terminal .. " -e " .. editor
 

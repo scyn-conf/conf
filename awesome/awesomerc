@@ -2,6 +2,8 @@
 require("awful")
 require("awful.autofocus")
 require("awful.rules")
+-- Variables definition
+require("variables")
 -- Theme handling library
 require("beautiful")
 -- Notification library
@@ -10,12 +12,11 @@ require("naughty")
 require("shifty")
 --require("vicious")
 require("teardrop")
--- Variables definition
-require("variables")
 -- Tags definition
 require("tags")
 -- Menu declaration
 require("menu")
+require("debian.menu")
 -- Bindings
 require("bindings")
 
@@ -25,6 +26,7 @@ mysystray = widget({type = "systray"})
 
 -- Variables
 mywibox		= {}
+colorbar	= {}
 mytaskbar	= {}
 mypromptbox	= {}
 mylayoutbox	= {}
@@ -83,17 +85,6 @@ end)
 
 -- Wibox creation
 for s = 1, screen.count() do
-	-- Create a promptbox for each screen
-	mypromptbox[s] = awful.widget.prompt({layout = awful.widget.layout.horizontal.leftright})
-	-- Create an imagebox widget which will contains an icon indicating which layout we're using.
-	-- We need one layoutbox per screen.
-	mylayoutbox[s] = awful.widget.layoutbox(s)
-	mylayoutbox[s]:buttons(awful.util.table.join(
-	awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-	awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-	awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-	awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end))
-	)
 	-- Create a taglist widget
 	mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
 	-- Create a tasklist widget
@@ -101,24 +92,58 @@ for s = 1, screen.count() do
 		return awful.widget.tasklist.label.currenttags(c, s)
 	end, mytasklist.buttons)
 	-- Create the wibox
-	mywibox[s] = awful.wibox({position = "bottom", screen = s})
 
-	mywibox[s].widgets =
-	{
+	if screen == 1 then
+		colorbar[s] = awful.wibox({position = "top", screen = s, height = 28, border_width = 0, border_color = "#191b1cff"})
+		colorbar[s].widgets =
 		{
-			--separator,
-	 		--datewidget,
+			mytasklist[s],
+			layout = awful.widget.layout.vertical.flex	
+		}
+		colorbar[s].screen = s
+
+		mywibox[s] = awful.wibox({position = "top", screen = s, height = 24})
+		mywibox[s].widgets =
+		{
 			separator,
 			mytaglist[s],
-			mytasklist[s],
 			mylauncher,
 			layout = awful.widget.layout.horizontal.rightleft
-		},
-		layout = awful.widget.layout.horizontal.leftright
-	}
-	mywibox[s].screen = s
+		}
+		mywibox[s].screen = s
+
+	else
+		colorbar[s] = awful.wibox({position = "top", screen = s, height = 28, border_width = 0, border_color = "#191b1cff"})
+		colorbar[s].widgets =
+		{
+			mytasklist[s],
+			layout = awful.widget.layout.vertical.flex	
+		}
+		colorbar[s].screen = s
+	
+		mywibox[s] = awful.wibox({position = "top", screen = s, height = 24})
+		mywibox[s].widgets =
+		{
+			separator,
+			mytaglist[s],
+			mylauncher,
+			layout = awful.widget.layout.horizontal.leftright
+		}
+		mywibox[s].screen = s
+	end
 end
 
+-- }}}
+-- {{{ Rules
+awful.rules.rules = {
+	-- All clients will match this rule.
+	{ rule = { },
+	properties = { border_width = beautiful.border_width,
+	border_color = beautiful.border_normal,
+	focus = true,
+	keys = clientkeys,
+	buttons = clientbuttons } },
+}
 -- }}}
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -134,6 +159,14 @@ client.add_signal("manage", function (c, startup)
 		end
 	end)
 
+	c:add_signal("marked", function(c)
+		c.border_color = beautiful.border_marked
+	end)
+	c:add_signal("unmarked", function(c)
+		c.border_color = beautiful.border_focus
+	end)
+
+
 	if not startup then
 		-- Set the windows at the slave,
 		-- i.e. put it at the end of others instead of setting it master.
@@ -147,3 +180,16 @@ client.add_signal("manage", function (c, startup)
 	end
 end)
 
+
+client.add_signal("focus", function(c)
+	-- if use_composite then c.opacity = 1.0 end
+	c.opacity = 1.0
+	c.border_color = beautiful.border_focus
+end)
+client.add_signal("unfocus", function(c)
+	--if use_composite then c.opacity = 0.5 end
+	c.border_color = beautiful.border_normal
+	--	c.border_opacity = 0.0
+	c.opacity = 1.0
+end)
+-- }}}

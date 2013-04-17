@@ -24,7 +24,7 @@ local wibox = wibox
 local root = root
 local dbg= dbg
 local timer = timer
-
+require("variables") 
 module("shifty")
 -- }}}
 
@@ -106,7 +106,7 @@ function rename(tag, prefix, no_selectall)
   awful.prompt.run( { 
     fg_cursor = fg, bg_cursor = bg, ul_cursor = "single",
     text = text, selectall = not no_selectall },
-    taglist[scr][tag2index(scr,t)*2],
+    nil,--taglist[scr][tag2index(scr,t)*2],
     function (name) if name:len() > 0 then t.name = name; end end, 
     completion,
     awful.util.getdir("cache") .. "/history_tags", nil,
@@ -592,7 +592,21 @@ function sweep()
   end
 end
 --}}}
+-- PATCH <scyn> 08.14.2012
+--{{{ colorize : hook function that make tags use their defined colors
+function colorize()
+  local theme = beautiful.get()
+  local t = awful.tag.selected(mouse.screen)
 
+  theme.bg_focus = config.tags[t.name].bg_color
+  theme.fg_focus = config.tags[t.name].fg_color
+end
+
+function get_config()
+  return config
+end
+--}}} 
+--ENDPATCH <scyn> 08.14.2012
 --{{{ getpos : returns a tag to match position
 --      * originally this function did a lot of client stuff, i think its
 --      * better to leave what can be done by awful to be done by awful
@@ -797,6 +811,11 @@ client.remove_signal("manage", awful.tag.withcurrent)
 for s = 1, screen.count() do
   awful.tag.attached_add_signal(s, "property::selected", sweep)
   awful.tag.attached_add_signal(s, "tagged", sweep)
+
+  -- PATCH <scyn> 08.14.2012
+  awful.tag.attached_add_signal(s, "property::selected", colorize)
+  -- ENDPATCH 08.14.2012
+
   screen[s]:add_signal("tag::history::update", tagkeys)
 end
 -- }}}

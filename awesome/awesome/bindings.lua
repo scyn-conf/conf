@@ -5,6 +5,7 @@
 --
 
 require("variables")
+require("dualscreen")
 
 -- {{{ Mouse Bindings
 root.buttons(awful.util.table.join(
@@ -53,7 +54,7 @@ awful.key({modkey,           	}, "h",     	function() awful.tag.incmwfact(-0.05)
 --	}}}
 --	{{{ Tags bindings (shifty)
 -- Add tag
-awful.key({modkey,		}, "t",		shifty.add),
+awful.key({modkey,		}, "t",		tag_to_screen),
 -- Delete tag
 awful.key({modkey, "Shift"	}, "d",		shifty.del),
 -- Rename tag
@@ -61,21 +62,33 @@ awful.key({modkey, "Shift"	}, "r",		shifty.rename),
 -- Change layout
 awful.key({modkey,		}, "Return",	function() awful.layout.inc(layouts,  1) end),
 awful.key({modkey, "Shift"   	}, "Return", 	function() awful.layout.inc(layouts, -1) end),
-
+-- change screen
+awful.key({modkey,		}, "Tab",	awful.screen.focus_relative(-1)),
 --	}}}
 --	{{{ Commands bindings
 -- Spawn menu
-awful.key({modkey,		}, "w",		function() mymainmenu:toggle() end),
+awful.key({modkey, "Shift"	}, "w",		function() mymainmenu:show({keygrabber=true}) end),
+awful.key({modkey,		}, "w",		function() mymainmenu:show({keygrabber=true, coords={x=0, y=1100}}) end),
+
 -- Spawn terminal
 awful.key({modkey,		}, "x",		function() awful.util.spawn(terminal) end),
 -- Spawn launcher
 --awful.key({modkey,		}, "r",		function() awful.util.spawn("gmrun") end),
-awful.key({modkey,		}, "r",		function() teardrop(terminal_launcher, "bottom", "left", 0.6, 0.04) end),
+awful.key({modkey,		}, "r",		function() teardrop(terminal_launcher, "bottom", "left", 0.8, 0.15) end),
 -- Spawn teardrop terminal
-awful.key({modkey		}, "space",	function() teardrop(terminal_td, "center", "center", 0.8, 0.7) end),
--- Spawn command prompt in wibox
-awful.key({modkey		}, "BackSpace",	function() mypromptbox[mouse.screen]:run() end)
+awful.key({modkey		}, "space",	function() teardrop(terminal_td, "center", "right", 0.8, 0.7) end),
+---- Spawn command prompt in wibox
+--awful.key({modkey		}, "BackSpace",	function() mypromptbox[mouse.screen]:run() end),
 
+--	}}}
+--	{{{ Misc bindings
+-- Sound volume decrease/increase
+awful.key({modkey,		}, "-",		function() awful.util.spawn_with_shell("amixer -c 0 set Master 5dB-") end),
+awful.key({modkey,		}, "=",		function() awful.util.spawn_with_shell("amixer -c 0 set Master 5dB+") end),
+-- zlock
+awful.key({modkey,		}, "BackSpace",	function() awful.util.spawn_with_shell("dm-tool switch-to-greeter") end),
+awful.key({modkey, "Shift"	}, "BackSpace",	function() awful.util.spawn_with_shell("gnome-screensaver-command -l") end),
+awful.key({modkey,		}, "F12",	function() awful.util.spawn_with_shell("scrot") end)
 --	}}}
 )
 
@@ -114,8 +127,8 @@ end)
 )
 
 -- Key loop
-for i = 1, (shifty.config.maxtags or 9 ) do
-	table.foreach(awful.key({modkey}, i, function() local t = awful.tag.viewonly(shifty.getpos(i)) end),
+for i = 0, (shifty.config.maxtags or 9 ) do
+	table.foreach(awful.key({modkey}, i, function() local ts = shifty.getpos(i); awful.screen.focus(ts.screen); awful.tag.viewonly(ts) end),
 				function(_, k) table.insert(globalkeys, k) end)
 	table.foreach(awful.key({modkey, "Control"}, i,	function() local t = shifty.getpos(i); t.selected = not t.selected end),
 				function(_, k) table.insert(globalkeys, k) end)

@@ -6,14 +6,14 @@ theme = {}
 
 theme.font          = "DejaVu Sans 9"
 
-theme.bg_normal     = "#202020ff"
-theme.bg_focus      = "#202020ff"
-theme.bg_urgent     = "#F92672ff"
+theme.bg_normal     = "#101010ff"
+theme.bg_focus      = "#101010ff"
+theme.bg_urgent     = "#ff6347ff"
 theme.bg_minimize   = "#444444"
 
 theme.fg_normal     = "#ffffff"
-theme.fg_focus      = "#d02e54"
-theme.fg_urgent     = "#202020"
+theme.fg_focus      = "#ff6347"
+theme.fg_urgent     = "#101010"
 theme.fg_minimize  = "#ffffff"
 
 theme.border_width  = "1"
