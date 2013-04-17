@@ -1,77 +1,64 @@
-# Conky settings #
 background no
-update_interval 1
-
-cpu_avg_samples 2
-net_avg_samples 2
-
-override_utf8_locale yes
-
-double_buffer yes
-no_buffers yes
-
-text_buffer_size 2048
-#imlib_cache_size 0
-
-temperature_unit fahrenheit
-
-# Window specifications #
-
+use_xft yes
+xftfont Source Code Pro:size=16
+xftalpha 0.9
+update_interval 1.0
+total_run_times 0
 own_window yes
 own_window_type override
 own_window_transparent yes
 own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 border_inner_margin 0
 border_outer_margin 0
-
-minimum_size 1920 1080
+double_buffer yes
+minimum_size  1920 1080
 maximum_width 1920
-
-alignment tr
-gap_x 0
-gap_y 0
-
-# Graphics settings #
-draw_shades yes
+draw_shades no
 draw_outline no
-draw_borders yes
+draw_borders no
 draw_graph_borders no
-
-# Text settings #
-use_xft yes
-xftfont caviar dreams:size=8
-xftalpha 0.5
-
+default_color 000000
+default_shade_color 000000
+default_outline_color white
+alignment top_left
+gap_x 20
+gap_y 30
+no_buffers yes
 uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
 
-temperature_unit celsius
-
-
-default_color FFFFFF
-
-# Lua Load  #
-lua_load ~/.config/conky/clock_rings.lua
-lua_draw_hook_pre conky_ring_stats
+# Clock rings
+#lua_load ~/conf/conky/conky/clock_rings.lua
+#lua_draw_hook_pre conky_ring_stats
 
 TEXT
+# DATE
+${font Source Code Pro:size=50}${color f6c84c}${time %H}${color ffffff}${voffset -5}${font Source Code Pro:size=40}:${voffset -10}${font Source Code Pro:size=50}${color a6e22e}${time %M}${font Source Code Pro:size=20}${color 00bfff}${time %S}
+${voffset -50}
+${goto 50}${font Source Code Pro:size=12}${color ffffff}${time %a, %B %e %Y}
 
-# clock rings text
-${voffset 117}	${color FFFFFF}	${goto 1680}	${font caviar dreams:size=8}	${time %A, %b %e}		${font}
-${voffset 0}	${color FFFFFF} ${goto 1610}	${font caviar dreams:size=24}	${time %H:%M:%S}	${font}
-${voffset 5}	${color FFFFFF}	${goto 1710}	${font caviar dreams:size=10}	${time %Y}	${font}
+# VOLUME
+${voffset -100}
+${goto 1750}${font Source Code Pro:size=16}${color 00bfff}Volume ${font Source Code Pro:size=9}${color ffffff}${exec amixer -c 0 get Master | grep '[.*%]' | sed -e 's/.*\[\(.*%\).*/\1/g'}
 
-# system text
-${voffset -100}	${color FFFFFF} ${goto 1460}	${sysname} ${kernel} ${machine}
-${voffset 5}	${color FFFFFF} ${goto 1535}	Up: $uptime_short
+# TODOLISTS
+${voffset 100}
+${font Source Code Pro:size=16}${color ff6347}Appointments
+${font Source Code Pro:size=9}${color ffffff}${exec cat ~/.todo/appointments}
+${voffset 20}
+${font Source Code Pro:size=16}${color f6c84c}To Do
+${font Source Code Pro:size=9}${color ffffff}${exec cat ~/.todo/todo}
+${voffset 20}
+${font Source Code Pro:size=16}${color a6e22e}To Think
+${font Source Code Pro:size=9}${color ffffff}${exec cat ~/.todo/tothink}
+${voffset 20}
+${font Source Code Pro:size=16}${color 00bfff}Notes
+${font Source Code Pro:size=9}${color ffffff}${exec cat ~/.todo/notes}
 
-# system rings text
-${voffset 15}	${color FFFFFF} ${goto 1560}	${cpu cpu0}%
-${voffset 1}	${color FFFFFF} ${goto 1560}	cpu
-${voffset 40}	${color FFFFFF} ${goto 1580}	${memperc}%
-${voffset 1}	${color FFFFFF} ${goto 1580}	ram
-#${voffset 20}	${color FFFFFF} ${goto 1625}	${swapperc}
-#${voffset 1}	${color FFFFFF} ${goto 1625}	swap
-${voffset 50}	${color FFFFFF} ${goto 1685}	${fs_used_perc /}%
-${voffset 1}	${color FFFFFF} ${goto 1685}	  fs /
-${voffset -18}	${color FFFFFF} ${goto 1755}	${entropy_perc}%
-${voffset 1}	${color FFFFFF} ${goto 1752}	entropy
+# MOUNTPOINTS
+${voffset 200}
+${font Source Code Pro:size=16}${color 00bfff}Mount Points
+${font Source Code Pro:size=9}${color ffffff}${exec mount | tail -n +15 | sed -e 's/\([^ ]* on [^ ]*\).*/\1/g'}
+
+
