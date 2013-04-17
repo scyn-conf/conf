@@ -15,8 +15,13 @@ source ./completion.zsh
 source ./editor.zsh
 source ./env.zsh
 source ./env_kaneton.zsh
+source ./games.zsh
+source ./greetings.zsh
 source ./history.zsh
+source ./keyboard.zsh
+source ./ln.zsh
 source ./ls.zsh
+source ./luks.zsh
 source ./opt.zsh
 source ./prompt.zsh
 source ./rm.zsh

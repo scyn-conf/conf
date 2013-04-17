@@ -9,5 +9,6 @@ if ! [[ -d $ZSH_CONF_CACHE ]]; then
 fi
 
 bk_read_cache
+luksdrives_read_cache
 trash_read_cache
 

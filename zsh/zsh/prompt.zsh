@@ -7,7 +7,8 @@ setopt prompt_subst
 
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' stagedstr '%F{green}✓'
+zstyle ':vcs_info:*' stagedstr '%F{green}✗'
+#zstyle ':vcs_info:*' stagedstr '%F{green}✓'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}✗'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' branchformat '%b%F{1}:%F{11}%r'
@@ -24,6 +25,12 @@ function switch_prompt()
 			export PROMPT_STYLE=simple
 		;;
 		simple)
+			export PROMPT_STYLE=odd
+		;;
+		odd)
+			export PROMPT_STYLE=ics
+		;;
+		ics)
 			export PROMPT_STYLE=complete
 		;;
 		*)
@@ -64,7 +71,8 @@ function precmd()
 		if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
 			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u"
 		else
-			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F ${red}?$dark_cyan"
+			#zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F ${red}?$dark_cyan"
+			zstyle ':vcs_info:*' formats "$dark_cyan%s:%b:%7.7i$clr" "%c%u%F${red}✗$dark_cyan"
 		fi
 		vcs_info
 	fi
@@ -79,14 +87,25 @@ function precmd()
 
 	case `echo $PROMPT_STYLE` in
 		complete)
-PROMPT="$yellow%D{%H:%M}$clr - Logged as $green$USER$clr on $red$HOST$clr in $blue%~$clr ${vcs_info_msg_1_}
-$(active_jobs)%(?..${red}[%?] %b)$dark_cyan(%!) ${dark_blue}42sh>$clr "
-RPROMPT="${vcs_info_msg_0_}$clr"
+PROMPT="
+
+$yellow%D{%H:%M}$clr - Logged as $red$USER$clr on ${dark_blue}$HOST$clr in $blue%~$clr
+$clr$(keyboard_layout)$(active_jobs)%(?..${red}[%?] %b)$dark_cyan(%!) ${green}42sh>$clr "
+RPROMPT="${vcs_info_msg_1_}${vcs_info_msg_0_}$clr"
 		;;
 		simple)
 RPROMPT="${vcs_info_msg_0_}$yellow [%D{%H:%M}]"
 PROMPT="%(?..$red}[%?] %b)$blue%~ ${vcs_info_msg_1_}
 $green$USER$clr@$red$HOST$clr: "
+		;;
+		odd)
+PROMPT="%(?..${red}[%?] %b)${green}42sh>$clr "
+RPROMPT="$dark_cyan(%!) $yellow%D{%H:%M}$clr - Logged as $red$USER$clr on ${dark_blue}$HOST$clr in $blue%~$clr ${vcs_info_msg_1_}${vcs_info_msg_0_}$clr$(keyboard_layout)$(active_jobs)"
+		;;
+		ics)
+PROMPT="$blue%D{%H:%M} - Logged as $USER on $HOST in %~ ${vcs_info_msg_1_}
+$(keyboard_layout)$(active_jobs)%(?..${red}[%?] %b)(%!) 42sh>$clr "
+RPROMPT="${vcs_info_msg_0_}$clr"
 		;;
 		*)
 		;;

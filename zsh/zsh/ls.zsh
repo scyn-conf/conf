@@ -9,7 +9,7 @@ case `uname -s` in
 		alias ls="ls -o -G --classify"
 		;;
 	*)
-		alias ls="ls -o --color=auto --group-directories-first --classify"
+		alias ls="ls -o --color=auto --group-directories-first --classify --human-readable"
 		;;
 esac
 alias la='ls -a'
@@ -40,8 +40,12 @@ underline="4;"
 
 # File system
 LS_COLORS="di=$blue"
-LS_COLORS+=":ln=$italic$yellow"
+LS_COLORS+=":ln=$italic$dark_cyan"
 LS_COLORS+=":ex=$red"
+#LS_COLORS="di=$red"
+#LS_COLORS+=":ln=$italic$blue"
+#LS_COLORS+=":ex=$red"
+
 
 # Code files
 LS_COLORS+=":*.o=$dark_cyan"
@@ -78,13 +82,13 @@ LS_COLORS+=":*COPYING=$dark_cyan"
 LS_COLORS+=":*COPYRIGHT=$dark_cyan"
 
 # archives
-LS_COLORS+=":*.gz=$cyan"
-LS_COLORS+=":*.bz2=$cyan"
-LS_COLORS+=":*.tbz=$cyan"
-LS_COLORS+=":*.tgz=$cyan"
-LS_COLORS+=":*.7z=$cyan"
-LS_COLORS+=":*.xz=$cyan"
-LS_COLORS+=":*.zip=$cyan"
+LS_COLORS+=":*.gz=$yellow"
+LS_COLORS+=":*.bz2=$yellow"
+LS_COLORS+=":*.tbz=$yellow"
+LS_COLORS+=":*.tgz=$yellow"
+LS_COLORS+=":*.7z=$yellow"
+LS_COLORS+=":*.xz=$yellow"
+LS_COLORS+=":*.zip=$yellow"
 
 # misc files
 LS_COLORS+=":*.log=$dark_cyan"

@@ -1,0 +1,3 @@
+#compdef luks_mount 
+
+_describe -t luksdrive 'luksdrives' luksdrives_completions
